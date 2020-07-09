@@ -1,4 +1,4 @@
-baseURL = "https://example.com"
+baseURL = "https://michelescandola.netlify.app/"
 # [en, zh-cn, fr, pl, ...] determines default content language
 # [en, zh-cn, fr, pl, ...] 设置默认的语言
 defaultContentLanguage = "en"
@@ -10,7 +10,7 @@ theme = "LoveIt"
 
 # website title
 # 网站标题
-title = "LoveIt"
+title = "Michele Scandola's personal webpage"
 
 # whether to use robots.txt
 # 是否使用 robots.txt
@@ -92,9 +92,9 @@ enableEmoji = true
         weight = 6
     [languages.en.params]
       # site description
-      description = "About LoveIt Theme"
+      description = "Michele Scandola's personal webpage"
       # site keywords
-      keywords = ["Theme", "Hugo"]
+      keywords = ["Michele Scandola", "Neuroscience" , "Bayesian Statistics" , "R" , "Psychology" , "Statistics" , "Electrophysiology"]
       # App icon config
       [languages.en.params.app]
         # optional site title override for the app when added to an iOS home screen or Android launcher
@@ -161,12 +161,12 @@ enableEmoji = true
         GitHub = "xxxx"
         Linkedin = ""
         Twitter = "xxxx"
-        Instagram = "xxxx"
-        Facebook = "xxxx"
-        Telegram = "xxxx"
+        Instagram = ""
+        Facebook = ""
+        Telegram = ""
         Medium = ""
         Gitlab = ""
-        Youtubelegacy = "xxxx"
+        Youtubelegacy = ""
         Youtubecustom = ""
         Youtubechannel = ""
         Tumblr = ""
@@ -211,15 +211,15 @@ enableEmoji = true
         Dribbble = ""
         Wordpress = ""
         Vine = ""
-        Googlescholar = ""
-        Researchgate = ""
+        Googlescholar = "https://scholar.google.com/citations?user=mRc0hxsAAAAJ&hl=it&authuser=1"
+        Researchgate = "https://www.researchgate.net/profile/Michele_Scandola"
         Thingiverse = ""
         Devto = ""
         Gitea = ""
         XMPP = ""
         Matrix = ""
         Bilibili = ""
-        Email = "xxxx@xxxx.com"
+        Email = "michele.scandola@univr.it"
         RSS = true
         [languages.en.params.social.Mastodon]
           id = "@xxxx"
