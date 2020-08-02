@@ -52,7 +52,7 @@ Central to the experimental efforts of the [NPSY-Lab.VR][1] is the Awareness,
 in all its forms.
 
 - The awareness for our own disabilities, such as "Anosognosia for Hemiplegia"
-(AHP) [^1], "Anosognosia for Apraxia" [^2][^3], "Anosognosia for Theory of Mind",
+(AHP) [^1], "Anosognosia for Apraxia" [^2] [^3], "Anosognosia for Theory of Mind",
 "Anosognosia for Amnesia"
 - The body awareness, that may be seen as the awareness of others' body [^4], or
 the awareness of our own body [^5]
@@ -74,8 +74,9 @@ spinal units and research laboratories, to study the relationship
 between body and cognition in spinal cord injured people,
 with a double aim:
 
-- designing new cognitive exercises that may be helpful in rehabilitative trainings
-- in-depth study of body representations
+- designing new cognitive exercises that may be helpful in rehabilitative
+  trainings [^7] [^8] [^9]
+- in-depth study of body representations [^10] [^11]
 
 <hr>
 
@@ -123,7 +124,7 @@ Both courses are based on the notion of neuroplasticity from different perspecti
 [BayesHSC]: https://sites.hss.univr.it/bayeshsc/
 [learning]: https://www.dsu.univr.it/?ent=oi&aa=2020%2F2021&codiceCs=W24&codins=4S007362&cs=861&discr=&discrCd=
 [labdisability]: https://www.dsu.univr.it/?ent=oi&aa=2020%2F2021&codiceCs=W23&codins=4S000871&cs=360&discr=&discrCd=
-[myself]: ../assets/images/myself_real_work.jpg "This may actually be me, working at home, during COVID-19 Italian lockdown"
+[myself]: ../assets/images/myself_real_work.jpg "This may actually be me, working at home, during the COVID-19 Italian lockdown"
 
 [^1]: Moro, V. (2013). The interaction between implicit and explicit awareness in anosognosia: Emergent awareness. Cognitive Neuroscience, 4(3–4), 199–200. https://doi.org/10.1080/17588928.2013.853656
 [^2]: Canzano, L., Scandola, M., Pernigo, S., Aglioti, S. M., & Moro, V. (2014). Anosognosia for apraxia: Experimental evidence for defective awareness of one’s own bucco-facial gestures. Cortex, 61(0), 148–157. https://doi.org/10.1016/j.cortex.2014.05.015
@@ -131,3 +132,8 @@ Both courses are based on the notion of neuroplasticity from different perspecti
 [^4]: Moro, V., Pernigo, S., Avesani, R., Bulgarelli, C., Urgesi, C., Candidi, M., & Aglioti, S. M. (2012). Visual body recognition in a prosopagnosic patient. Neuropsychologia, 50(1), 104–117. https://doi.org/10.1016/j.neuropsychologia.2011.11.004
 [^5]: Pernigo, S., Moro, V., Avesani, R., Miatello, C., Urgesi, C., & Aglioti, S. M. (2012). Massive somatic deafferentation and motor deefferentation of the lower part of the body impair its visual recognition: a psychophysical study of patients with spinal cord injury. The European Journal of Neuroscience, 36(11), 3509–3518. https://doi.org/10.1111/j.1460-9568.2012.08266.x
 [^6]: Moro, V., Condoleo, M. T., Sala, F., Pernigo, S., Moretto, G., & Gambina, G. (2012). Cognitive stimulation in a-{MCI:} an experimental study. American Journal of Alzheimer’s Disease and Other Dementias, 27(2), 121–130. https://doi.org/10.1177/1533317512441386
+[^7]: Scandola, M., Aglioti, S. M., Lazzeri, G., Avesani, R., Ionta, S., & Moro, V. (2020). Visuo-motor and interoceptive influences on peripersonal space representation following spinal cord injury. Scientific Reports, 10(1), 1–16. https://doi.org/10.1038/s41598-020-62080-1
+[^8]: Scandola, M., Dodoni, L., Lazzeri, G., Arcangeli, C. A., Avesani, R., Moro, V., & Ionta, S. (2019). Neurocognitive Benefits of Physiotherapy for Spinal Cord Injury. Journal of Neurotrauma, neu.2018.6123. https://doi.org/10.1089/neu.2018.6123
+[^9]: Scandola, M., Aglioti, S. M., Bonente, C., Avesani, R., & Moro, V. (2016). Spinal cord lesions shrink peripersonal space around the feet, passive mobilization of paraplegic limbs restores it. Scientific Reports, 6(April), 24126. https://doi.org/10.1038/srep24126
+[^10]: Scandola, M., Togni, R., Tieri, G., Avesani, R., Brambilla, M., Aglioti, S. M., & Moro, V. (2019). Embodying their own wheelchair modifies extrapersonal space perception in people with spinal cord injury. Experimental Brain Research, 237(10), 2621–2632. https://doi.org/10.1007/s00221-019-05618-8
+[^11]: Scandola, M., Aglioti, S. M., Avesani, R., Bertagnoni, G., Marangoni, A., & Moro, V. (2017). Corporeal Illusions in Chronic Spinal Cord Injuries. Consciousness and Cognition, 49, 278–290. https://doi.org/10.1016/j.concog.2017.01.010
