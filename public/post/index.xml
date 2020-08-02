@@ -1,16 +1,71 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on LoveIt</title>
+    <title>Posts on Michele Scandola&#39;s personal webpage</title>
     <link>/post/</link>
-    <description>Recent content in Posts on LoveIt</description>
+    <description>Recent content in Posts on Michele Scandola&#39;s personal webpage</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Thu, 23 Jul 2015 21:13:14 -0500</lastBuildDate>
+    <lastBuildDate>Sat, 01 Aug 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Presentation</title>
+      <link>/post/2020-08-01-presentation/</link>
+      <pubDate>Sat, 01 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020-08-01-presentation/</guid>
+      <description>&lt;h2 id=&#34;short-bio-and-research-interests&#34;&gt;Short bio and Research Interests&lt;/h2&gt;
+&lt;p&gt;I am a researcher in the neuroscience field, interested in body, action, space
+and time representations at the &lt;a href=&#34;http://sites.hss.univr.it/npsy-labvr/&#34; target=&#34;_blank&#34; rel=&#34;noopener noreffer&#34;&gt;NPSY-Lab.VR&lt;/a&gt;, &lt;a href=&#34;https://www.univr.it&#34; target=&#34;_blank&#34; rel=&#34;noopener noreffer&#34;&gt;University of Verona&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;In particular, my research work is focused on patients with a spinal cord lesion,
+people that are experiencing in their everyday life a body-brain disconnection
+from both the sensorial and motor functionality. I finished my Ph.D. in 2015 in
+Social and Affective Neuroscience at the University “La Sapienza” or Rome
+(Italy) of &lt;a href=&#34;https://agliotilab.org/lab-staff/principal-investigator&#34; target=&#34;_blank&#34; rel=&#34;noopener noreffer&#34;&gt;prof. Salvatore M. Aglioti&lt;/a&gt;, under the
+supervision of &lt;a href=&#34;https://michelescandola.github.io/www.dsu.univr.it/?ent=persona&amp;amp;id=2097&#34; target=&#34;_blank&#34; rel=&#34;noopener noreffer&#34;&gt;prof. Valentina Moro&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>First Post</title>
+      <link>/post/2020-07-19-first-post/</link>
+      <pubDate>Thu, 19 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020-07-19-first-post/</guid>
+      <description>For example, I want to write something&amp;hellip;
+ciaocioa</description>
+    </item>
+    
+    <item>
+      <title>Publications</title>
+      <link>/post/publications/</link>
+      <pubDate>Sat, 01 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/publications/</guid>
+      <description>&lt;center&gt;
+&lt;p&gt;&lt;img
+        class=&#34;lazyload&#34;
+        src=&#34;/svg/loading.min.svg&#34;
+        data-src=&#34;../assets/images/publications.jpg&#34;
+        data-srcset=&#34;/../assets/images/publications.jpg, ../assets/images/publications.jpg 1.5x, /../assets/images/publications.jpg 2x&#34;
+        data-sizes=&#34;auto&#34;
+        alt=&#34;/../assets/images/publications.jpg&#34;
+        title=&#34;Publications&#34; /&gt;&lt;/p&gt;
+&lt;/center&gt;
+&lt;p&gt;This is the list of my publications, for an updated version, please see&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Statistics notes</title>
+      <link>/post/statistics-notes/</link>
+      <pubDate>Sat, 01 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/statistics-notes/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Hello R Markdown</title>

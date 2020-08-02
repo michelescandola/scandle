@@ -1,0 +1,26 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>poster(s) - Tag - Michele Scandola&#39;s personal webpage</title>
+        <link>/tags/posters/</link>
+        <description>poster(s) - Tag - Michele Scandola&#39;s personal webpage</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 01 Aug 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/posters/" rel="self" type="application/rss+xml" /><item>
+    <title>Publications</title>
+    <link>/publications/</link>
+    <pubDate>Sun, 19 Jul 2020 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/publications/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/assets/images/publications.jpg" referrerpolicy="no-referrer">
+            </div><p>This is the list of my publications, for an updated version, please see</p>]]></description>
+</item><item>
+    <title>Publications</title>
+    <link>/post/publications/</link>
+    <pubDate>Sat, 01 Aug 2020 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/post/publications/</guid>
+    <description><![CDATA[<center>
+<p></p>
+</center>
+<p>This is the list of my publications, for an updated version, please see</p>]]></description>
+</item></channel>
+</rss>

@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Statistics - Category - Michele Scandola&#39;s personal webpage</title>
+        <link>/categories/statistics/</link>
+        <description>Statistics - Category - Michele Scandola&#39;s personal webpage</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 01 Aug 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="/categories/statistics/" rel="self" type="application/rss+xml" /><item>
+    <title>Statistics Notes</title>
+    <link>/2020-08-01-statistics-notes/</link>
+    <pubDate>Sat, 01 Aug 2020 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/2020-08-01-statistics-notes/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/assets/images/featured-image.png" referrerpolicy="no-referrer">
+            </div><p>bla bla&hellip;</p>]]></description>
+</item></channel>
+</rss>

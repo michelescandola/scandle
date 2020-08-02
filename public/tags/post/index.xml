@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>post - Tag - Michele Scandola&#39;s personal webpage</title>
+        <link>/tags/post/</link>
+        <description>post - Tag - Michele Scandola&#39;s personal webpage</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 19 Jul 2018 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/post/" rel="self" type="application/rss+xml" /><item>
+    <title>First Post</title>
+    <link>/post/2020-07-19-first-post/</link>
+    <pubDate>Thu, 19 Jul 2018 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/post/2020-07-19-first-post/</guid>
+    <description><![CDATA[For example, I want to write something&hellip;
+ciaocioa]]></description>
+</item></channel>
+</rss>
