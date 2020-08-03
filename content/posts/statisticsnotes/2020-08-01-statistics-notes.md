@@ -15,8 +15,8 @@ tags:
 lastmod: '2020-08-01T18:11:09+02:00'
 hiddenFromHomePage: no
 hiddenFromSearch: no
-featuredImage: '../assets/images/featured-image.png'
-featuredImagePreview: '../assets/images/featured-image.png'
+featuredImage: '../assets/images/statistics_notes.jpg'
+featuredImagePreview: '../assets/images/statistics_notes.jpg'
 toc:
   enable: yes
 math:
