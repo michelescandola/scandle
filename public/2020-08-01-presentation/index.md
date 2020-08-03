@@ -89,13 +89,10 @@ Both courses are based on the notion of neuroplasticity from different perspecti
 
 **Office hours**: all mondays, from 9 to 11 am on [Zoom](https://univr.zoom.us/j/489282176)
 
-<<<<<<< HEAD:content/posts/presentation/2020-08-01-presentation.md
 I am both teacher and director of the [BayesHSC][BayesHSC] Summer School, and occasionally
 I give lectures concerning Multilevel Models and Bayesian Statistics in PhD
 programs.
 
-=======
->>>>>>> 99e1a7d133644695b7b3d7c5a3228d8bd87385cd:content/posts/2020-08-01-presentation.md
 ## Collaborations
 
 - [Valentina Moro](https://sites.hss.univr.it/npsy-labvr/valentina-moro/)
