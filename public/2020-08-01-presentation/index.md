@@ -1,4 +1,4 @@
-# Presentation
+# 
 
 
 ## Short bio and Research Interests
@@ -87,17 +87,17 @@ and the laboratory [“Body and disability”][labdisability].
 
 Both courses are based on the notion of neuroplasticity from different perspectives.
 
+**Office hours**: all mondays, from 9 to 11 am on [Zoom](https://univr.zoom.us/j/489282176)
+
 ## Collaborations
 
 - [Valentina Moro](https://sites.hss.univr.it/npsy-labvr/valentina-moro/)
-- Salvatore M. Aglioti
-- Daniele Romano
+- [Daniele L. Romano](https://labmaravitabicocca.wixsite.com/maravita-lab-bicocca/about-us)
 - [Emmanuele Tidoni](https://www.hutechlab.com/)
-- Marco Tullio Liuzza
-- Gabriele Fusco
-- Nathan Faivre
-- Katerina Fotopoulou
-- Paul Jenkinson
+- [Marco Tullio Liuzza](https://sites.google.com/view/marcotullioliuzza/)
+- [Gabriele Fusco](https://agliotilab.org/lab-staff/senior-fellows/gabriele-fusco)
+- [Katerina Fotopoulou](https://www.fotopoulou.com/katerina-fotopoulou/)
+- [Paul Jenkinson](https://researchprofiles.herts.ac.uk/portal/en/persons/paul-jenkinson(841e694a-de68-41cc-864a-6cb7d0efd3f7).html)
 
 ## References
 

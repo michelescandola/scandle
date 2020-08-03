@@ -1,34 +1,13 @@
----
-title: Publications
-author: Michele Scandola
-date: '2020-07-19'
-slug: publications
-categories:
-- publications
-tags:
-- article(s)
-- poster(s)
-- book(s)
-lastmod: '2020-07-19T20:22:05+02:00'
-authorLink: 'https://michelescandola.github.io'
-hiddenFromHomePage: no
-hiddenFromSearch: no
-featuredImage: '../assets/images/publications.jpg'
-featuredImagePreview: '../assets/images/publications.jpg'
-toc:
-  enable: yes
-math:
-  enable: no
-draft: false
-lightgallery: true
-weight: 2
----
+# Publications
+
 
 This is the list of my publications:
 
 <!--more-->
 
 ## preprints
+
+*Scandola, M.*, & Romano, D. (2020, August 3). Bayesian Multilevel Single Case Models using 'Stan'. A new tool to study single cases in Neuropsychology. https://doi.org/10.31234/osf.io/sajdq
 
 Beccherle, M., Facchetti, S., Villani, F., Zanini, M., & *Scandola, M.* (2020, July 29). Peripersonal Space from a multisensory perspective: the distinct effect of the visual and tactile components of Visuo-Tactile stimuli. https://doi.org/10.31234/osf.io/358xc
 
@@ -133,6 +112,7 @@ Hernansanz, A., Zerbato, D., Gasperotti, L., *Scandola, M.*, Fiorini, P., & Casa
 <hr>
 
 My list of publications on [Scopus](https://www.scopus.com/authid/detail.uri?authorId=53878602000)
+
 
 
 

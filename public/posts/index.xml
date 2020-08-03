@@ -4,7 +4,7 @@
         <link>/posts/</link>
         <description>All Posts | Michele Scandola&#39;s personal webpage</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 01 Aug 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
-    <title>Presentation</title>
+    <title></title>
     <link>/2020-08-01-presentation/</link>
     <pubDate>Sat, 01 Aug 2020 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
@@ -15,10 +15,10 @@ and time representations, and their influences on cognition
 at the <a href="http://sites.hss.univr.it/npsy-labvr/" target="_blank" rel="noopener noreffer">NPSY-Lab.VR</a>, <a href="https://www.univr.it" target="_blank" rel="noopener noreffer">University of Verona</a>.</p>]]></description>
 </item><item>
     <title>Publications</title>
-    <link>/publications/</link>
+    <link>/2020-08-01-publications/</link>
     <pubDate>Sun, 19 Jul 2020 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>/publications/</guid>
+    <guid>/2020-08-01-publications/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/assets/images/publications.jpg" referrerpolicy="no-referrer">
             </div><p>This is the list of my publications:</p>]]></description>
@@ -29,16 +29,7 @@ at the <a href="http://sites.hss.univr.it/npsy-labvr/" target="_blank" rel="noop
     <author>Author</author>
     <guid>/2020-08-01-statistics-notes/</guid>
     <description><![CDATA[<div class="featured-image">
-                <img src="/assets/images/featured-image.png" referrerpolicy="no-referrer">
+                <img src="/assets/images/statistics_notes.jpg" referrerpolicy="no-referrer">
             </div><p>bla bla&hellip;</p>]]></description>
-</item><item>
-    <title>Hello R Markdown</title>
-    <link>/2015-07-23-r-rmarkdown/</link>
-    <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
-    <author>Author</author>
-    <guid>/2015-07-23-r-rmarkdown/</guid>
-    <description><![CDATA[R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
-You can embed an R code chunk like this:
-summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.]]></description>
 </item></channel>
 </rss>
