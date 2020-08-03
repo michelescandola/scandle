@@ -30,16 +30,6 @@ supervision of &lt;a href=&#34;https://michelescandola.github.io/www.dsu.univr.i
     </item>
     
     <item>
-      <title>First Post</title>
-      <link>/post/2020-07-19-first-post/</link>
-      <pubDate>Thu, 19 Jul 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/post/2020-07-19-first-post/</guid>
-      <description>For example, I want to write something&amp;hellip;
-ciaocioa</description>
-    </item>
-    
-    <item>
       <title>Publications</title>
       <link>/post/publications/</link>
       <pubDate>Sat, 01 Aug 2020 00:00:00 +0000</pubDate>
@@ -65,17 +55,6 @@ ciaocioa</description>
       
       <guid>/post/statistics-notes/</guid>
       <description></description>
-    </item>
-    
-    <item>
-      <title>Hello R Markdown</title>
-      <link>/post/2015-07-23-r-rmarkdown/</link>
-      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
-      
-      <guid>/post/2015-07-23-r-rmarkdown/</guid>
-      <description>R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
-You can embed an R code chunk like this:
-summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.</description>
     </item>
     
   </channel>
