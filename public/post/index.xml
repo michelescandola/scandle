@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Sat, 01 Aug 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 03 Aug 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
@@ -27,6 +27,15 @@ from both the sensorial and motor functionality. I finished my Ph.D. in 2015 in
 Social and Affective Neuroscience at the University “La Sapienza” or Rome
 (Italy) of &lt;a href=&#34;https://agliotilab.org/lab-staff/principal-investigator&#34; target=&#34;_blank&#34; rel=&#34;noopener noreffer&#34;&gt;prof. Salvatore M. Aglioti&lt;/a&gt;, under the
 supervision of &lt;a href=&#34;https://michelescandola.github.io/www.dsu.univr.it/?ent=persona&amp;amp;id=2097&#34; target=&#34;_blank&#34; rel=&#34;noopener noreffer&#34;&gt;prof. Valentina Moro&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>New preprint! Bayesian Multilevel Single Case Models using &#39;Stan&#39;</title>
+      <link>/post/new-preprint-bayesian-multilevel-single-case-models-using-stan-a-new-tool-to-study-single-cases-in-neuropsychology/</link>
+      <pubDate>Mon, 03 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/new-preprint-bayesian-multilevel-single-case-models-using-stan-a-new-tool-to-study-single-cases-in-neuropsychology/</guid>
+      <description>&lt;p&gt;A new preprint was released today!&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -55,6 +64,15 @@ supervision of &lt;a href=&#34;https://michelescandola.github.io/www.dsu.univr.i
       
       <guid>/post/statistics-notes/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>New preprint! Peripersonal space from a multisensory perspective</title>
+      <link>/post/new-preprint-peripersonal-space-from-a-multisensory-perspective/</link>
+      <pubDate>Wed, 29 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/new-preprint-peripersonal-space-from-a-multisensory-perspective/</guid>
+      <description>&lt;p&gt;A new preprint was released today July $29^{th}$!&lt;/p&gt;</description>
     </item>
     
   </channel>
