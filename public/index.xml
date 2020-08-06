@@ -3,7 +3,7 @@
         <title>Michele Scandola&#39;s personal webpage</title>
         <link>/</link>
         <description>Michele Scandola&#39;s personal webpage</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 03 Aug 2020 00:00:00 &#43;0000</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 06 Aug 2020 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
         <item>
     <title></title>
@@ -32,6 +32,10 @@ at the <a href="http://sites.hss.univr.it/npsy-labvr/" target="_blank" rel="noop
     <guid>/2020-08-01-statistics-notes/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/assets/images/statistics_notes.jpg" referrerpolicy="no-referrer">
-            </div><p>bla bla&hellip;</p>]]></description>
+            </div><ul>
+<li>Sample size computation,
+<a href="/presentations/sample_size/samplesize_presentation.html" rel="">HTML version</a>,
+<a href="/presentations/sample_size/samplesize_presentation.pdf" rel="">PDF version</a></li>
+</ul>]]></description>
 </item></channel>
 </rss>

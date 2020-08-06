@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Mon, 03 Aug 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 06 Aug 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
@@ -27,6 +27,20 @@ from both the sensorial and motor functionality. I finished my Ph.D. in 2015 in
 Social and Affective Neuroscience at the University “La Sapienza” or Rome
 (Italy) of &lt;a href=&#34;https://agliotilab.org/lab-staff/principal-investigator&#34; target=&#34;_blank&#34; rel=&#34;noopener noreffer&#34;&gt;prof. Salvatore M. Aglioti&lt;/a&gt;, under the
 supervision of &lt;a href=&#34;https://michelescandola.github.io/www.dsu.univr.it/?ent=persona&amp;amp;id=2097&#34; target=&#34;_blank&#34; rel=&#34;noopener noreffer&#34;&gt;prof. Valentina Moro&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>New R package on github! *bmscstan*: Bayesian Multilevel Single Case models</title>
+      <link>/post/new-r-package-on-github-bmscstan-bayesian-multilevel-single-case-models/</link>
+      <pubDate>Thu, 06 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/new-r-package-on-github-bmscstan-bayesian-multilevel-single-case-models/</guid>
+      <description>&lt;p&gt;The version 1.0.0 of the package &lt;code&gt;bmscstan&lt;/code&gt; is ready to use!&lt;/p&gt;
+&lt;p&gt;Its purpose is to provide a general, simple interface to analyse
+single case studies with an lme4-like syntax.&lt;/p&gt;
+&lt;p&gt;You can find it on my github page, &lt;a href=&#34;https://github.com/michelescandola/bmscstan,&#34;&gt;https://github.com/michelescandola/bmscstan,&lt;/a&gt;
+and you can install it by typing in the R console
+&lt;code&gt;devtools::install_github(michelescandola/bmscstan)&lt;/code&gt;.&lt;/p&gt;</description>
     </item>
     
     <item>

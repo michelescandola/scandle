@@ -3,7 +3,7 @@
         <title>(Generalized) Linear Models - Tag - Michele Scandola&#39;s personal webpage</title>
         <link>/tags/generalized-linear-models/</link>
         <description>(Generalized) Linear Models - Tag - Michele Scandola&#39;s personal webpage</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 03 Aug 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/generalized-linear-models/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 06 Aug 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/generalized-linear-models/" rel="self" type="application/rss+xml" /><item>
     <title>Statistics Notes</title>
     <link>/2020-08-01-statistics-notes/</link>
     <pubDate>Sat, 01 Aug 2020 00:00:00 &#43;0000</pubDate>
@@ -11,13 +11,41 @@
     <guid>/2020-08-01-statistics-notes/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/assets/images/statistics_notes.jpg" referrerpolicy="no-referrer">
-            </div><p>bla bla&hellip;</p>]]></description>
+            </div><ul>
+<li>Sample size computation,
+<a href="/presentations/sample_size/samplesize_presentation.html" rel="">HTML version</a>,
+<a href="/presentations/sample_size/samplesize_presentation.pdf" rel="">PDF version</a></li>
+</ul>]]></description>
+</item><item>
+    <title>New R package on github! *bmscstan*: Bayesian Multilevel Single Case models</title>
+    <link>/post/new-r-package-on-github-bmscstan-bayesian-multilevel-single-case-models/</link>
+    <pubDate>Thu, 06 Aug 2020 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/post/new-r-package-on-github-bmscstan-bayesian-multilevel-single-case-models/</guid>
+    <description><![CDATA[<p>The version 1.0.0 of the package <code>bmscstan</code> is ready to use!</p>
+<p>Its purpose is to provide a general, simple interface to analyse
+single case studies with an lme4-like syntax.</p>
+<p>You can find it on my github page, <a href="https://github.com/michelescandola/bmscstan,">https://github.com/michelescandola/bmscstan,</a>
+and you can install it by typing in the R console
+<code>devtools::install_github(michelescandola/bmscstan)</code>.</p>]]></description>
+</item><item>
+    <title>New R package on github! bmscstan: Bayesian Multilevel Single Case models</title>
+    <link>/blog/2020-08-06-bmscstan/new-r-package-on-github-bmscstan-bayesian-multilevel-single-case-models/</link>
+    <pubDate>Thu, 06 Aug 2020 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/blog/2020-08-06-bmscstan/new-r-package-on-github-bmscstan-bayesian-multilevel-single-case-models/</guid>
+    <description><![CDATA[<p>The version 1.0.0 of the package <code>bmscstan</code> is ready to use!</p>
+<p>Its purpose is to provide a general, simple interface to analyse
+single case studies with an lme4-like syntax.</p>
+<p>You can find it on my github page, <a href="https://github.com/michelescandola/bmscstan,">https://github.com/michelescandola/bmscstan,</a>
+and you can install it by typing in the R console
+<code>devtools::install_github(michelescandola/bmscstan)</code>.</p>]]></description>
 </item><item>
     <title>New preprint! Bayesian Multilevel Single Case Models using &#39;Stan&#39;</title>
-    <link>/news/2020-08-03-preprint-bmscstan/new-preprint-bayesian-multilevel-single-case-models-using-stan-a-new-tool-to-study-single-cases-in-neuropsychology/</link>
+    <link>/blog/2020-08-03-preprint-bmscstan/new-preprint-bayesian-multilevel-single-case-models-using-stan-a-new-tool-to-study-single-cases-in-neuropsychology/</link>
     <pubDate>Mon, 03 Aug 2020 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>/news/2020-08-03-preprint-bmscstan/new-preprint-bayesian-multilevel-single-case-models-using-stan-a-new-tool-to-study-single-cases-in-neuropsychology/</guid>
+    <guid>/blog/2020-08-03-preprint-bmscstan/new-preprint-bayesian-multilevel-single-case-models-using-stan-a-new-tool-to-study-single-cases-in-neuropsychology/</guid>
     <description><![CDATA[<p>A new preprint was released today!</p>]]></description>
 </item><item>
     <title>New preprint! Bayesian Multilevel Single Case Models using &#39;Stan&#39;</title>
