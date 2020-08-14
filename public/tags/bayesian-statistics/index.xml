@@ -3,7 +3,7 @@
         <title>Bayesian Statistics - Tag - Michele Scandola&#39;s personal webpage</title>
         <link>/tags/bayesian-statistics/</link>
         <description>Bayesian Statistics - Tag - Michele Scandola&#39;s personal webpage</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 06 Aug 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/bayesian-statistics/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 14 Aug 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/bayesian-statistics/" rel="self" type="application/rss+xml" /><item>
     <title>Statistics Notes</title>
     <link>/2020-08-01-statistics-notes/</link>
     <pubDate>Sat, 01 Aug 2020 00:00:00 &#43;0000</pubDate>
@@ -16,6 +16,13 @@
 <a href="/presentations/sample_size/samplesize_presentation.html" rel="">HTML version</a>,
 <a href="/presentations/sample_size/samplesize_presentation.pdf" rel="">PDF version</a></li>
 </ul>]]></description>
+</item><item>
+    <title>New preprint! Gesture errors in left and right hemisphere damaged patients</title>
+    <link>/blog/2020-08-14-preprint-gestures/gesture_errors/</link>
+    <pubDate>Fri, 14 Aug 2020 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/blog/2020-08-14-preprint-gestures/gesture_errors/</guid>
+    <description><![CDATA[<p>A new preprint was released today August $12^{th}$!</p>]]></description>
 </item><item>
     <title>New R package on github! *bmscstan*: Bayesian Multilevel Single Case models</title>
     <link>/post/new-r-package-on-github-bmscstan-bayesian-multilevel-single-case-models/</link>

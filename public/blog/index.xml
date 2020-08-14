@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Thu, 06 Aug 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 14 Aug 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>New preprint! Gesture errors in left and right hemisphere damaged patients</title>
+      <link>/blog/2020-08-14-preprint-gestures/gesture_errors/</link>
+      <pubDate>Fri, 14 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/2020-08-14-preprint-gestures/gesture_errors/</guid>
+      <description>&lt;p&gt;A new preprint was released today August $12^{th}$!&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>New R package on github! bmscstan: Bayesian Multilevel Single Case models</title>

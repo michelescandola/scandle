@@ -10,7 +10,7 @@ tags:
 - poster(s)
 - book(s)
 lastmod: '2020-07-19T20:22:05+02:00'
-authorLink: 'https://michelescandola.github.io'
+authorLink: 'https://michelescandola.netlify.app'
 hiddenFromHomePage: no
 hiddenFromSearch: no
 featuredImage: '../assets/images/publications.jpg'
@@ -29,6 +29,8 @@ This is the list of my publications:
 <!--more-->
 
 ## preprints
+
+*Scandola, M.*, Gobbetto, V., Bertagnoli, S., Bulgarelli, C., Canzano, L., Aglioti, S. M., & Moro, V. (2020, August 12). Gesture errors in left and right hemisphere damaged patients: a behavioural and anatomical study. https://doi.org/10.31234/osf.io/7u3nq
 
 *Scandola, M.*, & Romano, D. (2020, August 3). Bayesian Multilevel Single Case Models using 'Stan'. A new tool to study single cases in Neuropsychology. https://doi.org/10.31234/osf.io/sajdq
 

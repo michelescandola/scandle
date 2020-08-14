@@ -110,12 +110,13 @@ programs.
 ## Collaborations
 
 - [Valentina Moro](https://sites.hss.univr.it/npsy-labvr/valentina-moro/)
+- [Salvatore M. Aglioti](https://agliotilab.org/lab-staff/principal-investigator)
+- [Katerina Fotopoulou](https://www.fotopoulou.com/katerina-fotopoulou/)
+- [Paul Jenkinson](https://researchprofiles.herts.ac.uk/portal/en/persons/paul-jenkinson(841e694a-de68-41cc-864a-6cb7d0efd3f7).html)
 - [Daniele L. Romano](https://labmaravitabicocca.wixsite.com/maravita-lab-bicocca/about-us)
 - [Emmanuele Tidoni](https://www.hutechlab.com/)
 - [Marco Tullio Liuzza](https://sites.google.com/view/marcotullioliuzza/)
 - [Gabriele Fusco](https://agliotilab.org/lab-staff/senior-fellows/gabriele-fusco)
-- [Katerina Fotopoulou](https://www.fotopoulou.com/katerina-fotopoulou/)
-- [Paul Jenkinson](https://researchprofiles.herts.ac.uk/portal/en/persons/paul-jenkinson(841e694a-de68-41cc-864a-6cb7d0efd3f7).html)
 
 ## References
 

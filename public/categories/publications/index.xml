@@ -3,7 +3,7 @@
         <title>publications - Category - Michele Scandola&#39;s personal webpage</title>
         <link>/categories/publications/</link>
         <description>publications - Category - Michele Scandola&#39;s personal webpage</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 03 Aug 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="/categories/publications/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 14 Aug 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="/categories/publications/" rel="self" type="application/rss+xml" /><item>
     <title>Publications</title>
     <link>/2020-08-01-publications/</link>
     <pubDate>Sun, 19 Jul 2020 00:00:00 &#43;0000</pubDate>
@@ -12,6 +12,13 @@
     <description><![CDATA[<div class="featured-image">
                 <img src="/assets/images/publications.jpg" referrerpolicy="no-referrer">
             </div><p>This is the list of my publications:</p>]]></description>
+</item><item>
+    <title>New preprint! Gesture errors in left and right hemisphere damaged patients</title>
+    <link>/blog/2020-08-14-preprint-gestures/gesture_errors/</link>
+    <pubDate>Fri, 14 Aug 2020 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/blog/2020-08-14-preprint-gestures/gesture_errors/</guid>
+    <description><![CDATA[<p>A new preprint was released today August $12^{th}$!</p>]]></description>
 </item><item>
     <title>New preprint! Bayesian Multilevel Single Case Models using &#39;Stan&#39;</title>
     <link>/blog/2020-08-03-preprint-bmscstan/new-preprint-bayesian-multilevel-single-case-models-using-stan-a-new-tool-to-study-single-cases-in-neuropsychology/</link>

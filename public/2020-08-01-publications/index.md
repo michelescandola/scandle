@@ -7,6 +7,8 @@ This is the list of my publications:
 
 ## preprints
 
+*Scandola, M.*, Gobbetto, V., Bertagnoli, S., Bulgarelli, C., Canzano, L., Aglioti, S. M., & Moro, V. (2020, August 12). Gesture errors in left and right hemisphere damaged patients: a behavioural and anatomical study. https://doi.org/10.31234/osf.io/7u3nq
+
 *Scandola, M.*, & Romano, D. (2020, August 3). Bayesian Multilevel Single Case Models using 'Stan'. A new tool to study single cases in Neuropsychology. https://doi.org/10.31234/osf.io/sajdq
 
 Beccherle, M., Facchetti, S., Villani, F., Zanini, M., & *Scandola, M.* (2020, July 29). Peripersonal Space from a multisensory perspective: the distinct effect of the visual and tactile components of Visuo-Tactile stimuli. https://doi.org/10.31234/osf.io/358xc
