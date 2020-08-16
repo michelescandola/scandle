@@ -1,0 +1,269 @@
+---
+title: 'Linear regressions'
+author: Michele Scandola
+date: '2020-08-16'
+slug: linear-regression
+categories: ''
+tags: ''
+subtitle: ''
+lastmod: '2020-08-06T08:46:06+02:00'
+authorLink: 'https://michelescandola.netlify.app/'
+description: ''
+hiddenFromHomePage: yes
+hiddenFromSearch: no
+featuredImage: ''
+featuredImagePreview: ''
+toc:
+  enable: yes
+math:
+  enable: no
+lightgallery: no
+license: ''
+editor_options: 
+  chunk_output_type: console
+---
+
+
+<div id="TOC">
+true
+</div>
+
+<p>Linear regression is not difficult, basically we are trying to estimate a
+line that efficiantly interpolates our data.</p>
+<!--more-->
+<p>However, how it works?</p>
+<div id="independent-and-dependent-variables" class="section level2">
+<h2>Independent and Dependent variables</h2>
+<p>Linear regression try to estimate the parameters <span class="math inline">\(\beta\)</span> (independent variables)
+that allow to better “explain the variance” of observations
+(dependent variable).</p>
+<p>The <em>dependent variable</em> is the observation that we postulate being shaped /
+modulated / caused by our <em>independent variables</em>.</p>
+<p>This means that we are not looking for <em>correlations</em> between the
+<em>dependent</em> and <em>independent</em> variables, because we assume that the <em>dependent</em>
+depends (sorry…) from the <em>independent</em> variables. Converserly,
+<em>correlations</em> do not assume that a variable causes the modification of another
+variable. In fact, in the correlation case, it is an error speaking of
+<em>dependent</em> and <em>independent</em> variables.</p>
+</div>
+<div id="the-linear-regression-formula" class="section level2">
+<h2>The linear regression formula</h2>
+<p>Therefore, we try to estimate the <em>unknown vector of parameters</em> <span class="math inline">\(\beta\)</span> in this
+formula <span class="math inline">\(y = X \beta + \epsilon\)</span> trying to minimize <span class="math inline">\(\epsilon\)</span>, that is our
+error term.</p>
+<p><span class="math inline">\(\beta\)</span> could also be named coefficients, fixed effects, regressors, etc…</p>
+<p>In linear models the error term <span class="math inline">\(\epsilon\)</span> should be distributed along
+a normal distribution with mean 0 and standard deviation 1
+<span class="math inline">\(\epsilon \sim N(0, 1)\)</span>.</p>
+<p>The <span class="math inline">\(X\)</span> matrix represents the contrast matrix where all our independent data
+are stored: covariates and factors.</p>
+</div>
+<div id="estimation-of-the-unknown-vector-of-betas" class="section level2">
+<h2>Estimation of the unknown vector of <span class="math inline">\(\beta\)</span>s</h2>
+<p>Usually the estimation of the <span class="math inline">\(\beta\)</span>s can be computed with one ot hese three
+algorythms:</p>
+<ol style="list-style-type: decimal">
+<li>Ordinary Least Square estimation (OLS)</li>
+<li>Maximum Likelihood estimation (ML)</li>
+<li>Restricted (or Residual) Maximum Likelihood estimation (REML)</li>
+</ol>
+<div id="ordinary-least-square-estimation-ols" class="section level3">
+<h3>Ordinary Least Square estimation (OLS)</h3>
+<p>The idea is to find the coefficients that describe the line whose difference
+between the fitted / predicted data (i.e. the estimation of the observed data
+that are obtained by using the fitted model) and the observed / dependent data
+is minimal.</p>
+<p>Namely, <span class="math inline">\(\beta = \underset{\beta}{\operatorname{arg min}}~S(\beta)\)</span>,
+where $ S() = <em>{i=1}^{n} | y_i - </em>{j=1}^p x_{i,j} _{j}|^2$ ,
+that basically is the square of the error of the prediction between the
+observed (<span class="math inline">\(y\)</span>) and the predicted (<span class="math inline">\(\hat{y}\)</span>) data.</p>
+<p>Therefore, among all the following lines:</p>
+<pre class="r"><code>## creating the data
+set.seed( 1 )
+# independent variable
+x &lt;- 1:10
+#   beta0 + i.v. * beta1 + epsilon
+y &lt;- 1 + x * 2 + rnorm( n = 10 )
+
+## plotting the data
+plot( x , y , ylim = c(0, 30) , xlim = c (0, 30))
+abline(a = 1, b = 2 , col = &quot;red&quot;)
+abline(a = 1, b = 1.5, col = &quot;green&quot;)
+abline(a = 1, b = 2.5, col = &quot;blue&quot;)
+abline(a = 1, b = 1, col = &quot;purple&quot;)
+abline(a = 1, b = 3, col = &quot;yellow&quot;)</code></pre>
+<p><img src="/blog/linear-regression/linearregression_files/figure-html/unnamed-chunk-1-1.png" width="960" /></p>
+<p>OLS will choose the one with the smallest square of errors <span class="math inline">\(S(\beta)\)</span>.</p>
+<pre class="r"><code>## creating the data
+set.seed( 1 )
+# independent variable
+x &lt;- 1:10
+#   beta0 + i.v. * beta1 + epsilon
+y &lt;- 1 + x * 2 + rnorm( n = 10 )
+
+## plotting the data
+plot( x , y , ylim = c(0, 30) , xlim = c (0, 30))
+abline(a = 1, b = 2 , col = &quot;red&quot;)
+abline(a = 1, b = 1.5, col = &quot;green&quot;)
+abline(a = 1, b = 2.5, col = &quot;blue&quot;)
+abline(a = 1, b = 1, col = &quot;purple&quot;)
+abline(a = 1, b = 3, col = &quot;yellow&quot;)
+
+d1 &lt;- abs( y - (1 + x * 2) )
+d2 &lt;- abs( y - (1 + x * 1.5) )
+d3 &lt;- abs( y - (1 + x * 2.5) )
+d4 &lt;- abs( y - (1 + x * 3) )
+d5 &lt;- abs( y - (1 + x) )
+
+segments(x0 = x, y0 = y, x1 = x, y1 = y + d1, col = &quot;red&quot;)
+segments(x0 = x, y0 = y, x1 = x + d1, y1 = y, col = &quot;red&quot;)
+segments(x0 = x + d1, y0 = y, x1 = x + d1, y1 = y + d1, col = &quot;red&quot;)
+segments(x0 = x, y0 = y + d1, x1 = x + d1, y1 = y + d1, col = &quot;red&quot;)
+
+segments(x0 = x, y0 = y, x1 = x, y1 = y + d2, col = &quot;green&quot;)
+segments(x0 = x, y0 = y, x1 = x + d2, y1 = y, col = &quot;green&quot;)
+segments(x0 = x + d2, y0 = y, x1 = x + d2, y1 = y + d2, col = &quot;green&quot;)
+segments(x0 = x, y0 = y + d2, x1 = x + d2, y1 = y + d2, col = &quot;green&quot;)
+
+segments(x0 = x, y0 = y, x1 = x, y1 = y + d3, col = &quot;blue&quot;)
+segments(x0 = x, y0 = y, x1 = x + d3, y1 = y, col = &quot;blue&quot;)
+segments(x0 = x + d3, y0 = y, x1 = x + d3, y1 = y + d3, col = &quot;blue&quot;)
+segments(x0 = x, y0 = y + d3, x1 = x + d3, y1 = y + d3, col = &quot;blue&quot;)
+
+segments(x0 = x, y0 = y, x1 = x, y1 = y + d4, col = &quot;yellow&quot;)
+segments(x0 = x, y0 = y, x1 = x + d4, y1 = y, col = &quot;yellow&quot;)
+segments(x0 = x + d4, y0 = y, x1 = x + d4, y1 = y + d4, col = &quot;yellow&quot;)
+segments(x0 = x, y0 = y + d4, x1 = x + d4, y1 = y + d4, col = &quot;yellow&quot;)
+
+segments(x0 = x, y0 = y, x1 = x, y1 = y + d5, col = &quot;purple&quot;)
+segments(x0 = x, y0 = y, x1 = x + d5, y1 = y, col = &quot;purple&quot;)
+segments(x0 = x + d5, y0 = y, x1 = x + d5, y1 = y + d5, col = &quot;purple&quot;)
+segments(x0 = x, y0 = y + d5, x1 = x + d5, y1 = y + d5, col = &quot;purple&quot;)</code></pre>
+<p><img src="/blog/linear-regression/linearregression_files/figure-html/unnamed-chunk-2-1.png" width="960" /></p>
+<p>By observing the graph, we can say that is the red one, that has as
+coefficients <span class="math inline">\(\beta_0 = 1\)</span> and <span class="math inline">\(\beta_1 = 2\)</span>.</p>
+<p>In order to see if analytically is as we observed, we can start with
+an iterative inefficient function:</p>
+<pre class="r"><code>find_least_squares &lt;- function( y , x , beta0 , beta1 ) {
+  
+  # variable for the beta1 that best fits the data
+  best_beta &lt;- c(NULL, NULL)
+  # variable for memorizing the squared errors
+  best_err  &lt;- Inf
+  for(int in beta0){
+    for( bet in beta1 ){
+      yhat &lt;- int + x * bet
+      err  &lt;- sum( abs( y - yhat)^2 )
+      best_beta[1] &lt;- ifelse( best_err &gt; err,
+                           int,
+                           best_beta[1])
+      best_beta[2] &lt;- ifelse( best_err &gt; err,
+                           bet,
+                           best_beta[2])
+      best_err  &lt;- ifelse( best_err &gt; err,
+                           err,
+                           best_err)
+    }
+  }
+  
+  return( best_beta )
+}
+
+print( find_least_squares( y , x, beta0 = seq(from = 0, to = 3, by = 0.1),
+                           beta1 = seq(from = 1, to = 3, by = 0.1) ) )</code></pre>
+<pre><code>## [1] 0.6 2.1</code></pre>
+<p>Let’s try to estimate these values with the standard function of R <code>lm</code>
+(that does not use OLS to estimate the <em>coefficients</em>):</p>
+<pre class="r"><code>mdl &lt;- lm(y ~ x)
+
+print( mdl )</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = y ~ x)
+## 
+## Coefficients:
+## (Intercept)            x  
+##      0.8312       2.0547</code></pre>
+<p>As you can see, very similar same results.</p>
+<pre class="r"><code>plot( x , y )
+abline(mdl , col= &quot;red&quot;)</code></pre>
+<p><img src="/blog/linear-regression/linearregression_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+</div>
+<div id="maximum-likelihood-estimation-ml" class="section level3">
+<h3>Maximum Likelihood estimation (ML)</h3>
+<p>In this case we want to maximize the probability of a Likelihood function
+in describing the data. Therefore, we want to find the values of <span class="math inline">\(\beta\)</span>
+that maximize the probability of describing the observed dependent variable
+<span class="math inline">\(y\)</span>, namely the values of <span class="math inline">\(\beta\)</span> that, if use din our model, maximize
+the probability of obtaining the observed data.</p>
+<p>Namely, <span class="math inline">\(\beta = \underset{\beta}{\operatorname{arg max}}~\hat{L}_n(\beta;y)\)</span>,
+where $ L_n(;y)$ is the Likelihood function, that is also an index of
+<em>goodness of fit</em> of the model (the log-likelihood is often used for model
+selection).</p>
+<p>To better understand how it works, here another interactive, inefficient
+function (remember that we postulate that our coefficients are distributed
+along normal distributions):</p>
+<pre class="r"><code>my_gauss &lt;- function(true_value, sigma, estimate) 1/(sigma*sqrt(2*pi)) *
+  exp(- (true_value - estimate)^2/(2*sigma^2))</code></pre>
+<p>Thanks to the above function, I will get the likelihood of each parameter,
+given its <code>true value</code> and the proposed <code>estimate</code> value.</p>
+<p>We know that our data were crated with a angular coefficient of 2, therefore
+this is our <code>true value</code>. We will try different <code>estimate</code> values to see
+which has the higher likelihood.</p>
+<pre class="r"><code>find_ML &lt;- function( beta0 , beta1 ) {
+  
+  # variable for the beta1 that best fits the data
+  best_betas &lt;- c(NULL , NULL)
+  # variable for memorizing the squared errors
+  best_lik  &lt;- -Inf
+  
+  for(int in beta0){
+    for( bet in beta1 ){
+      current_lik &lt;- my_gauss(1 , sigma = 1 , int) *
+        my_gauss(2 , sigma = 1 , bet)
+
+      best_betas[1] &lt;- ifelse( current_lik &gt; best_lik,
+                           int,
+                           best_betas[1])
+      
+      best_betas[2] &lt;- ifelse( current_lik &gt; best_lik,
+                           bet,
+                           best_betas[2])
+      
+      best_lik  &lt;- ifelse( current_lik &gt; best_lik,
+                           current_lik,
+                           best_lik)
+    }
+  }
+  
+  return( best_betas )
+}
+
+print( find_ML( beta0 = seq(from = 0, to = 3, by = 0.1),
+                beta1 = seq(from = 1, to = 3, by = 0.1) ) )</code></pre>
+<pre><code>## [1] 1 2</code></pre>
+<p>As we can see, also in this case the results are 1 for the intercept and
+2 for the angular coefficient.</p>
+<p>This methodology is the currently used in the <code>lm</code> function, and more in general
+in almost all linear models.</p>
+</div>
+<div id="restricted-or-residual-maximum-likelihood-reml" class="section level3">
+<h3>Restricted (or Residual) Maximum Likelihood (REML)</h3>
+<p>This method is used in particular in linear models that take into consideration
+both <em>population-</em> and <em>group-level effects</em>.</p>
+<p>As in ML, we want to maximize the <em>Likelihood</em> of the model by finding the best
+<span class="math inline">\(\beta\)</span>s parameters. Remember that in linear models all <span class="math inline">\(\beta\)</span>s are
+distributed along a normal distribution characterized by a <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>
+parameter:</p>
+<p><span class="math inline">\(\beta \sim N(\mu,\sigma)\)</span></p>
+<p>With this methodology, the computation of the <em>Likelihood</em> of the model is
+composed by two parts, maximised separately:</p>
+<ol style="list-style-type: decimal">
+<li>The <em>Likelihood</em> of <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> parameters for all <em>group-</em>
+and <em>population-level effects</em>. <span class="math inline">\(\leftarrow\)</span> to maximize the likelihood
+of the <span class="math inline">\(\mu\)</span> parameter.</li>
+<li>The <em>Residual Likelihood</em> of only the <span class="math inline">\(\sigma\)</span> parameters. <span class="math inline">\(\leftarrow\)</span>
+to maximize the likelihood of the <span class="math inline">\(\sigma\)</span> parameter.</li>
+</ol>
+</div>
+</div>

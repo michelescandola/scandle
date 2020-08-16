@@ -11,11 +11,7 @@
     <guid>/2020-08-01-statistics-notes/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/assets/images/statistics_notes.jpg" referrerpolicy="no-referrer">
-            </div><ul>
-<li>Sample size computation,
-<a href="/presentations/sample_size/samplesize_presentation.html" rel="">HTML version</a>,
-<a href="/presentations/sample_size/samplesize_presentation.pdf" rel="">PDF version</a></li>
-</ul>]]></description>
+            </div><p>Some notes of mine concerning various aspects of psychometry</p>]]></description>
 </item><item>
     <title>New R package on github! *bmscstan*: Bayesian Multilevel Single Case models</title>
     <link>/post/new-r-package-on-github-bmscstan-bayesian-multilevel-single-case-models/</link>

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Linear regressions - Michele Scandola&#39;s personal webpage</title><meta name="Description" content="Michele Scandola&#39;s personal webpage"><meta property="og:title" content="Linear regressions" />
+<meta property="og:description" content="
+
+
+true
+
+
+Linear regression is not difficult, basically we are trying to estimate a
+line that efficiantly interpolates our data.
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/blog/linear_regression/linear-regression/" />
+<meta property="og:image" content="/logo.png"/>
+<meta property="article:published_time" content="2020-08-16T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-08-06T08:46:06+02:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content="Linear regressions"/>
+<meta name="twitter:description" content="
+
+
+true
+
+
+Linear regression is not difficult, basically we are trying to estimate a
+line that efficiantly interpolates our data.
+"/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/blog/linear_regression/linear-regression/" /><link rel="prev" href="/blog/2020-08-14-preprint-gestures/gesture_errors/" /><link rel="next" href="/blog/linear_regression/linear-regression/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Linear regressions",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/blog\/linear_regression\/linear-regression\/"
+        },"image": ["\/images\/Apple-Devices-Preview.png"],"genre": "blog","wordcount":  1649 ,
+        "url": "\/blog\/linear_regression\/linear-regression\/","datePublished": "2020-08-16T00:00:00+00:00","dateModified": "2020-08-06T08:46:06+02:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "Michele Scandola","logo": "\/images\/myself.png"},"author": {
+                "@type": "Person",
+                "name": "Michele Scandola"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Michele Scandola&#39;s personal webpage"><span class="header-title-pre"><i class='fas fa-brain fa-fw'></i></span>Michele Scandola</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/blog/"> Blog </a><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="https://github.com/michelescandola" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Michele Scandola&#39;s personal webpage"><span class="header-title-pre"><i class='fas fa-brain fa-fw'></i></span>Michele Scandola</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/blog/" title="">Blog</a><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="https://github.com/michelescandola" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="page single special"><h1 class="single-title animated pulse faster">Linear regressions</h1><div class="content" id="content"><p>However, how it works?</p>
+<div id="independent-and-dependent-variables" class="section level2">
+<h2>Independent and Dependent variables</h2>
+<p>Linear regression try to estimate the parameters <span class="math inline">\(\beta\)</span> (independent variables)
+that allow to better “explain the variance” of observations
+(dependent variable).</p>
+<p>The <em>dependent variable</em> is the observation that we postulate being shaped /
+modulated / caused by our <em>independent variables</em>.</p>
+<p>This means that we are not looking for <em>correlations</em> between the
+<em>dependent</em> and <em>independent</em> variables, because we assume that the <em>dependent</em>
+depends (sorry…) from the <em>independent</em> variables. Converserly,
+<em>correlations</em> do not assume that a variable causes the modification of another
+variable. In fact, in the correlation case, it is an error speaking of
+<em>dependent</em> and <em>independent</em> variables.</p>
+</div>
+<div id="the-linear-regression-formula" class="section level2">
+<h2>The linear regression formula</h2>
+<p>Therefore, we try to estimate the <em>unknown vector of parameters</em> <span class="math inline">\(\beta\)</span> in this
+formula <span class="math inline">\(y = X \beta + \epsilon\)</span> trying to minimize <span class="math inline">\(\epsilon\)</span>, that is our
+error term.</p>
+<p><span class="math inline">\(\beta\)</span> could also be named coefficients, fixed effects, regressors, etc…</p>
+<p>In linear models the error term <span class="math inline">\(\epsilon\)</span> should be distributed along
+a normal distribution with mean 0 and standard deviation 1
+<span class="math inline">\(\epsilon \sim N(0, 1)\)</span>.</p>
+<p>The <span class="math inline">\(X\)</span> matrix represents the contrast matrix where all our independent data
+are stored: covariates and factors.</p>
+</div>
+<div id="estimation-of-the-unknown-vector-of-betas" class="section level2">
+<h2>Estimation of the unknown vector of <span class="math inline">\(\beta\)</span>s</h2>
+<p>Usually the estimation of the <span class="math inline">\(\beta\)</span>s can be computed with one ot hese three
+algorythms:</p>
+<ol style="list-style-type: decimal">
+<li>Ordinary Least Square estimation (OLS)</li>
+<li>Maximum Likelihood estimation (ML)</li>
+<li>Restricted (or Residual) Maximum Likelihood estimation (REML)</li>
+</ol>
+<div id="ordinary-least-square-estimation-ols" class="section level3">
+<h3>Ordinary Least Square estimation (OLS)</h3>
+<p>The idea is to find the coefficients that describe the line whose difference
+between the fitted / predicted data (i.e. the estimation of the observed data
+that are obtained by using the fitted model) and the observed / dependent data
+is minimal.</p>
+<p>Namely, <span class="math inline">\(\beta = \underset{\beta}{\operatorname{arg min}}~S(\beta)\)</span>,
+where $ S() = <em>{i=1}^{n} | y_i - </em>{j=1}^p x_{i,j} _{j}|^2$ ,
+that basically is the square of the error of the prediction between the
+observed (<span class="math inline">\(y\)</span>) and the predicted (<span class="math inline">\(\hat{y}\)</span>) data.</p>
+<p>Therefore, among all the following lines:</p>
+<pre class="r"><code>## creating the data
+set.seed( 1 )
+# independent variable
+x &lt;- 1:10
+#   beta0 + i.v. * beta1 + epsilon
+y &lt;- 1 + x * 2 + rnorm( n = 10 )
+
+## plotting the data
+plot( x , y , ylim = c(0, 30) , xlim = c (0, 30))
+abline(a = 1, b = 2 , col = &quot;red&quot;)
+abline(a = 1, b = 1.5, col = &quot;green&quot;)
+abline(a = 1, b = 2.5, col = &quot;blue&quot;)
+abline(a = 1, b = 1, col = &quot;purple&quot;)
+abline(a = 1, b = 3, col = &quot;yellow&quot;)</code></pre>
+<p><img src="/blog/linear_regression/linearregression_files/figure-html/unnamed-chunk-1-1.png" width="960" /></p>
+<p>OLS will choose the one with the smallest square of errors <span class="math inline">\(S(\beta)\)</span>.</p>
+<pre class="r"><code>## creating the data
+set.seed( 1 )
+# independent variable
+x &lt;- 1:10
+#   beta0 + i.v. * beta1 + epsilon
+y &lt;- 1 + x * 2 + rnorm( n = 10 )
+
+## plotting the data
+plot( x , y , ylim = c(0, 30) , xlim = c (0, 30))
+abline(a = 1, b = 2 , col = &quot;red&quot;)
+abline(a = 1, b = 1.5, col = &quot;green&quot;)
+abline(a = 1, b = 2.5, col = &quot;blue&quot;)
+abline(a = 1, b = 1, col = &quot;purple&quot;)
+abline(a = 1, b = 3, col = &quot;yellow&quot;)
+
+d1 &lt;- abs( y - (1 + x * 2) )
+d2 &lt;- abs( y - (1 + x * 1.5) )
+d3 &lt;- abs( y - (1 + x * 2.5) )
+d4 &lt;- abs( y - (1 + x * 3) )
+d5 &lt;- abs( y - (1 + x) )
+
+segments(x0 = x, y0 = y, x1 = x, y1 = y + d1, col = &quot;red&quot;)
+segments(x0 = x, y0 = y, x1 = x + d1, y1 = y, col = &quot;red&quot;)
+segments(x0 = x + d1, y0 = y, x1 = x + d1, y1 = y + d1, col = &quot;red&quot;)
+segments(x0 = x, y0 = y + d1, x1 = x + d1, y1 = y + d1, col = &quot;red&quot;)
+
+segments(x0 = x, y0 = y, x1 = x, y1 = y + d2, col = &quot;green&quot;)
+segments(x0 = x, y0 = y, x1 = x + d2, y1 = y, col = &quot;green&quot;)
+segments(x0 = x + d2, y0 = y, x1 = x + d2, y1 = y + d2, col = &quot;green&quot;)
+segments(x0 = x, y0 = y + d2, x1 = x + d2, y1 = y + d2, col = &quot;green&quot;)
+
+segments(x0 = x, y0 = y, x1 = x, y1 = y + d3, col = &quot;blue&quot;)
+segments(x0 = x, y0 = y, x1 = x + d3, y1 = y, col = &quot;blue&quot;)
+segments(x0 = x + d3, y0 = y, x1 = x + d3, y1 = y + d3, col = &quot;blue&quot;)
+segments(x0 = x, y0 = y + d3, x1 = x + d3, y1 = y + d3, col = &quot;blue&quot;)
+
+segments(x0 = x, y0 = y, x1 = x, y1 = y + d4, col = &quot;yellow&quot;)
+segments(x0 = x, y0 = y, x1 = x + d4, y1 = y, col = &quot;yellow&quot;)
+segments(x0 = x + d4, y0 = y, x1 = x + d4, y1 = y + d4, col = &quot;yellow&quot;)
+segments(x0 = x, y0 = y + d4, x1 = x + d4, y1 = y + d4, col = &quot;yellow&quot;)
+
+segments(x0 = x, y0 = y, x1 = x, y1 = y + d5, col = &quot;purple&quot;)
+segments(x0 = x, y0 = y, x1 = x + d5, y1 = y, col = &quot;purple&quot;)
+segments(x0 = x + d5, y0 = y, x1 = x + d5, y1 = y + d5, col = &quot;purple&quot;)
+segments(x0 = x, y0 = y + d5, x1 = x + d5, y1 = y + d5, col = &quot;purple&quot;)</code></pre>
+<p><img src="/blog/linear_regression/linearregression_files/figure-html/unnamed-chunk-2-1.png" width="960" /></p>
+<p>By observing the graph, we can say that is the red one, that has as
+coefficients <span class="math inline">\(\beta_0 = 1\)</span> and <span class="math inline">\(\beta_1 = 2\)</span>.</p>
+<p>In order to see if analytically is as we observed, we can start with
+an iterative inefficient function:</p>
+<pre class="r"><code>find_least_squares &lt;- function( y , x , beta0 , beta1 ) {
+  
+  # variable for the beta1 that best fits the data
+  best_beta &lt;- c(NULL, NULL)
+  # variable for memorizing the squared errors
+  best_err  &lt;- Inf
+  for(int in beta0){
+    for( bet in beta1 ){
+      yhat &lt;- int + x * bet
+      err  &lt;- sum( abs( y - yhat)^2 )
+      best_beta[1] &lt;- ifelse( best_err &gt; err,
+                           int,
+                           best_beta[1])
+      best_beta[2] &lt;- ifelse( best_err &gt; err,
+                           bet,
+                           best_beta[2])
+      best_err  &lt;- ifelse( best_err &gt; err,
+                           err,
+                           best_err)
+    }
+  }
+  
+  return( best_beta )
+}
+
+print( find_least_squares( y , x, beta0 = seq(from = 0, to = 3, by = 0.1),
+                           beta1 = seq(from = 1, to = 3, by = 0.1) ) )</code></pre>
+<pre><code>## [1] 0.6 2.1</code></pre>
+<p>Let’s try to estimate these values with the standard function of R <code>lm</code>
+(that does not use OLS to estimate the <em>coefficients</em>):</p>
+<pre class="r"><code>mdl &lt;- lm(y ~ x)
+
+print( mdl )</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = y ~ x)
+## 
+## Coefficients:
+## (Intercept)            x  
+##      0.8312       2.0547</code></pre>
+<p>As you can see, very similar same results.</p>
+<pre class="r"><code>plot( x , y )
+abline(mdl , col= &quot;red&quot;)</code></pre>
+<p><img src="/blog/linear_regression/linearregression_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+</div>
+<div id="maximum-likelihood-estimation-ml" class="section level3">
+<h3>Maximum Likelihood estimation (ML)</h3>
+<p>In this case we want to maximize the probability of a Likelihood function
+in describing the data. Therefore, we want to find the values of <span class="math inline">\(\beta\)</span>
+that maximize the probability of describing the observed dependent variable
+<span class="math inline">\(y\)</span>, namely the values of <span class="math inline">\(\beta\)</span> that, if use din our model, maximize
+the probability of obtaining the observed data.</p>
+<p>Namely, <span class="math inline">\(\beta = \underset{\beta}{\operatorname{arg max}}~\hat{L}_n(\beta;y)\)</span>,
+where $ L_n(;y)$ is the Likelihood function, that is also an index of
+<em>goodness of fit</em> of the model (the log-likelihood is often used for model
+selection).</p>
+<p>To better understand how it works, here another interactive, inefficient
+function (remember that we postulate that our coefficients are distributed
+along normal distributions):</p>
+<pre class="r"><code>my_gauss &lt;- function(true_value, sigma, estimate) 1/(sigma*sqrt(2*pi)) *
+  exp(- (true_value - estimate)^2/(2*sigma^2))</code></pre>
+<p>Thanks to the above function, I will get the likelihood of each parameter,
+given its <code>true value</code> and the proposed <code>estimate</code> value.</p>
+<p>We know that our data were crated with a angular coefficient of 2, therefore
+this is our <code>true value</code>. We will try different <code>estimate</code> values to see
+which has the higher likelihood.</p>
+<pre class="r"><code>find_ML &lt;- function( beta0 , beta1 ) {
+  
+  # variable for the beta1 that best fits the data
+  best_betas &lt;- c(NULL , NULL)
+  # variable for memorizing the squared errors
+  best_lik  &lt;- -Inf
+  
+  for(int in beta0){
+    for( bet in beta1 ){
+      current_lik &lt;- my_gauss(1 , sigma = 1 , int) *
+        my_gauss(2 , sigma = 1 , bet)
+
+      best_betas[1] &lt;- ifelse( current_lik &gt; best_lik,
+                           int,
+                           best_betas[1])
+      
+      best_betas[2] &lt;- ifelse( current_lik &gt; best_lik,
+                           bet,
+                           best_betas[2])
+      
+      best_lik  &lt;- ifelse( current_lik &gt; best_lik,
+                           current_lik,
+                           best_lik)
+    }
+  }
+  
+  return( best_betas )
+}
+
+print( find_ML( beta0 = seq(from = 0, to = 3, by = 0.1),
+                beta1 = seq(from = 1, to = 3, by = 0.1) ) )</code></pre>
+<pre><code>## [1] 1 2</code></pre>
+<p>As we can see, also in this case the results are 1 for the intercept and
+2 for the angular coefficient.</p>
+<p>This methodology is the currently used in the <code>lm</code> function, and more in general
+in almost all linear models.</p>
+</div>
+<div id="restricted-or-residual-maximum-likelihood-reml" class="section level3">
+<h3>Restricted (or Residual) Maximum Likelihood (REML)</h3>
+<p>This method is used in particular in linear models that take into consideration
+both <em>population-</em> and <em>group-level effects</em>.</p>
+<p>As in ML, we want to maximize the <em>Likelihood</em> of the model by finding the best
+<span class="math inline">\(\beta\)</span>s parameters. Remember that in linear models all <span class="math inline">\(\beta\)</span>s are
+distributed along a normal distribution characterized by a <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>
+parameter:</p>
+<p><span class="math inline">\(\beta \sim N(\mu,\sigma)\)</span></p>
+<p>With this methodology, the computation of the <em>Likelihood</em> of the model is
+composed by two parts, maximised separately:</p>
+<ol style="list-style-type: decimal">
+<li>The <em>Likelihood</em> of <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> parameters for all <em>group-</em>
+and <em>population-level effects</em>. <span class="math inline">\(\leftarrow\)</span> to maximize the likelihood
+of the <span class="math inline">\(\mu\)</span> parameter.</li>
+<li>The <em>Residual Likelihood</em> of only the <span class="math inline">\(\sigma\)</span> parameters. <span class="math inline">\(\leftarrow\)</span>
+to maximize the likelihood of the <span class="math inline">\(\sigma\)</span> parameter.</li>
+</ol>
+</div>
+</div>
+</div><div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></div></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.74.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
