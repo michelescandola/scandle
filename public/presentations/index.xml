@@ -7,30 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Sun, 16 Aug 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/presentations/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Linear Regression</title>
-      <link>/presentations/linear-regression/2020-08-16-linear-regression/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>Linear regressions</title>
+      <link>/presentations/20200819linearregression/linear-regression/</link>
+      <pubDate>Sun, 16 Aug 2020 00:00:00 +0000</pubDate>
       
-      <guid>/presentations/linear-regression/2020-08-16-linear-regression/</guid>
-      <description>Linear regression is not difficult, basically we are trying to estimate a line that efficiently interpolates our data.
-However, how it works?
-Independent and Dependent variables Linear regression try to estimate the parameters \(\beta\) (independent variables) that allow to better “explain the variance” of observations (dependent variable).
-The dependent variable is the observation that we postulate being shaped / modulated / caused by our independent variables.
-This means that we are not looking for correlations between the dependent and independent variables, because we assume that the dependent depends (sorry…) from the independent variables.</description>
-    </item>
-    
-    <item>
-      <title>Linear Regression</title>
-      <link>/presentations/linear-regression/2020-08-16-linearregression/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/presentations/linear-regression/2020-08-16-linearregression/</guid>
-      <description>Linear regression is not difficult, basically we are trying to estimate a line that efficiently interpolates our data.
+      <guid>/presentations/20200819linearregression/linear-regression/</guid>
+      <description>true  Linear regression is not difficult, basically we are trying to estimate a line that efficiently interpolates our data.
 However, how it works?
 Independent and Dependent variables Linear regression try to estimate the parameters \(\beta\) (independent variables) that allow to better “explain the variance” of observations (dependent variable).
 The dependent variable is the observation that we postulate being shaped / modulated / caused by our independent variables.

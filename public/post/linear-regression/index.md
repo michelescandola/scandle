@@ -69,7 +69,7 @@ abline(a = 1, b = 1.5, col = &quot;green&quot;)
 abline(a = 1, b = 2.5, col = &quot;blue&quot;)
 abline(a = 1, b = 1, col = &quot;purple&quot;)
 abline(a = 1, b = 3, col = &quot;yellow&quot;)</code></pre>
-<p><img src="/post/2020-08-16-linearregression_files/figure-html/unnamed-chunk-1-1.png" width="960" /></p>
+<p><img src="/post/20200819linearregression_files/figure-html/unnamed-chunk-1-1.png" width="960" /></p>
 <p>OLS will choose the one with the smallest square of errors <span class="math inline">\(S(\beta)\)</span>.</p>
 <pre class="r"><code>## creating the data
 set.seed( 1 )
@@ -116,7 +116,7 @@ segments(x0 = x, y0 = y, x1 = x, y1 = y + d5, col = &quot;purple&quot;)
 segments(x0 = x, y0 = y, x1 = x + d5, y1 = y, col = &quot;purple&quot;)
 segments(x0 = x + d5, y0 = y, x1 = x + d5, y1 = y + d5, col = &quot;purple&quot;)
 segments(x0 = x, y0 = y + d5, x1 = x + d5, y1 = y + d5, col = &quot;purple&quot;)</code></pre>
-<p><img src="/post/2020-08-16-linearregression_files/figure-html/unnamed-chunk-2-1.png" width="960" /></p>
+<p><img src="/post/20200819linearregression_files/figure-html/unnamed-chunk-2-1.png" width="960" /></p>
 <p>By observing the graph, we can say that is the red one, that has as
 coefficients <span class="math inline">\(\beta_0 = 1\)</span> and <span class="math inline">\(\beta_1 = 2\)</span>.</p>
 <p>In order to see if analytically is as we observed, we can start with
@@ -150,7 +150,8 @@ print( find_least_squares( y , x, beta0 = seq(from = 0, to = 3, by = 0.1),
                            beta1 = seq(from = 1, to = 3, by = 0.1) ) )</code></pre>
 <pre><code>## [1] 0.6 2.1</code></pre>
 <p>Let’s try to estimate these values with the standard function of R <code>lm</code>
-(that does not use OLS to estimate the <em>coefficients</em>):</p>
+(that <del>does not</del> uses OLS to estimate the <em>coefficients</em>
+[thanks Marco Tullio Liuzza for the correction]):</p>
 <pre class="r"><code>mdl &lt;- lm(y ~ x)
 
 print( mdl )</code></pre>
@@ -164,7 +165,7 @@ print( mdl )</code></pre>
 <p>As you can see, very similar same results.</p>
 <pre class="r"><code>plot( x , y )
 abline(mdl , col= &quot;red&quot;)</code></pre>
-<p><img src="/post/2020-08-16-linearregression_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="/post/20200819linearregression_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 </div>
 <div id="maximum-likelihood-estimation-ml" class="section level2">
 <h2>Maximum Likelihood estimation (ML)</h2>
@@ -221,8 +222,7 @@ print( find_ML( beta0 = seq(from = 0, to = 3, by = 0.1),
 <pre><code>## [1] 1 2</code></pre>
 <p>As we can see, also in this case the results are 1 for the intercept and
 2 for the angular coefficient.</p>
-<p>This methodology is the currently used in the <code>lm</code> function, and more in general
-in almost all linear models.</p>
+<p>This methodology can be used in both linear and multilevel linear models.</p>
 </div>
 <div id="restricted-or-residual-maximum-likelihood-reml" class="section level2">
 <h2>Restricted (or Residual) Maximum Likelihood (REML)</h2>

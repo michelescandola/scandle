@@ -189,7 +189,8 @@ print( find_least_squares( y , x, beta0 = seq(from = 0, to = 3, by = 0.1),
 
 
 Let's try to estimate these values with the standard function of R `lm`
-(that does not use OLS to estimate the _coefficients_):
+(that does ~~not~~ use OLS to estimate the _coefficients_
+[thanks Marco Tullio Liuzza for the correction]):
 
 ```{r}
 mdl <- lm(y ~ x)

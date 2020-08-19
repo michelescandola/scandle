@@ -70,7 +70,7 @@ abline(a = 1, b = 1.5, col = &quot;green&quot;)
 abline(a = 1, b = 2.5, col = &quot;blue&quot;)
 abline(a = 1, b = 1, col = &quot;purple&quot;)
 abline(a = 1, b = 3, col = &quot;yellow&quot;)</code></pre>
-<p><img src="/blog/linear-regression/linearregression_files/figure-html/unnamed-chunk-1-1.png" width="960" /></p>
+<p><img src="/presentations/linear_regression/linearregression_files/figure-html/unnamed-chunk-1-1.png" width="960" /></p>
 <p>OLS will choose the one with the smallest square of errors <span class="math inline">\(S(\beta)\)</span>.</p>
 <pre class="r"><code>## creating the data
 set.seed( 1 )
@@ -117,7 +117,7 @@ segments(x0 = x, y0 = y, x1 = x, y1 = y + d5, col = &quot;purple&quot;)
 segments(x0 = x, y0 = y, x1 = x + d5, y1 = y, col = &quot;purple&quot;)
 segments(x0 = x + d5, y0 = y, x1 = x + d5, y1 = y + d5, col = &quot;purple&quot;)
 segments(x0 = x, y0 = y + d5, x1 = x + d5, y1 = y + d5, col = &quot;purple&quot;)</code></pre>
-<p><img src="/blog/linear-regression/linearregression_files/figure-html/unnamed-chunk-2-1.png" width="960" /></p>
+<p><img src="/presentations/linear_regression/linearregression_files/figure-html/unnamed-chunk-2-1.png" width="960" /></p>
 <p>By observing the graph, we can say that is the red one, that has as
 coefficients <span class="math inline">\(\beta_0 = 1\)</span> and <span class="math inline">\(\beta_1 = 2\)</span>.</p>
 <p>In order to see if analytically is as we observed, we can start with
@@ -165,7 +165,7 @@ print( mdl )</code></pre>
 <p>As you can see, very similar same results.</p>
 <pre class="r"><code>plot( x , y )
 abline(mdl , col= &quot;red&quot;)</code></pre>
-<p><img src="/blog/linear-regression/linearregression_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="/presentations/linear_regression/linearregression_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 </div>
 <div id="maximum-likelihood-estimation-ml" class="section level3">
 <h3>Maximum Likelihood estimation (ML)</h3>
@@ -242,6 +242,11 @@ and <em>population-level effects</em>. <span class="math inline">\(\leftarrow\)<
 of the <span class="math inline">\(\mu\)</span> parameter.</li>
 <li>The <em>Residual Likelihood</em> of only the <span class="math inline">\(\sigma\)</span> parameters. <span class="math inline">\(\leftarrow\)</span>
 to maximize the likelihood of the <span class="math inline">\(\sigma\)</span> parameter.</li>
+</ol>
+</div>
+</div>
+
+eter.</li>
 </ol>
 </div>
 </div>
