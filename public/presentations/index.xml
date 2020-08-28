@@ -13,16 +13,14 @@
     
     
     <item>
-      <title>Linear regressions</title>
-      <link>/presentations/20200819linearregression/linear-regression/</link>
+      <title>The estimation of the unknown coefficients of a linear model by means of unbiased estimators</title>
+      <link>/presentations/20200819linearregression/unbiased-linear-regression/</link>
       <pubDate>Sun, 16 Aug 2020 00:00:00 +0000</pubDate>
       
-      <guid>/presentations/20200819linearregression/linear-regression/</guid>
-      <description>true  Linear regression is not difficult, basically we are trying to estimate a line that efficiently interpolates our data.
-However, how it works?
-Independent and Dependent variables Linear regression try to estimate the parameters \(\beta\) (independent variables) that allow to better “explain the variance” of observations (dependent variable).
-The dependent variable is the observation that we postulate being shaped / modulated / caused by our independent variables.
-This means that we are not looking for correlations between the dependent and independent variables, because we assume that the dependent depends (sorry…) from the independent variables.</description>
+      <guid>/presentations/20200819linearregression/unbiased-linear-regression/</guid>
+      <description>true  Linear regression is not tricky, basically, we are trying to estimate a line that efficiently interpolates our data.
+The focus of this page is to understand how the coefficients of a linear model are estimated by means of unbiased estimators.
+An unbiased estimator algorithm tries to find the best coefficients able to interpolate your current sample of data. In this case, the word bias has no relation with the notion of cognitive biases.</description>
     </item>
     
   </channel>

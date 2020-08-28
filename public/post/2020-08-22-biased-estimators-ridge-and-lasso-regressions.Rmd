@@ -1,0 +1,169 @@
+---
+title: Biased Estimators - Ridge and Lasso regressions
+author: Michele Scandola
+date: '2020-08-22'
+slug: biased-estimators-ridge-and-lasso-regressions
+categories:
+- Statistics
+tags:
+- (Generalized) Linear Models
+- R
+subtitle: ''
+lastmod: '2020-08-22T17:30:13+02:00'
+authorLink: 'https://michelescandola.netlify.app/'
+description: ''
+hiddenFromHomePage: yes
+hiddenFromSearch: no
+featuredImage: ''
+featuredImagePreview: ''
+toc:
+  enable: yes
+math:
+  enable: yes
+lightgallery: no
+license: ''
+---
+
+```{r}
+library(knitr)
+library(captioner)
+fig_nums <- captioner()
+```
+
+
+Some days ago I wrote some notes concerning
+[unbiased estimators](/presentations/20200819linearregression/unbiased-linear-regression/index.html),
+that are the estimators that we commonly use with linear models, and statistical
+analyses such as ANOVA, linear regression, etc...
+
+_Unbiased_ estimators try to estimate the best unknown but not casual,
+$\beta$ coefficients of the _independent variables_ (i.v.)
+to explain the observed _dependent variable_ $y$ (d.v.),
+minimising the error between the variables that can be sampled from the 
+linear model ($\hat{y}$) and the observed data ($y$).
+
+In other terms, they try to reduce the error between $y$ and $\hat{y}$ with
+different methodologies. We can also say that they look for the values
+of the coefficients that better "explain the variance".
+
+## Problems with the Unbiased Estimators
+
+That's great! However, having models that predict so brilliantly the behaviour
+of a specific sample of data coming from a statistical population, can lead
+to the problem that the model is not actually so useful in predicting new data
+and, therefore, it has not really captured the values of the coefficients
+at a _population-level_. This is called _overfitting_.
+
+> [_Overfitting_](https://en.wikipedia.org/wiki/Overfitting):
+the production of an analysis that corresponds too
+closely or exactly to a particular set of data, and may therefore fail to fit
+additional data or predict future observations reliably
+
+This may also be caused by the use of an excessive number of i.v. in the
+analysis.
+
+In order to prevent this problem, _biased_ estimators have been proposed.
+
+> _Biased estimators_: algorithms to estimate the values of the coefficients
+with penalisation coefficients, in order to have coefficients that do not
+allow the perfect correspondence between $\hat{y}$ and $y$.
+
+Concepts that are often used to understand better when a statistical model
+is a good model are the _bias_ and the _variance_. Please, note that in this
+context _bias_ has
+no relation with cognitive bias, and _variance_ in this context is not the
+dispersion statistics that we all know.
+
+> The _bias_ is the error of the model in fitting the observed data $y$.
+A large _bias_ means that the model _underfits_ the sample of data.
+
+```{r}
+x = 1:10
+y = x^3/50 + rnorm(10, sd = 1)
+
+plot(x,y)
+abline(lm(y~x), col="red")
+points(x , x^3/50, type="l", col="green")
+legend("top", col = c("red" , "green"), lty = 1,
+       legend = c("Underfit" , "Correct fit"))
+```
+
+`r fig_nums("underfit_plot",
+             "Graphical representation of an hypothetical distribution fitted by two models, one with correct fit (y ~ x^3), and one that underfits the data (y ~ x)")`
+
+> The _variance_ is the error of the model in predicting new data.
+A large _variance_ means that the model _overfits_ the
+original sample of data $y$.
+
+```{r}
+x = seq(from = 1, to = 5, by = 0.1)
+y = x^3/100 + cos(x*10)^2
+
+x1 = seq(from = 1, to = 5, by = 0.001)
+y1 = x1^3/100 + cos(x1*10)^2
+
+plot(x,y)
+points(x1, y1, type="l",  col =" red")
+points(x, x^3/100 + mean(cos(x*10)^2), type = "l", col = "green")
+legend("topleft", col = c("red" , "green"), lty = 1,
+       legend = c("Overfit" , "Correct fit"))
+
+
+```
+
+`r fig_nums("overfit_plot",
+             "Graphical representation of an hypothetical distribution fitted by two models, one with correct fit (y ~ x^3), and one that overfits the data (y ~ x^3 + cos(x * 10)^2)")`
+             
+(to be honest... the overfitted curve is obtained by exactly using
+y ~ x^3 + cos(x * 10)^2, but for simplicity let's pretend that the
+cosine part is just random variation)
+
+A good model should have low _bias_ and low _variance_, finding the trade-off between them.
+
+```{r}
+x = 1:100
+y = x^5 / 1e10
+
+plot( x = 1:100 , y , type = "l" , col = "red")
+points( x = 100:1 , y = y , type = "l", col = "blue")
+points( x = 1:100 , y = y + y[100:1] + 0.1 , type = "l" , col = "green")
+legend("top", col = c("red" , "blue" , "green"), lty = 1, legend = c("Bias" , "Variance" , "Error trade-Off"))
+```
+
+`r fig_nums("bias_variace_tradeoff",
+             "Graphical representation of the Bias and Variance errors of the model, and hypothetical trade-off curve.
+             Please note that the Trade-off curve has been displaced for a better visualization")`
+
+
+
+The most famous among the _biased estimators_ are the:
+* Ridge regression
+* Lasso regression
+
+## Ridge regression
+
+Ridge regression tries to find the best coefficients ($\beta$s) that describe
+our observed sample of data ($y$), penalising the computation of the
+coefficients with a coefficient $\lambda$.
+
+Therefore, the idea is to find the $\beta$s of the model
+that best fit the data, with an additional
+penalysing term $\lambda$.
+
+$\beta = \underset{\beta}{\operatorname{arg min}}~S(\beta + \lambda)$
+
+where
+
+$S(\beta) = \sum_{i=1}^{n} \frac{1}{2} ( y_i - \sum_{j=1}^p x_{i,j}  \beta_{j})^2+\lambda \sum_{j=1}^p \beta_j^2$ 
+
+$\lambda$ is the *complexity* parameter, and penalise the $\beta$s, limiting
+*overfitting* and large estimators
+
+```{r}
+library("glmnet")
+```
+
+
+https://towardsdatascience.com/whats-the-difference-between-linear-regression-lasso-ridge-and-elasticnet-8f997c60cf29
+
+https://en.wikipedia.org/wiki/Tikhonov_regularization

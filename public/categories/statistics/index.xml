@@ -3,7 +3,7 @@
         <title>Statistics - Category - Michele Scandola&#39;s personal webpage</title>
         <link>/categories/statistics/</link>
         <description>Statistics - Category - Michele Scandola&#39;s personal webpage</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 01 Aug 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="/categories/statistics/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 16 Aug 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="/categories/statistics/" rel="self" type="application/rss+xml" /><item>
     <title>Statistics Notes</title>
     <link>/2020-08-01-statistics-notes/</link>
     <pubDate>Sat, 01 Aug 2020 00:00:00 &#43;0000</pubDate>
@@ -12,5 +12,14 @@
     <description><![CDATA[<div class="featured-image">
                 <img src="/assets/images/statistics_notes.jpg" referrerpolicy="no-referrer">
             </div><p>Some notes of mine concerning various aspects of psychometry</p>]]></description>
+</item><item>
+    <title>The estimation of the unknown coefficients of a linear model by means of unbiased estimators</title>
+    <link>/presentations/20200819linearregression/unbiased-linear-regression/</link>
+    <pubDate>Sun, 16 Aug 2020 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/presentations/20200819linearregression/unbiased-linear-regression/</guid>
+    <description><![CDATA[true  Linear regression is not tricky, basically, we are trying to estimate a line that efficiently interpolates our data.
+The focus of this page is to understand how the coefficients of a linear model are estimated by means of unbiased estimators.
+An unbiased estimator algorithm tries to find the best coefficients able to interpolate your current sample of data. In this case, the word bias has no relation with the notion of cognitive biases.]]></description>
 </item></channel>
 </rss>

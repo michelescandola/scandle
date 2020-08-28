@@ -1,10 +1,13 @@
 ---
-title: 'Linear regressions'
+title: 'The estimation of the unknown coefficients of a linear model by means of unbiased estimators'
 author: Michele Scandola
 date: '2020-08-16'
-slug: linear-regression
-categories: ''
-tags: ''
+slug: unbiased-linear-regression
+categories:
+- Statistics
+tags:
+- (Generalized) Linear Models
+- R
 subtitle: ''
 lastmod: '2020-08-06T08:46:06+02:00'
 authorLink: 'https://michelescandola.netlify.app/'
@@ -19,20 +22,40 @@ math:
   enable: yes
 lightgallery: no
 license: ''
-editor_options: 
-  chunk_output_type: console
 ---
 
-Linear regression is not difficult, basically we are trying to estimate a
+Linear regression is not tricky, basically, we are trying to estimate a
 line that efficiently interpolates our data.
 
-However, how it works?
+The focus of this page is to understand how the coefficients
+of a linear model are estimated by means of _unbiased estimators_.
+
+An _unbiased_ estimator algorithm tries to find the best coefficients able
+to interpolate your current sample of data. In this case, the word _bias_
+has no relation with the notion of cognitive biases.
+
+> In the context of linear estimators (and more in general in statistics),
+_bias_ is the error between the observed data $y$ and the data sampled from
+the statistical model $\hat{y}$
+
+Reducing the _bias_ is important, to not have a model that _underfits_
+the observed data.
+However, it may happen that your model _overfits_ your data
+and it is not adequately able to predict a different sample coming from
+the same statistical population.
+
+In a future post, I will give an attempted introduction to _biased_ estimators,
+here we focus on _unbiased_ estimators.
+
+Before to start with the algorithms, we need some preliminary concepts.
 
 ## Independent and Dependent variables
 
-Linear regression try to estimate the parameters $\beta$ (independent variables)
-that allow to better "explain the variance" of observations
-(dependent variable).
+> Linear regression try to estimate the parameters $\beta$
+> (independent variables)
+> that allow to better "explain the variance"
+> (have the lowest variance of residuals - errors $\epsilon$)
+> of observations (dependent variable).
 
 The _dependent variable_ is the observation that we postulate being shaped /
 modulated / caused by our _independent variables_.
@@ -53,16 +76,16 @@ error term.
 $\beta$ could also be named coefficients, fixed effects, regressors, etc...
 
 In linear models the error term $\epsilon$ should be distributed along
-a normal distribution with mean 0 and standard deviation 1
+a normal distribution with mean 0 and standard deviation 1,
 $\epsilon \sim N(0, 1)$.
 
 The $X$ matrix represents the contrast matrix where all our independent data
 are stored: covariates and factors.
 
-# Estimation of the unknown vector of $\beta$s
+# Estimation of the unknown vector of $\beta$s by means of unbiased estimators
 
-Usually the estimation of the $\beta$s can be computed with one ot hese three
-algorythms:
+Usually the estimation of the $\beta$s can be computed with one of these three
+algorithms:
 
 1. Ordinary Least Square estimation (OLS)
 2. Maximum Likelihood estimation (ML)
@@ -202,6 +225,31 @@ As you can see, very similar same results.
 plot( x , y )
 abline(mdl , col= "red")
 ```
+
+### Gauss-Markov Theorem
+
+The OLS should be applied when the data sample satisfies the
+_Gauss-Markov assumptions_, a series of assumptions concerning the
+random error $\epsilon$:
+
+1. The sum (or the mean) of all errors $\epsilon$ is equal to 0:
+  $\sum_{i=1}^N \epsilon_i = 0$, $E(\epsilon)=0$
+2. Homoscedasticity of random error, all $\epsilon$ have the same,
+  finite variance: $Var(\epsilon_i)=\sigma^2, \forall i = 1 \dots N, \sigma^2 < \inf$
+3. Errors do not covary:
+  $Cov(\epsilon_i,\epsilon_j)=0, \forall i \ne j, \forall i = 1 \dots N, \forall j = 1 \dots N$
+
+Under the _Gauss-Markov_ assumptions, the OLS is the *B*est
+*L*inear *U*nbiased *E*stimator (BLUE):
+
+* *B*est: because no other model has the lowest residual variance
+* *L*inear: because it is applied to the parametrical context
+* *U*nbiased: because it does not use a _bias_ regressor to penalise the
+  estimation of the $\beta$s of the model
+* *E*stimator: well... because its job is to provide estimates!
+
+> Therefore, the Gauss-Markov theorem states that the OLS is the BLUE when
+> errors are uncorrelated, homoscedastic and with mean zero.
 
 ## Maximum Likelihood estimation (ML)
 

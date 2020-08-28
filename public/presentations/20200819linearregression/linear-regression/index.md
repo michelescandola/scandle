@@ -1,4 +1,4 @@
-# Linear regressions
+# The estimation of the unknown coefficients of a linear model by means of unbiased estimators
 
 
 
@@ -8,7 +8,16 @@ true
 
 <p>Linear regression is not difficult, basically we are trying to estimate a
 line that efficiently interpolates our data.</p>
-<p>However, how it works?</p>
+<p>The focus of this page is to understand how the coefficients
+of a linear model are estimated by means of <em>unbiased estimators</em>.</p>
+<p>An <em>unbiased</em> estimator algorithm tries to find the best coefficients able
+to interpolate your current sample of data.</p>
+<p>This is perfect, however, it may happen that your model <em>overfits</em> your data
+and it is not adequately able to predict a different sample coming from
+the same statistical population.</p>
+<p>In a next post I will give a temptative introduction to <em>biased</em> estimators,
+here we focus on <em>unbiased</em> estimators.</p>
+<p>Before to start with the algorithms, we need some preliminary concepts.</p>
 <div id="independent-and-dependent-variables" class="section level2">
 <h2>Independent and Dependent variables</h2>
 <p>Linear regression try to estimate the parameters <span class="math inline">\(\beta\)</span> (independent variables)
@@ -35,8 +44,8 @@ a normal distribution with mean 0 and standard deviation 1
 <p>The <span class="math inline">\(X\)</span> matrix represents the contrast matrix where all our independent data
 are stored: covariates and factors.</p>
 </div>
-<div id="estimation-of-the-unknown-vector-of-betas" class="section level1">
-<h1>Estimation of the unknown vector of <span class="math inline">\(\beta\)</span>s</h1>
+<div id="estimation-of-the-unknown-vector-of-betas-by-means-of-unbiased-estimators" class="section level1">
+<h1>Estimation of the unknown vector of <span class="math inline">\(\beta\)</span>s by means of unbiased estimators</h1>
 <p>Usually the estimation of the <span class="math inline">\(\beta\)</span>s can be computed with one ot hese three
 algorythms:</p>
 <ol style="list-style-type: decimal">
@@ -69,7 +78,7 @@ abline(a = 1, b = 1.5, col = &quot;green&quot;)
 abline(a = 1, b = 2.5, col = &quot;blue&quot;)
 abline(a = 1, b = 1, col = &quot;purple&quot;)
 abline(a = 1, b = 3, col = &quot;yellow&quot;)</code></pre>
-<p><img src="/blog/20200819linearregression/20200819linearregression_files/figure-html/unnamed-chunk-1-1.png" width="960" /></p>
+<p><img src="/presentations/20200819linearregression/20200819linearregression_files/figure-html/unnamed-chunk-1-1.png" width="960" /></p>
 <p>OLS will choose the one with the smallest square of errors <span class="math inline">\(S(\beta)\)</span>.</p>
 <pre class="r"><code>## creating the data
 set.seed( 1 )
@@ -116,7 +125,7 @@ segments(x0 = x, y0 = y, x1 = x, y1 = y + d5, col = &quot;purple&quot;)
 segments(x0 = x, y0 = y, x1 = x + d5, y1 = y, col = &quot;purple&quot;)
 segments(x0 = x + d5, y0 = y, x1 = x + d5, y1 = y + d5, col = &quot;purple&quot;)
 segments(x0 = x, y0 = y + d5, x1 = x + d5, y1 = y + d5, col = &quot;purple&quot;)</code></pre>
-<p><img src="/blog/20200819linearregression/20200819linearregression_files/figure-html/unnamed-chunk-2-1.png" width="960" /></p>
+<p><img src="/presentations/20200819linearregression/20200819linearregression_files/figure-html/unnamed-chunk-2-1.png" width="960" /></p>
 <p>By observing the graph, we can say that is the red one, that has as
 coefficients <span class="math inline">\(\beta_0 = 1\)</span> and <span class="math inline">\(\beta_1 = 2\)</span>.</p>
 <p>In order to see if analytically is as we observed, we can start with
@@ -165,7 +174,7 @@ print( mdl )</code></pre>
 <p>As you can see, very similar same results.</p>
 <pre class="r"><code>plot( x , y )
 abline(mdl , col= &quot;red&quot;)</code></pre>
-<p><img src="/blog/20200819linearregression/20200819linearregression_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="/presentations/20200819linearregression/20200819linearregression_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 </div>
 <div id="maximum-likelihood-estimation-ml" class="section level2">
 <h2>Maximum Likelihood estimation (ML)</h2>

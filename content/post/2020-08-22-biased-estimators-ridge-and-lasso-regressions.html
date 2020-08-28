@@ -1,0 +1,141 @@
+---
+title: Biased Estimators - Ridge and Lasso regressions
+author: Michele Scandola
+date: '2020-08-22'
+slug: biased-estimators-ridge-and-lasso-regressions
+categories:
+- Statistics
+tags:
+- (Generalized) Linear Models
+- R
+subtitle: ''
+lastmod: '2020-08-22T17:30:13+02:00'
+authorLink: 'https://michelescandola.netlify.app/'
+description: ''
+hiddenFromHomePage: yes
+hiddenFromSearch: no
+featuredImage: ''
+featuredImagePreview: ''
+toc:
+  enable: yes
+math:
+  enable: yes
+lightgallery: no
+license: ''
+---
+
+
+<div id="TOC">
+true
+</div>
+
+<pre class="r"><code>library(knitr)
+library(captioner)
+fig_nums &lt;- captioner()</code></pre>
+<p>Some days ago I wrote some notes concerning
+<a href="/presentations/20200819linearregression/unbiased-linear-regression/index.html">unbiased estimators</a>,
+that are the estimators that we commonly use with linear models, and statistical
+analyses such as ANOVA, linear regression, etc…</p>
+<p><em>Unbiased</em> estimators try to estimate the best unknown but not casual,
+<span class="math inline">\(\beta\)</span> coefficients of the <em>independent variables</em> (i.v.)
+to explain the observed <em>dependent variable</em> <span class="math inline">\(y\)</span> (d.v.),
+minimising the error between the variables that can be sampled from the
+linear model (<span class="math inline">\(\hat{y}\)</span>) and the observed data (<span class="math inline">\(y\)</span>).</p>
+<p>In other terms, they try to reduce the error between <span class="math inline">\(y\)</span> and <span class="math inline">\(\hat{y}\)</span> with
+different methodologies. We can also say that they look for the values
+of the coefficients that better “explain the variance”.</p>
+<div id="problems-with-the-unbiased-estimators" class="section level2">
+<h2>Problems with the Unbiased Estimators</h2>
+<p>That’s great! However, having models that predict so brilliantly the behaviour
+of a specific sample of data coming from a statistical population, can lead
+to the problem that the model is not actually so useful in predicting new data
+and, therefore, it has not really captured the values of the coefficients
+at a <em>population-level</em>. This is called <em>overfitting</em>.</p>
+<blockquote>
+<p><a href="https://en.wikipedia.org/wiki/Overfitting"><em>Overfitting</em></a>:
+the production of an analysis that corresponds too
+closely or exactly to a particular set of data, and may therefore fail to fit
+additional data or predict future observations reliably</p>
+</blockquote>
+<p>This may also be caused by the use of an excessive number of i.v. in the
+analysis.</p>
+<p>In order to prevent this problem, <em>biased</em> estimators have been proposed.</p>
+<blockquote>
+<p><em>Biased estimators</em>: algorithms to estimate the values of the coefficients
+with penalisation coefficients, in order to have coefficients that do not
+allow the perfect correspondence between <span class="math inline">\(\hat{y}\)</span> and <span class="math inline">\(y\)</span>.</p>
+</blockquote>
+<p>Concepts that are often used to understand better when a statistical model
+is a good model are the <em>bias</em> and the <em>variance</em>. Please, note that in this
+context <em>bias</em> has
+no relation with cognitive bias, and <em>variance</em> in this context is not the
+dispersion statistics that we all know.</p>
+<blockquote>
+<p>The <em>bias</em> is the error of the model in fitting the observed data <span class="math inline">\(y\)</span>.
+A large <em>bias</em> means that the model <em>underfits</em> the sample of data.</p>
+</blockquote>
+<pre class="r"><code>x = 1:10
+y = x^3/50 + rnorm(10, sd = 1)
+
+plot(x,y)
+abline(lm(y~x), col=&quot;red&quot;)
+points(x , x^3/50, type=&quot;l&quot;, col=&quot;green&quot;)
+legend(&quot;top&quot;, col = c(&quot;red&quot; , &quot;green&quot;), lty = 1,
+       legend = c(&quot;Underfit&quot; , &quot;Correct fit&quot;))</code></pre>
+<p><img src="/post/2020-08-22-biased-estimators-ridge-and-lasso-regressions_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>Figure 1: Graphical representation of an hypothetical distribution fitted by two models, one with correct fit (y ~ x^3), and one that underfits the data (y ~ x)</p>
+<blockquote>
+<p>The <em>variance</em> is the error of the model in predicting new data.
+A large <em>variance</em> means that the model <em>overfits</em> the
+original sample of data <span class="math inline">\(y\)</span>.</p>
+</blockquote>
+<pre class="r"><code>x = seq(from = 1, to = 5, by = 0.1)
+y = x^3/100 + cos(x*10)^2
+
+x1 = seq(from = 1, to = 5, by = 0.001)
+y1 = x1^3/100 + cos(x1*10)^2
+
+plot(x,y)
+points(x1, y1, type=&quot;l&quot;,  col =&quot; red&quot;)
+points(x, x^3/100 + mean(cos(x*10)^2), type = &quot;l&quot;, col = &quot;green&quot;)
+legend(&quot;topleft&quot;, col = c(&quot;red&quot; , &quot;green&quot;), lty = 1,
+       legend = c(&quot;Overfit&quot; , &quot;Correct fit&quot;))</code></pre>
+<p><img src="/post/2020-08-22-biased-estimators-ridge-and-lasso-regressions_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>Figure 2: Graphical representation of an hypothetical distribution fitted by two models, one with correct fit (y ~ x^3), and one that overfits the data (y ~ x^3 + cos(x * 10)^2)</p>
+<p>(to be honest… the overfitted curve is obtained by exactly using
+y ~ x^3 + cos(x * 10)^2, but for simplicity let’s pretend that the
+cosine part is just random variation)</p>
+<p>A good model should have low <em>bias</em> and low <em>variance</em>, finding the trade-off between them.</p>
+<pre class="r"><code>x = 1:100
+y = x^5 / 1e10
+
+plot( x = 1:100 , y , type = &quot;l&quot; , col = &quot;red&quot;)
+points( x = 100:1 , y = y , type = &quot;l&quot;, col = &quot;blue&quot;)
+points( x = 1:100 , y = y + y[100:1] + 0.1 , type = &quot;l&quot; , col = &quot;green&quot;)
+legend(&quot;top&quot;, col = c(&quot;red&quot; , &quot;blue&quot; , &quot;green&quot;), lty = 1, legend = c(&quot;Bias&quot; , &quot;Variance&quot; , &quot;Error trade-Off&quot;))</code></pre>
+<p><img src="/post/2020-08-22-biased-estimators-ridge-and-lasso-regressions_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>Figure 3: Graphical representation of the Bias and Variance errors of the model, and hypothetical trade-off curve.
+Please note that the Trade-off curve has been displaced for a better visualization</p>
+<p>The most famous among the <em>biased estimators</em> are the:
+* Ridge regression
+* Lasso regression</p>
+</div>
+<div id="ridge-regression" class="section level2">
+<h2>Ridge regression</h2>
+<p>Ridge regression tries to find the best coefficients (<span class="math inline">\(\beta\)</span>s) that describe
+our observed sample of data (<span class="math inline">\(y\)</span>), penalising the computation of the
+coefficients with a coefficient <span class="math inline">\(\lambda\)</span>.</p>
+<p>Therefore, the idea is to find the <span class="math inline">\(\beta\)</span>s of the model
+that best fit the data, with an additional
+penalysing term <span class="math inline">\(\lambda\)</span>.</p>
+<p><span class="math inline">\(\beta = \underset{\beta}{\operatorname{arg min}}~S(\beta + \lambda)\)</span></p>
+<p>where</p>
+<p><span class="math inline">\(S(\beta) = \sum_{i=1}^{n} \frac{1}{2} ( y_i - \sum_{j=1}^p x_{i,j} \beta_{j})^2+\lambda \sum_{j=1}^p \beta_j^2\)</span></p>
+<p><span class="math inline">\(\lambda\)</span> is the <em>complexity</em> parameter, and penalise the <span class="math inline">\(\beta\)</span>s, limiting
+<em>overfitting</em> and large estimators</p>
+<pre class="r"><code>library(&quot;glmnet&quot;)</code></pre>
+<pre><code>## Carico il pacchetto richiesto: Matrix</code></pre>
+<pre><code>## Loaded glmnet 4.0-2</code></pre>
+<p><a href="https://towardsdatascience.com/whats-the-difference-between-linear-regression-lasso-ridge-and-elasticnet-8f997c60cf29" class="uri">https://towardsdatascience.com/whats-the-difference-between-linear-regression-lasso-ridge-and-elasticnet-8f997c60cf29</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Tikhonov_regularization" class="uri">https://en.wikipedia.org/wiki/Tikhonov_regularization</a></p>
+</div>

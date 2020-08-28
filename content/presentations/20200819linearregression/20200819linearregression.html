@@ -1,10 +1,13 @@
 ---
-title: 'Linear regressions'
+title: 'The estimation of the unknown coefficients of a linear model by means of unbiased estimators'
 author: Michele Scandola
 date: '2020-08-16'
-slug: linear-regression
-categories: ''
-tags: ''
+slug: unbiased-linear-regression
+categories:
+- Statistics
+tags:
+- (Generalized) Linear Models
+- R
 subtitle: ''
 lastmod: '2020-08-06T08:46:06+02:00'
 authorLink: 'https://michelescandola.netlify.app/'
@@ -19,8 +22,6 @@ math:
   enable: yes
 lightgallery: no
 license: ''
-editor_options: 
-  chunk_output_type: console
 ---
 
 
@@ -28,14 +29,35 @@ editor_options:
 true
 </div>
 
-<p>Linear regression is not difficult, basically we are trying to estimate a
+<p>Linear regression is not tricky, basically, we are trying to estimate a
 line that efficiently interpolates our data.</p>
-<p>However, how it works?</p>
+<p>The focus of this page is to understand how the coefficients
+of a linear model are estimated by means of <em>unbiased estimators</em>.</p>
+<p>An <em>unbiased</em> estimator algorithm tries to find the best coefficients able
+to interpolate your current sample of data. In this case, the word <em>bias</em>
+has no relation with the notion of cognitive biases.</p>
+<blockquote>
+<p>In the context of linear estimators (and more in general in statistics),
+<em>bias</em> is the error between the observed data <span class="math inline">\(y\)</span> and the data sampled from
+the statistical model <span class="math inline">\(\hat{y}\)</span></p>
+</blockquote>
+<p>Reducing the <em>bias</em> is important, to not have a model that <em>underfits</em>
+the observed data.
+However, it may happen that your model <em>overfits</em> your data
+and it is not adequately able to predict a different sample coming from
+the same statistical population.</p>
+<p>In a future post, I will give an attempted introduction to <em>biased</em> estimators,
+here we focus on <em>unbiased</em> estimators.</p>
+<p>Before to start with the algorithms, we need some preliminary concepts.</p>
 <div id="independent-and-dependent-variables" class="section level2">
 <h2>Independent and Dependent variables</h2>
-<p>Linear regression try to estimate the parameters <span class="math inline">\(\beta\)</span> (independent variables)
-that allow to better “explain the variance” of observations
-(dependent variable).</p>
+<blockquote>
+<p>Linear regression try to estimate the parameters <span class="math inline">\(\beta\)</span>
+(independent variables)
+that allow to better “explain the variance”
+(have the lowest variance of residuals - errors <span class="math inline">\(\epsilon\)</span>)
+of observations (dependent variable).</p>
+</blockquote>
 <p>The <em>dependent variable</em> is the observation that we postulate being shaped /
 modulated / caused by our <em>independent variables</em>.</p>
 <p>This means that we are not looking for <em>correlations</em> between the
@@ -52,15 +74,15 @@ formula <span class="math inline">\(y = X \beta + \epsilon\)</span> trying to mi
 error term.</p>
 <p><span class="math inline">\(\beta\)</span> could also be named coefficients, fixed effects, regressors, etc…</p>
 <p>In linear models the error term <span class="math inline">\(\epsilon\)</span> should be distributed along
-a normal distribution with mean 0 and standard deviation 1
+a normal distribution with mean 0 and standard deviation 1,
 <span class="math inline">\(\epsilon \sim N(0, 1)\)</span>.</p>
 <p>The <span class="math inline">\(X\)</span> matrix represents the contrast matrix where all our independent data
 are stored: covariates and factors.</p>
 </div>
-<div id="estimation-of-the-unknown-vector-of-betas" class="section level1">
-<h1>Estimation of the unknown vector of <span class="math inline">\(\beta\)</span>s</h1>
-<p>Usually the estimation of the <span class="math inline">\(\beta\)</span>s can be computed with one ot hese three
-algorythms:</p>
+<div id="estimation-of-the-unknown-vector-of-betas-by-means-of-unbiased-estimators" class="section level1">
+<h1>Estimation of the unknown vector of <span class="math inline">\(\beta\)</span>s by means of unbiased estimators</h1>
+<p>Usually the estimation of the <span class="math inline">\(\beta\)</span>s can be computed with one of these three
+algorithms:</p>
 <ol style="list-style-type: decimal">
 <li>Ordinary Least Square estimation (OLS)</li>
 <li>Maximum Likelihood estimation (ML)</li>
@@ -91,7 +113,7 @@ abline(a = 1, b = 1.5, col = &quot;green&quot;)
 abline(a = 1, b = 2.5, col = &quot;blue&quot;)
 abline(a = 1, b = 1, col = &quot;purple&quot;)
 abline(a = 1, b = 3, col = &quot;yellow&quot;)</code></pre>
-<p><img src="/blog/20200819linearregression/20200819linearregression_files/figure-html/unnamed-chunk-1-1.png" width="960" /></p>
+<p><img src="/presentations/20200819linearregression/20200819linearregression_files/figure-html/unnamed-chunk-1-1.png" width="960" /></p>
 <p>OLS will choose the one with the smallest square of errors <span class="math inline">\(S(\beta)\)</span>.</p>
 <pre class="r"><code>## creating the data
 set.seed( 1 )
@@ -138,7 +160,7 @@ segments(x0 = x, y0 = y, x1 = x, y1 = y + d5, col = &quot;purple&quot;)
 segments(x0 = x, y0 = y, x1 = x + d5, y1 = y, col = &quot;purple&quot;)
 segments(x0 = x + d5, y0 = y, x1 = x + d5, y1 = y + d5, col = &quot;purple&quot;)
 segments(x0 = x, y0 = y + d5, x1 = x + d5, y1 = y + d5, col = &quot;purple&quot;)</code></pre>
-<p><img src="/blog/20200819linearregression/20200819linearregression_files/figure-html/unnamed-chunk-2-1.png" width="960" /></p>
+<p><img src="/presentations/20200819linearregression/20200819linearregression_files/figure-html/unnamed-chunk-2-1.png" width="960" /></p>
 <p>By observing the graph, we can say that is the red one, that has as
 coefficients <span class="math inline">\(\beta_0 = 1\)</span> and <span class="math inline">\(\beta_1 = 2\)</span>.</p>
 <p>In order to see if analytically is as we observed, we can start with
@@ -187,7 +209,34 @@ print( mdl )</code></pre>
 <p>As you can see, very similar same results.</p>
 <pre class="r"><code>plot( x , y )
 abline(mdl , col= &quot;red&quot;)</code></pre>
-<p><img src="/blog/20200819linearregression/20200819linearregression_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="/presentations/20200819linearregression/20200819linearregression_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<div id="gauss-markov-theorem" class="section level3">
+<h3>Gauss-Markov Theorem</h3>
+<p>The OLS should be applied when the data sample satisfies the
+<em>Gauss-Markov assumptions</em>, a series of assumptions concerning the
+random error <span class="math inline">\(\epsilon\)</span>:</p>
+<ol style="list-style-type: decimal">
+<li>The sum (or the mean) of all errors <span class="math inline">\(\epsilon\)</span> is equal to 0:
+<span class="math inline">\(\sum_{i=1}^N \epsilon_i = 0\)</span>, <span class="math inline">\(E(\epsilon)=0\)</span></li>
+<li>Homoscedasticity of random error, all <span class="math inline">\(\epsilon\)</span> have the same,
+finite variance: <span class="math inline">\(Var(\epsilon_i)=\sigma^2, \forall i = 1 \dots N, \sigma^2 &lt; \inf\)</span></li>
+<li>Errors do not covary:
+<span class="math inline">\(Cov(\epsilon_i,\epsilon_j)=0, \forall i \ne j, \forall i = 1 \dots N, \forall j = 1 \dots N\)</span></li>
+</ol>
+<p>Under the <em>Gauss-Markov</em> assumptions, the OLS is the <em>B</em>est
+<em>L</em>inear <em>U</em>nbiased <em>E</em>stimator (BLUE):</p>
+<ul>
+<li><em>B</em>est: because no other model has the lowest residual variance</li>
+<li><em>L</em>inear: because it is applied to the parametrical context</li>
+<li><em>U</em>nbiased: because it does not use a <em>bias</em> regressor to penalise the
+estimation of the <span class="math inline">\(\beta\)</span>s of the model</li>
+<li><em>E</em>stimator: well… because its job is to provide estimates!</li>
+</ul>
+<blockquote>
+<p>Therefore, the Gauss-Markov theorem states that the OLS is the BLUE when
+errors are uncorrelated, homoscedastic and with mean zero.</p>
+</blockquote>
+</div>
 </div>
 <div id="maximum-likelihood-estimation-ml" class="section level2">
 <h2>Maximum Likelihood estimation (ML)</h2>

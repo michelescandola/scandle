@@ -5,26 +5,24 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>Linear regressions - Michele Scandola&#39;s personal webpage</title><meta name="Description" content="Michele Scandola&#39;s personal webpage"><meta property="og:title" content="Linear regressions" />
+        <title>The estimation of the unknown coefficients of a linear model by means of unbiased estimators - Michele Scandola&#39;s personal webpage</title><meta name="Description" content="Michele Scandola&#39;s personal webpage"><meta property="og:title" content="The estimation of the unknown coefficients of a linear model by means of unbiased estimators" />
 <meta property="og:description" content="true  Linear regression is not difficult, basically we are trying to estimate a line that efficiently interpolates our data.
-However, how it works?
-Independent and Dependent variables Linear regression try to estimate the parameters \(\beta\) (independent variables) that allow to better “explain the variance” of observations (dependent variable).
-The dependent variable is the observation that we postulate being shaped / modulated / caused by our independent variables.
-This means that we are not looking for correlations between the dependent and independent variables, because we assume that the dependent depends (sorry…) from the independent variables." />
+The focus of this page is to understand how the coefficients of a linear model are estimated by means of unbiased estimators.
+An unbiased estimator algorithm tries to find the best coefficients able to interpolate your current sample of data.
+This is perfect, however, it may happen that your model overfits your data and it is not adequately able to predict a different sample coming from the same statistical population." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/presentations/20200819linearregression/linear-regression/" />
 <meta property="og:image" content="/logo.png"/>
 <meta property="article:published_time" content="2020-08-16T00:00:00+00:00" />
-<meta property="article:modified_time" content="2020-08-06T08:46:06+02:00" />
+<meta property="article:modified_time" content="2020-08-19T19:04:25+02:00" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="/logo.png"/>
 
-<meta name="twitter:title" content="Linear regressions"/>
+<meta name="twitter:title" content="The estimation of the unknown coefficients of a linear model by means of unbiased estimators"/>
 <meta name="twitter:description" content="true  Linear regression is not difficult, basically we are trying to estimate a line that efficiently interpolates our data.
-However, how it works?
-Independent and Dependent variables Linear regression try to estimate the parameters \(\beta\) (independent variables) that allow to better “explain the variance” of observations (dependent variable).
-The dependent variable is the observation that we postulate being shaped / modulated / caused by our independent variables.
-This means that we are not looking for correlations between the dependent and independent variables, because we assume that the dependent depends (sorry…) from the independent variables."/>
+The focus of this page is to understand how the coefficients of a linear model are estimated by means of unbiased estimators.
+An unbiased estimator algorithm tries to find the best coefficients able to interpolate your current sample of data.
+This is perfect, however, it may happen that your model overfits your data and it is not adequately able to predict a different sample coming from the same statistical population."/>
 <meta name="application-name" content="LoveIt">
 <meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -32,13 +30,13 @@ This means that we are not looking for correlations between the dependent and in
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "Linear regressions",
+        "headline": "The estimation of the unknown coefficients of a linear model by means of unbiased estimators",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "\/presentations\/20200819linearregression\/linear-regression\/"
-        },"image": ["\/images\/Apple-Devices-Preview.png"],"genre": "presentations","wordcount":  1667 ,
-        "url": "\/presentations\/20200819linearregression\/linear-regression\/","datePublished": "2020-08-16T00:00:00+00:00","dateModified": "2020-08-06T08:46:06+02:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+        },"image": ["\/images\/Apple-Devices-Preview.png"],"genre": "presentations","wordcount":  1768 ,
+        "url": "\/presentations\/20200819linearregression\/linear-regression\/","datePublished": "2020-08-16T00:00:00+00:00","dateModified": "2020-08-19T19:04:25+02:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "Michele Scandola","logo": "\/images\/myself.png"},"author": {
                 "@type": "Person",
@@ -109,7 +107,7 @@ This means that we are not looking for correlations between the dependent and in
     <div id="search-dropdown-mobile"></div>
 </div>
 <main class="main">
-                <div class="container"><div class="page single special"><h1 class="single-title animated pulse faster">Linear regressions</h1><div class="content" id="content">
+                <div class="container"><div class="page single special"><h1 class="single-title animated pulse faster">The estimation of the unknown coefficients of a linear model by means of unbiased estimators</h1><h2 class="single-subtitle"> </h2><div class="content" id="content">
 
 <div id="TOC">
 true
@@ -117,7 +115,16 @@ true
 
 <p>Linear regression is not difficult, basically we are trying to estimate a
 line that efficiently interpolates our data.</p>
-<p>However, how it works?</p>
+<p>The focus of this page is to understand how the coefficients
+of a linear model are estimated by means of <em>unbiased estimators</em>.</p>
+<p>An <em>unbiased</em> estimator algorithm tries to find the best coefficients able
+to interpolate your current sample of data.</p>
+<p>This is perfect, however, it may happen that your model <em>overfits</em> your data
+and it is not adequately able to predict a different sample coming from
+the same statistical population.</p>
+<p>In a next post I will give a temptative introduction to <em>biased</em> estimators,
+here we focus on <em>unbiased</em> estimators.</p>
+<p>Before to start with the algorithms, we need some preliminary concepts.</p>
 <div id="independent-and-dependent-variables" class="section level2">
 <h2>Independent and Dependent variables</h2>
 <p>Linear regression try to estimate the parameters <span class="math inline">\(\beta\)</span> (independent variables)
@@ -144,8 +151,8 @@ a normal distribution with mean 0 and standard deviation 1
 <p>The <span class="math inline">\(X\)</span> matrix represents the contrast matrix where all our independent data
 are stored: covariates and factors.</p>
 </div>
-<div id="estimation-of-the-unknown-vector-of-betas" class="section level1">
-<h1>Estimation of the unknown vector of <span class="math inline">\(\beta\)</span>s</h1>
+<div id="estimation-of-the-unknown-vector-of-betas-by-means-of-unbiased-estimators" class="section level1">
+<h1>Estimation of the unknown vector of <span class="math inline">\(\beta\)</span>s by means of unbiased estimators</h1>
 <p>Usually the estimation of the <span class="math inline">\(\beta\)</span>s can be computed with one ot hese three
 algorythms:</p>
 <ol style="list-style-type: decimal">
@@ -178,7 +185,7 @@ abline(a = 1, b = 1.5, col = &quot;green&quot;)
 abline(a = 1, b = 2.5, col = &quot;blue&quot;)
 abline(a = 1, b = 1, col = &quot;purple&quot;)
 abline(a = 1, b = 3, col = &quot;yellow&quot;)</code></pre>
-<p><img src="/blog/20200819linearregression/20200819linearregression_files/figure-html/unnamed-chunk-1-1.png" width="960" /></p>
+<p><img src="/presentations/20200819linearregression/20200819linearregression_files/figure-html/unnamed-chunk-1-1.png" width="960" /></p>
 <p>OLS will choose the one with the smallest square of errors <span class="math inline">\(S(\beta)\)</span>.</p>
 <pre class="r"><code>## creating the data
 set.seed( 1 )
@@ -225,7 +232,7 @@ segments(x0 = x, y0 = y, x1 = x, y1 = y + d5, col = &quot;purple&quot;)
 segments(x0 = x, y0 = y, x1 = x + d5, y1 = y, col = &quot;purple&quot;)
 segments(x0 = x + d5, y0 = y, x1 = x + d5, y1 = y + d5, col = &quot;purple&quot;)
 segments(x0 = x, y0 = y + d5, x1 = x + d5, y1 = y + d5, col = &quot;purple&quot;)</code></pre>
-<p><img src="/blog/20200819linearregression/20200819linearregression_files/figure-html/unnamed-chunk-2-1.png" width="960" /></p>
+<p><img src="/presentations/20200819linearregression/20200819linearregression_files/figure-html/unnamed-chunk-2-1.png" width="960" /></p>
 <p>By observing the graph, we can say that is the red one, that has as
 coefficients <span class="math inline">\(\beta_0 = 1\)</span> and <span class="math inline">\(\beta_1 = 2\)</span>.</p>
 <p>In order to see if analytically is as we observed, we can start with
@@ -274,7 +281,7 @@ print( mdl )</code></pre>
 <p>As you can see, very similar same results.</p>
 <pre class="r"><code>plot( x , y )
 abline(mdl , col= &quot;red&quot;)</code></pre>
-<p><img src="/blog/20200819linearregression/20200819linearregression_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="/presentations/20200819linearregression/20200819linearregression_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 </div>
 <div id="maximum-likelihood-estimation-ml" class="section level2">
 <h2>Maximum Likelihood estimation (ML)</h2>
