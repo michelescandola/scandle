@@ -51,7 +51,7 @@ Before to start with the algorithms, we need some preliminary concepts.
 
 ## Independent and Dependent variables
 
-> Linear regression try to estimate the parameters $\beta$
+> Linear regression tries to estimate the parameters $\beta$
 > (independent variables)
 > that allow to better "explain the variance"
 > (have the lowest variance of residuals - errors $\epsilon$)
@@ -224,6 +224,20 @@ As you can see, very similar same results.
 ```{r}
 plot( x , y )
 abline(mdl , col= "red")
+```
+
+The `lm` function does not use an iterative function, that sequentially tries
+a series of values, but it uses the solution of the minimization
+problem.
+
+$\beta = (X^TX)^{-1}X^Ty$
+
+that in R is:
+
+```{r}
+X = cbind( 1 , x )
+
+solve( t(X) %*% X ) %*% t(X) %*% y
 ```
 
 ### Gauss-Markov Theorem

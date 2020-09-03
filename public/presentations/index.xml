@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Sun, 16 Aug 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 22 Aug 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/presentations/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Biased Estimators - Ridge and Lasso regressions</title>
+      <link>/presentations/20200903biasedestimators/biased-estimators-ridge-and-lasso-regressions/</link>
+      <pubDate>Sat, 22 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/presentations/20200903biasedestimators/biased-estimators-ridge-and-lasso-regressions/</guid>
+      <description>true  library(knitr) library(captioner) fig_nums &amp;lt;- captioner() cod_nums &amp;lt;- captioner( prefix = &amp;quot;Code&amp;quot; ) Some days ago I wrote some notes concerning unbiased estimators, that are the estimators that we commonly use with linear models, and statistical analyses such as ANOVA, linear regression, etc…
+Unbiased estimators try to estimate the best unknown but not casual, \(\beta\) coefficients of the independent variables (i.v.) to explain the observed dependent variable \(y\) (d.</description>
+    </item>
     
     <item>
       <title>The estimation of the unknown coefficients of a linear model by means of unbiased estimators</title>

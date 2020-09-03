@@ -28,6 +28,7 @@ license: ''
 library(knitr)
 library(captioner)
 fig_nums <- captioner()
+cod_nums <- captioner( prefix = "Code" )
 ```
 
 
@@ -114,7 +115,7 @@ legend("topleft", col = c("red" , "green"), lty = 1,
 `r fig_nums("overfit_plot",
              "Graphical representation of an hypothetical distribution fitted by two models, one with correct fit (y ~ x^3), and one that overfits the data (y ~ x^3 + cos(x * 10)^2)")`
              
-(to be honest... the overfitted curve is obtained by exactly using
+(to be honest, the overfitted curve is obtained by using exactly
 y ~ x^3 + cos(x * 10)^2, but for simplicity let's pretend that the
 cosine part is just random variation)
 
@@ -137,8 +138,9 @@ legend("top", col = c("red" , "blue" , "green"), lty = 1, legend = c("Bias" , "V
 
 
 The most famous among the _biased estimators_ are the:
-* Ridge regression
-* Lasso regression
+
+- Ridge regression (a.k.a. L2 regularization)
+- Lasso regression (a.k.a. L1 regularization)
 
 ## Ridge regression
 
@@ -150,20 +152,182 @@ Therefore, the idea is to find the $\beta$s of the model
 that best fit the data, with an additional
 penalysing term $\lambda$.
 
-$\beta = \underset{\beta}{\operatorname{arg min}}~S(\beta + \lambda)$
+$\beta = \underset{\beta}{\operatorname{arg min}}~S(\beta, \lambda)$
 
 where
 
-$S(\beta) = \sum_{i=1}^{n} \frac{1}{2} ( y_i - \sum_{j=1}^p x_{i,j}  \beta_{j})^2+\lambda \sum_{j=1}^p \beta_j^2$ 
+$S(\beta, \lambda) = \sum_{i=1}^{n} \frac{1}{2} ( y_i - \sum_{j=1}^p x_{i,j}  \beta_{j})^2+\lambda \sum_{j=1}^p \beta_j^2$ 
 
-$\lambda$ is the *complexity* parameter, and penalise the $\beta$s, limiting
-*overfitting* and large estimators
+$\lambda$ is the *complexity* parameter, and penalises the $\beta$s, limiting
+*overfitting* and shrinking large $\beta$s.
+
+In order to better understand how ridge regression works,
+we can use an iterative, inefficient, and so simplified to be simply wrong,
+function just to have an idea concerning how ridge regression works.
+
+In this function we create some random data gaussianally distributed,
+coming from a linear model with mean 1 ($\beta_0$) and 
+regressor $\beta_1 = 2$.
+
+The same data used for [unbiased estimators](/presentations/20200819linearregression/unbiased-linear-regression/index.html).
+
+We set our $\lambda$ to 0.1.
+
+```{r, fig.height=10, fig.width=10}
+## creating the data
+set.seed( 1 )
+# independent variable
+x <- 1:10
+#   beta0 + i.v. * beta1 + epsilon
+y <- 1 + x * 2 + rnorm( n = 10 )
+
+find_ridge_least_squares <- function( y , x , beta0 , beta1 , lambda ) {
+  
+  # variable for the beta1 that best fits the data
+  best_beta <- c(NULL, NULL)
+  # variable for memorizing the squared errors
+  best_err  <- Inf
+  for(int in beta0){
+    for( bet in beta1 ){
+      yhat <- int + x * bet
+      err  <- ( sum( ( y - yhat)^2 ) / 2 ) + ( lambda * ( int^2 + bet^2 ) )
+      best_beta[1] <- ifelse( best_err > err,
+                           int,
+                           best_beta[1])
+      best_beta[2] <- ifelse( best_err > err,
+                           bet,
+                           best_beta[2])
+      best_err  <- ifelse( best_err > err,
+                           err,
+                           best_err)
+    }
+  }
+  
+  return( best_beta )
+}
+
+print(
+  find_ridge_least_squares( y ,
+                            x,
+                            beta0 = seq(from = 0, to = 3, by = 0.01),
+                            beta1 = seq(from = 1, to = 3, by = 0.01),
+                            lambda = 0.01 )
+)
+```
+
+`r cod_nums("ridge", "Exemplification code for a ridge regression")`
+
+The estimations are not so far from the real values. However, let's
+see how the real function works, in library `glmnet`:
 
 ```{r}
 library("glmnet")
+
+fit <- glmnet(y = y, x = cbind(1,x),
+              lambda = 0.01, alpha = 0)
+
+print( coef( fit ) )
 ```
 
+`r cod_nums("glmnet_ridge", "Use of glmnet for ridge regression")`
 
-https://towardsdatascience.com/whats-the-difference-between-linear-regression-lasso-ridge-and-elasticnet-8f997c60cf29
+The minimisation problem has a unique solution:
 
-https://en.wikipedia.org/wiki/Tikhonov_regularization
+$\beta = (X^TX + \lambda I)^{-1}X^Ty$
+
+```{r}
+X = cbind( 1 , x )
+
+solve( t(X) %*% X + 0.01 * diag(2) ) %*% t(X) %*% y
+```
+
+`r cod_nums("matrix_glmnet", "Matrix computation for Ridge regression")`
+
+In this case we can see that the algorithms used in the `glmnet` function
+and in the matrix computation are different.
+
+`glmnet` is a complex function that allows to compute Ridge regression (alpha = 0),
+Lasso regression (alpha = 1) and Elasticnet regression (alpha $\in$ [0, 1]),
+and probably it is using
+algorithms that are more advanced than the classical ones that I am using here.
+
+## Lasso regression
+
+The Least Absolute Shrinkage and Selection Operator (Lasso) regression
+is very similar to the Ridge regression.
+
+In fact, it uses the $\lambda$ coefficient of penalisation already seen
+in the Ridge regression.
+
+Therefore, the minimisation problem is always:
+
+$\beta = \underset{\beta}{\operatorname{arg min}}~S(\beta, \lambda)$
+
+but the $S$ function changes:
+
+$S(\beta, \lambda) = \frac{1}{n}\sum_{i=1}^{n} ( y_i - \sum_{j=1}^p x_{i,j}  \beta_{j})^2+\frac{\lambda}{2} \sum_{j=1}^p |\beta_j|$ 
+
+```{r}
+find_lasso_least_squares <- function( y , x , beta0 , beta1 , lambda ) {
+  
+  # variable for the beta1 that best fits the data
+  best_beta <- c(NULL, NULL)
+  # variable for memorizing the squared errors
+  best_err  <- Inf
+  for(int in beta0){
+    for( bet in beta1 ){
+      yhat <- int + x * bet
+      err  <- ( sum( ( y - yhat)^2 ) / ( length(yhat) ) ) +
+        ( lambda / 2 * abs( int + bet ) )
+      best_beta[1] <- ifelse( best_err > err,
+                           int,
+                           best_beta[1])
+      best_beta[2] <- ifelse( best_err > err,
+                           bet,
+                           best_beta[2])
+      best_err  <- ifelse( best_err > err,
+                           err,
+                           best_err)
+    }
+  }
+  
+  return( best_beta )
+}
+
+print(
+  find_lasso_least_squares( y ,
+                            x,
+                            beta0 = seq(from = 0, to = 3, by = 0.01),
+                            beta1 = seq(from = 1, to = 3, by = 0.01),
+                            lambda = 0.01 )
+)
+```
+
+`r cod_nums("Lasso", "Exemplification code for a Lasso regression")`
+
+```{r}
+fit <- glmnet(y = y, x = cbind(1,x),
+              lambda = 0.01)
+
+print( coef( fit ) )
+```
+
+`r cod_nums("glmnet_lasso", "Use of glmnet for Lasso regression")`
+
+The minimisation problem can be divided in two steps:
+
+1. finding the $\beta$s with OLS ($\beta = (X^TX)^{-1}X^Ty$)
+2. applying the Lasso penalisation ($(1+N \frac{\lambda}{2})^{-1}$)
+
+$\beta = (1+N \frac{\lambda}{2})^{-1}[(X^TX)^{-1}X^Ty]$
+
+```{r}
+X = cbind( 1 , x )
+
+(1 + nrow(X) * 0.01 / 2)^(-1) *
+solve( t(X) %*% X ) %*% t(X) %*% y
+```
+
+Also in this case the results are different from the `glmnet` function.
+I suspect that in the `glmnet` function they are using more advanced versions
+of the Lasso regression.

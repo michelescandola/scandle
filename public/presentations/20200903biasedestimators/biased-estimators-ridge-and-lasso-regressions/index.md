@@ -1,28 +1,5 @@
----
-title: Biased Estimators - Ridge and Lasso regressions
-author: Michele Scandola
-date: '2020-08-22'
-slug: biased-estimators-ridge-and-lasso-regressions
-categories:
-- Statistics
-tags:
-- (Generalized) Linear Models
-- R
-subtitle: ''
-lastmod: '2020-08-22T17:30:13+02:00'
-authorLink: 'https://michelescandola.netlify.app/'
-description: ''
-hiddenFromHomePage: yes
-hiddenFromSearch: no
-featuredImage: ''
-featuredImagePreview: ''
-toc:
-  enable: yes
-math:
-  enable: yes
-lightgallery: no
-license: ''
----
+# Biased Estimators - Ridge and Lasso regressions
+
 
 
 <div id="TOC">
@@ -288,3 +265,4 @@ solve( t(X) %*% X ) %*% t(X) %*% y</code></pre>
 I suspect that in the <code>glmnet</code> function they are using more advanced versions
 of the Lasso regression.</p>
 </div>
+

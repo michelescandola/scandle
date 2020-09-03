@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Biased Estimators - Ridge and Lasso regressions - Michele Scandola&#39;s personal webpage</title><meta name="Description" content="Michele Scandola&#39;s personal webpage"><meta property="og:title" content="Biased Estimators - Ridge and Lasso regressions" />
+<meta property="og:description" content="true  library(knitr) library(captioner) fig_nums &lt;- captioner() cod_nums &lt;- captioner( prefix = &quot;Code&quot; ) Some days ago I wrote some notes concerning unbiased estimators, that are the estimators that we commonly use with linear models, and statistical analyses such as ANOVA, linear regression, etc…
+Unbiased estimators try to estimate the best unknown but not casual, \(\beta\) coefficients of the independent variables (i.v.) to explain the observed dependent variable \(y\) (d." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/presentations/20200903biasedestimators/biased-estimators-ridge-and-lasso-regressions/" />
+<meta property="og:image" content="/logo.png"/>
+<meta property="article:published_time" content="2020-08-22T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-08-22T17:30:13+02:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content="Biased Estimators - Ridge and Lasso regressions"/>
+<meta name="twitter:description" content="true  library(knitr) library(captioner) fig_nums &lt;- captioner() cod_nums &lt;- captioner( prefix = &quot;Code&quot; ) Some days ago I wrote some notes concerning unbiased estimators, that are the estimators that we commonly use with linear models, and statistical analyses such as ANOVA, linear regression, etc…
+Unbiased estimators try to estimate the best unknown but not casual, \(\beta\) coefficients of the independent variables (i.v.) to explain the observed dependent variable \(y\) (d."/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/presentations/20200903biasedestimators/biased-estimators-ridge-and-lasso-regressions/" /><link rel="prev" href="/presentations/20200819linearregression/unbiased-linear-regression/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Biased Estimators - Ridge and Lasso regressions",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/presentations\/20200903biasedestimators\/biased-estimators-ridge-and-lasso-regressions\/"
+        },"image": ["\/images\/Apple-Devices-Preview.png"],"genre": "presentations","keywords": "(Generalized) Linear Models, R","wordcount":  1577 ,
+        "url": "\/presentations\/20200903biasedestimators\/biased-estimators-ridge-and-lasso-regressions\/","datePublished": "2020-08-22T00:00:00+00:00","dateModified": "2020-08-22T17:30:13+02:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "Michele Scandola","logo": "\/images\/myself.png"},"author": {
+                "@type": "Person",
+                "name": "Michele Scandola"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Michele Scandola&#39;s personal webpage"><span class="header-title-pre"><i class='fas fa-brain fa-fw'></i></span>Michele Scandola</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/blog/"> Blog </a><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="https://github.com/michelescandola" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Michele Scandola&#39;s personal webpage"><span class="header-title-pre"><i class='fas fa-brain fa-fw'></i></span>Michele Scandola</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/blog/" title="">Blog</a><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="https://github.com/michelescandola" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="page single special"><h1 class="single-title animated pulse faster">Biased Estimators - Ridge and Lasso regressions</h1><div class="content" id="content">
+
+<div id="TOC">
+true
+</div>
+
+<pre class="r"><code>library(knitr)
+library(captioner)
+fig_nums &lt;- captioner()
+cod_nums &lt;- captioner( prefix = &quot;Code&quot; )</code></pre>
+<p>Some days ago I wrote some notes concerning
+<a href="/presentations/20200819linearregression/unbiased-linear-regression/index.html">unbiased estimators</a>,
+that are the estimators that we commonly use with linear models, and statistical
+analyses such as ANOVA, linear regression, etc…</p>
+<p><em>Unbiased</em> estimators try to estimate the best unknown but not casual,
+<span class="math inline">\(\beta\)</span> coefficients of the <em>independent variables</em> (i.v.)
+to explain the observed <em>dependent variable</em> <span class="math inline">\(y\)</span> (d.v.),
+minimising the error between the variables that can be sampled from the
+linear model (<span class="math inline">\(\hat{y}\)</span>) and the observed data (<span class="math inline">\(y\)</span>).</p>
+<p>In other terms, they try to reduce the error between <span class="math inline">\(y\)</span> and <span class="math inline">\(\hat{y}\)</span> with
+different methodologies. We can also say that they look for the values
+of the coefficients that better “explain the variance”.</p>
+<div id="problems-with-the-unbiased-estimators" class="section level2">
+<h2>Problems with the Unbiased Estimators</h2>
+<p>That’s great! However, having models that predict so brilliantly the behaviour
+of a specific sample of data coming from a statistical population, can lead
+to the problem that the model is not actually so useful in predicting new data
+and, therefore, it has not really captured the values of the coefficients
+at a <em>population-level</em>. This is called <em>overfitting</em>.</p>
+<blockquote>
+<p><a href="https://en.wikipedia.org/wiki/Overfitting"><em>Overfitting</em></a>:
+the production of an analysis that corresponds too
+closely or exactly to a particular set of data, and may therefore fail to fit
+additional data or predict future observations reliably</p>
+</blockquote>
+<p>This may also be caused by the use of an excessive number of i.v. in the
+analysis.</p>
+<p>In order to prevent this problem, <em>biased</em> estimators have been proposed.</p>
+<blockquote>
+<p><em>Biased estimators</em>: algorithms to estimate the values of the coefficients
+with penalisation coefficients, in order to have coefficients that do not
+allow the perfect correspondence between <span class="math inline">\(\hat{y}\)</span> and <span class="math inline">\(y\)</span>.</p>
+</blockquote>
+<p>Concepts that are often used to understand better when a statistical model
+is a good model are the <em>bias</em> and the <em>variance</em>. Please, note that in this
+context <em>bias</em> has
+no relation with cognitive bias, and <em>variance</em> in this context is not the
+dispersion statistics that we all know.</p>
+<blockquote>
+<p>The <em>bias</em> is the error of the model in fitting the observed data <span class="math inline">\(y\)</span>.
+A large <em>bias</em> means that the model <em>underfits</em> the sample of data.</p>
+</blockquote>
+<pre class="r"><code>x = 1:10
+y = x^3/50 + rnorm(10, sd = 1)
+
+plot(x,y)
+abline(lm(y~x), col=&quot;red&quot;)
+points(x , x^3/50, type=&quot;l&quot;, col=&quot;green&quot;)
+legend(&quot;top&quot;, col = c(&quot;red&quot; , &quot;green&quot;), lty = 1,
+       legend = c(&quot;Underfit&quot; , &quot;Correct fit&quot;))</code></pre>
+<p><img src="/post/2020-08-22-biased-estimators-ridge-and-lasso-regressions_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>Figure 1: Graphical representation of an hypothetical distribution fitted by two models, one with correct fit (y ~ x^3), and one that underfits the data (y ~ x)</p>
+<blockquote>
+<p>The <em>variance</em> is the error of the model in predicting new data.
+A large <em>variance</em> means that the model <em>overfits</em> the
+original sample of data <span class="math inline">\(y\)</span>.</p>
+</blockquote>
+<pre class="r"><code>x = seq(from = 1, to = 5, by = 0.1)
+y = x^3/100 + cos(x*10)^2
+
+x1 = seq(from = 1, to = 5, by = 0.001)
+y1 = x1^3/100 + cos(x1*10)^2
+
+plot(x,y)
+points(x1, y1, type=&quot;l&quot;,  col =&quot; red&quot;)
+points(x, x^3/100 + mean(cos(x*10)^2), type = &quot;l&quot;, col = &quot;green&quot;)
+legend(&quot;topleft&quot;, col = c(&quot;red&quot; , &quot;green&quot;), lty = 1,
+       legend = c(&quot;Overfit&quot; , &quot;Correct fit&quot;))</code></pre>
+<p><img src="/post/2020-08-22-biased-estimators-ridge-and-lasso-regressions_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>Figure 2: Graphical representation of an hypothetical distribution fitted by two models, one with correct fit (y ~ x^3), and one that overfits the data (y ~ x^3 + cos(x * 10)^2)</p>
+<p>(to be honest, the overfitted curve is obtained by using exactly
+y ~ x^3 + cos(x * 10)^2, but for simplicity let’s pretend that the
+cosine part is just random variation)</p>
+<p>A good model should have low <em>bias</em> and low <em>variance</em>, finding the trade-off between them.</p>
+<pre class="r"><code>x = 1:100
+y = x^5 / 1e10
+
+plot( x = 1:100 , y , type = &quot;l&quot; , col = &quot;red&quot;)
+points( x = 100:1 , y = y , type = &quot;l&quot;, col = &quot;blue&quot;)
+points( x = 1:100 , y = y + y[100:1] + 0.1 , type = &quot;l&quot; , col = &quot;green&quot;)
+legend(&quot;top&quot;, col = c(&quot;red&quot; , &quot;blue&quot; , &quot;green&quot;), lty = 1, legend = c(&quot;Bias&quot; , &quot;Variance&quot; , &quot;Error trade-Off&quot;))</code></pre>
+<p><img src="/post/2020-08-22-biased-estimators-ridge-and-lasso-regressions_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>Figure 3: Graphical representation of the Bias and Variance errors of the model, and hypothetical trade-off curve.
+Please note that the Trade-off curve has been displaced for a better visualization</p>
+<p>The most famous among the <em>biased estimators</em> are the:</p>
+<ul>
+<li>Ridge regression (a.k.a. L2 regularization)</li>
+<li>Lasso regression (a.k.a. L1 regularization)</li>
+</ul>
+</div>
+<div id="ridge-regression" class="section level2">
+<h2>Ridge regression</h2>
+<p>Ridge regression tries to find the best coefficients (<span class="math inline">\(\beta\)</span>s) that describe
+our observed sample of data (<span class="math inline">\(y\)</span>), penalising the computation of the
+coefficients with a coefficient <span class="math inline">\(\lambda\)</span>.</p>
+<p>Therefore, the idea is to find the <span class="math inline">\(\beta\)</span>s of the model
+that best fit the data, with an additional
+penalysing term <span class="math inline">\(\lambda\)</span>.</p>
+<p><span class="math inline">\(\beta = \underset{\beta}{\operatorname{arg min}}~S(\beta, \lambda)\)</span></p>
+<p>where</p>
+<p><span class="math inline">\(S(\beta, \lambda) = \sum_{i=1}^{n} \frac{1}{2} ( y_i - \sum_{j=1}^p x_{i,j} \beta_{j})^2+\lambda \sum_{j=1}^p \beta_j^2\)</span></p>
+<p><span class="math inline">\(\lambda\)</span> is the <em>complexity</em> parameter, and penalises the <span class="math inline">\(\beta\)</span>s, limiting
+<em>overfitting</em> and shrinking large <span class="math inline">\(\beta\)</span>s.</p>
+<p>In order to better understand how ridge regression works,
+we can use an iterative, inefficient, and so simplified to be simply wrong,
+function just to have an idea concerning how ridge regression works.</p>
+<p>In this function we create some random data gaussianally distributed,
+coming from a linear model with mean 1 (<span class="math inline">\(\beta_0\)</span>) and
+regressor <span class="math inline">\(\beta_1 = 2\)</span>.</p>
+<p>The same data used for <a href="/presentations/20200819linearregression/unbiased-linear-regression/index.html">unbiased estimators</a>.</p>
+<p>We set our <span class="math inline">\(\lambda\)</span> to 0.1.</p>
+<pre class="r"><code>## creating the data
+set.seed( 1 )
+# independent variable
+x &lt;- 1:10
+#   beta0 + i.v. * beta1 + epsilon
+y &lt;- 1 + x * 2 + rnorm( n = 10 )
+
+find_ridge_least_squares &lt;- function( y , x , beta0 , beta1 , lambda ) {
+  
+  # variable for the beta1 that best fits the data
+  best_beta &lt;- c(NULL, NULL)
+  # variable for memorizing the squared errors
+  best_err  &lt;- Inf
+  for(int in beta0){
+    for( bet in beta1 ){
+      yhat &lt;- int + x * bet
+      err  &lt;- ( sum( ( y - yhat)^2 ) / 2 ) + ( lambda * ( int^2 + bet^2 ) )
+      best_beta[1] &lt;- ifelse( best_err &gt; err,
+                           int,
+                           best_beta[1])
+      best_beta[2] &lt;- ifelse( best_err &gt; err,
+                           bet,
+                           best_beta[2])
+      best_err  &lt;- ifelse( best_err &gt; err,
+                           err,
+                           best_err)
+    }
+  }
+  
+  return( best_beta )
+}
+
+print(
+  find_ridge_least_squares( y ,
+                            x,
+                            beta0 = seq(from = 0, to = 3, by = 0.01),
+                            beta1 = seq(from = 1, to = 3, by = 0.01),
+                            lambda = 0.01 )
+)</code></pre>
+<pre><code>## [1] 0.80 2.06</code></pre>
+<p>Code 1: Exemplification code for a ridge regression</p>
+<p>The estimations are not so far from the real values. However, let’s
+see how the real function works, in library <code>glmnet</code>:</p>
+<pre class="r"><code>library(&quot;glmnet&quot;)</code></pre>
+<pre><code>## Carico il pacchetto richiesto: Matrix</code></pre>
+<pre><code>## Loaded glmnet 4.0-2</code></pre>
+<pre class="r"><code>fit &lt;- glmnet(y = y, x = cbind(1,x),
+              lambda = 0.01, alpha = 0)
+
+print( coef( fit ) )</code></pre>
+<pre><code>## 3 x 1 sparse Matrix of class &quot;dgCMatrix&quot;
+##                    s0
+## (Intercept) 0.8501507
+##             .        
+## x           2.0512822</code></pre>
+<p>Code 2: Use of glmnet for ridge regression</p>
+<p>The minimisation problem has a unique solution:</p>
+<p><span class="math inline">\(\beta = (X^TX + \lambda I)^{-1}X^Ty\)</span></p>
+<pre class="r"><code>X = cbind( 1 , x )
+
+solve( t(X) %*% X + 0.01 * diag(2) ) %*% t(X) %*% y</code></pre>
+<pre><code>##        [,1]
+##   0.8286793
+## x 2.0550354</code></pre>
+<p>Code 3: Matrix computation for Ridge regression</p>
+<p>In this case we can see that the algorithms used in the <code>glmnet</code> function
+and in the matrix computation are different.</p>
+<p><code>glmnet</code> is a complex function that allows to compute Ridge regression (alpha = 0),
+Lasso regression (alpha = 1) and Elasticnet regression (alpha <span class="math inline">\(\in\)</span> [0, 1]),
+and probably it is using
+algorithms that are more advanced than the classical ones that I am using here.</p>
+</div>
+<div id="lasso-regression" class="section level2">
+<h2>Lasso regression</h2>
+<p>The Least Absolute Shrinkage and Selection Operator (Lasso) regression
+is very similar to the Ridge regression.</p>
+<p>In fact, it uses the <span class="math inline">\(\lambda\)</span> coefficient of penalisation already seen
+in the Ridge regression.</p>
+<p>Therefore, the minimisation problem is always:</p>
+<p><span class="math inline">\(\beta = \underset{\beta}{\operatorname{arg min}}~S(\beta, \lambda)\)</span></p>
+<p>but the <span class="math inline">\(S\)</span> function changes:</p>
+<p><span class="math inline">\(S(\beta, \lambda) = \frac{1}{n}\sum_{i=1}^{n} ( y_i - \sum_{j=1}^p x_{i,j} \beta_{j})^2+\frac{\lambda}{2} \sum_{j=1}^p |\beta_j|\)</span></p>
+<pre class="r"><code>find_lasso_least_squares &lt;- function( y , x , beta0 , beta1 , lambda ) {
+  
+  # variable for the beta1 that best fits the data
+  best_beta &lt;- c(NULL, NULL)
+  # variable for memorizing the squared errors
+  best_err  &lt;- Inf
+  for(int in beta0){
+    for( bet in beta1 ){
+      yhat &lt;- int + x * bet
+      err  &lt;- ( sum( ( y - yhat)^2 ) / ( length(yhat) ) ) +
+        ( lambda / 2 * abs( int + bet ) )
+      best_beta[1] &lt;- ifelse( best_err &gt; err,
+                           int,
+                           best_beta[1])
+      best_beta[2] &lt;- ifelse( best_err &gt; err,
+                           bet,
+                           best_beta[2])
+      best_err  &lt;- ifelse( best_err &gt; err,
+                           err,
+                           best_err)
+    }
+  }
+  
+  return( best_beta )
+}
+
+print(
+  find_lasso_least_squares( y ,
+                            x,
+                            beta0 = seq(from = 0, to = 3, by = 0.01),
+                            beta1 = seq(from = 1, to = 3, by = 0.01),
+                            lambda = 0.01 )
+)</code></pre>
+<pre><code>## [1] 0.80 2.06</code></pre>
+<p>Code 4: Exemplification code for a Lasso regression</p>
+<pre class="r"><code>fit &lt;- glmnet(y = y, x = cbind(1,x),
+              lambda = 0.01)
+
+print( coef( fit ) )</code></pre>
+<pre><code>## 3 x 1 sparse Matrix of class &quot;dgCMatrix&quot;
+##                   s0
+## (Intercept) 0.850325
+##             .       
+## x           2.051251</code></pre>
+<p>Code 5: Use of glmnet for Lasso regression</p>
+<p>The minimisation problem can be divided in two steps:</p>
+<ol style="list-style-type: decimal">
+<li>finding the <span class="math inline">\(\beta\)</span>s with OLS (<span class="math inline">\(\beta = (X^TX)^{-1}X^Ty\)</span>)</li>
+<li>applying the Lasso penalisation (<span class="math inline">\((1+N \frac{\lambda}{2})^{-1}\)</span>)</li>
+</ol>
+<p><span class="math inline">\(\beta = (1+N \frac{\lambda}{2})^{-1}[(X^TX)^{-1}X^Ty]\)</span></p>
+<pre class="r"><code>X = cbind( 1 , x )
+
+(1 + nrow(X) * 0.01 / 2)^(-1) *
+solve( t(X) %*% X ) %*% t(X) %*% y</code></pre>
+<pre><code>##        [,1]
+##   0.7915966
+## x 1.9568877</code></pre>
+<p>Also in this case the results are different from the <code>glmnet</code> function.
+I suspect that in the <code>glmnet</code> function they are using more advanced versions
+of the Lasso regression.</p>
+</div>
+</div><div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></div></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.74.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"$$","right":"$$"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"},{"display":false,"left":"$","right":"$"}],"strict":false},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

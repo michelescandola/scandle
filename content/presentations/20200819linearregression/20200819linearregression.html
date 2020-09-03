@@ -52,7 +52,7 @@ here we focus on <em>unbiased</em> estimators.</p>
 <div id="independent-and-dependent-variables" class="section level2">
 <h2>Independent and Dependent variables</h2>
 <blockquote>
-<p>Linear regression try to estimate the parameters <span class="math inline">\(\beta\)</span>
+<p>Linear regression tries to estimate the parameters <span class="math inline">\(\beta\)</span>
 (independent variables)
 that allow to better “explain the variance”
 (have the lowest variance of residuals - errors <span class="math inline">\(\epsilon\)</span>)
@@ -210,6 +210,17 @@ print( mdl )</code></pre>
 <pre class="r"><code>plot( x , y )
 abline(mdl , col= &quot;red&quot;)</code></pre>
 <p><img src="/presentations/20200819linearregression/20200819linearregression_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>The <code>lm</code> function does not use an iterative function, that sequentially tries
+a series of values, but it uses the solution of the minimization
+problem.</p>
+<p><span class="math inline">\(\beta = (X^TX)^{-1}X^Ty\)</span></p>
+<p>that in R is:</p>
+<pre class="r"><code>X = cbind( 1 , x )
+
+solve( t(X) %*% X ) %*% t(X) %*% y</code></pre>
+<pre><code>##        [,1]
+##   0.8311764
+## x 2.0547321</code></pre>
 <div id="gauss-markov-theorem" class="section level3">
 <h3>Gauss-Markov Theorem</h3>
 <p>The OLS should be applied when the data sample satisfies the
