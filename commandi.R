@@ -6,4 +6,4 @@ blogdown::new_site(theme = "dillonzq/LoveIt")
 blogdown::build_site()
 
 blogdown::serve_site()## ricarica sito
-blogdown::new_post("ciao")
+blogdown::new_post("The `bmscstan` package is on CRAN!")

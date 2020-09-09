@@ -83,7 +83,7 @@ abline(lm(y~x), col=&quot;red&quot;)
 points(x , x^3/50, type=&quot;l&quot;, col=&quot;green&quot;)
 legend(&quot;top&quot;, col = c(&quot;red&quot; , &quot;green&quot;), lty = 1,
        legend = c(&quot;Underfit&quot; , &quot;Correct fit&quot;))</code></pre>
-<p><img src="/post/2020-08-22-biased-estimators-ridge-and-lasso-regressions_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p><img src="/presentations/20200903biasedestimators/2020-08-22-biased-estimators-ridge-and-lasso-regressions_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <p>Figure 1: Graphical representation of an hypothetical distribution fitted by two models, one with correct fit (y ~ x^3), and one that underfits the data (y ~ x)</p>
 <blockquote>
 <p>The <em>variance</em> is the error of the model in predicting new data.
@@ -101,7 +101,7 @@ points(x1, y1, type=&quot;l&quot;,  col =&quot; red&quot;)
 points(x, x^3/100 + mean(cos(x*10)^2), type = &quot;l&quot;, col = &quot;green&quot;)
 legend(&quot;topleft&quot;, col = c(&quot;red&quot; , &quot;green&quot;), lty = 1,
        legend = c(&quot;Overfit&quot; , &quot;Correct fit&quot;))</code></pre>
-<p><img src="/post/2020-08-22-biased-estimators-ridge-and-lasso-regressions_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p><img src="/presentations/20200903biasedestimators/2020-08-22-biased-estimators-ridge-and-lasso-regressions_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p>Figure 2: Graphical representation of an hypothetical distribution fitted by two models, one with correct fit (y ~ x^3), and one that overfits the data (y ~ x^3 + cos(x * 10)^2)</p>
 <p>(to be honest, the overfitted curve is obtained by using exactly
 y ~ x^3 + cos(x * 10)^2, but for simplicity let’s pretend that the
@@ -114,7 +114,7 @@ plot( x = 1:100 , y , type = &quot;l&quot; , col = &quot;red&quot;)
 points( x = 100:1 , y = y , type = &quot;l&quot;, col = &quot;blue&quot;)
 points( x = 1:100 , y = y + y[100:1] + 0.1 , type = &quot;l&quot; , col = &quot;green&quot;)
 legend(&quot;top&quot;, col = c(&quot;red&quot; , &quot;blue&quot; , &quot;green&quot;), lty = 1, legend = c(&quot;Bias&quot; , &quot;Variance&quot; , &quot;Error trade-Off&quot;))</code></pre>
-<p><img src="/post/2020-08-22-biased-estimators-ridge-and-lasso-regressions_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="/presentations/20200903biasedestimators/2020-08-22-biased-estimators-ridge-and-lasso-regressions_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>Figure 3: Graphical representation of the Bias and Variance errors of the model, and hypothetical trade-off curve.
 Please note that the Trade-off curve has been displaced for a better visualization</p>
 <p>The most famous among the <em>biased estimators</em> are the:</p>

@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Sat, 22 Aug 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 09 Sep 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
@@ -27,6 +27,19 @@ from both the sensorial and motor functionality. I finished my Ph.D. in 2015 in
 Social and Affective Neuroscience at the University “La Sapienza” or Rome
 (Italy) of &lt;a href=&#34;https://agliotilab.org/lab-staff/principal-investigator&#34; target=&#34;_blank&#34; rel=&#34;noopener noreffer&#34;&gt;prof. Salvatore M. Aglioti&lt;/a&gt;, under the
 supervision of &lt;a href=&#34;https://michelescandola.github.io/www.dsu.univr.it/?ent=persona&amp;amp;id=2097&#34; target=&#34;_blank&#34; rel=&#34;noopener noreffer&#34;&gt;prof. Valentina Moro&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>The `bmscstan` package is on CRAN!</title>
+      <link>/post/the-bmscstan-package-is-on-cran/</link>
+      <pubDate>Wed, 09 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/the-bmscstan-package-is-on-cran/</guid>
+      <description>Hi all!
+After a long journey, the bmscstan package is finally on CRAN, with a comprehensive vignette that shows how to use the package and how to check if everything is OK.
+The idea is to further extend its functions to non-gaussian dependent variables, however, this version is already ready to use.
+You can find its validation here.
+Dear all, I am very happy to announce that bmscstan, the R package for Bayesian Multilevel Single Case Models is on CRAN: https://t.</description>
     </item>
     
     <item>
