@@ -38,6 +38,11 @@ Beccherle, M., Facchetti, S., Villani, F., Zanini, M., & *Scandola, M.* (2020, J
 
 ## 2020
 
+Pacella, V., *Scandola, M.*, Beccherle, M., Bulgarelli, C., Avesani, R., Carbognin, G., Agostini, G., Thiebaut de Schotten, M., & Moro, V. (2020). Anosognosia for theory of mind deficits: A single case study and a review of the literature. Neuropsychologia, 148. https://doi.org/10.1016/j.neuropsychologia.2020.107641
+
+*Scandola M* (2020). **bmscstan: Bayesian Multilevel Single Case models using 'Stan'**. R package version 1.0.0,
+<URL: https://github.com/michelescandola/bmscstan>.
+
 *Scandola, M.*, Aglioti, S. M., Lazzeri, G., Avesani, R., Ionta, S., & Moro, V. (2020). Visuo-motor and interoceptive influences on peripersonal space representation following spinal cord injury. Scientific Reports, 10(1), 1–16. https://doi.org/10.1038/s41598-020-62080-1
 
 Moro, V., Valbusa, V., Corsi, N., Bonazzi, A., Condoleo, M. T., Broggio, E., *Scandola, M.*, & Gambina, G. (2020). Correction to: Comprehension of written texts for the assessment of clinical competence and decision making in people with mild to moderate Alzheimer disease. Neurological Sciences, 10072. https://doi.org/10.1007/s10072-020-04255-2
