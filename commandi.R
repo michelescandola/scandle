@@ -6,4 +6,4 @@ blogdown::new_site(theme = "dillonzq/LoveIt")
 blogdown::build_site()
 
 blogdown::serve_site()## ricarica sito
-blogdown::new_post("The `bmscstan` package is on CRAN!")
+blogdown::new_post("A new article is out: Anosognosia for theory of mind deficits: A single case study and a review of the literature")

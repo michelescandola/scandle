@@ -15,6 +15,8 @@ Beccherle, M., Facchetti, S., Villani, F., Zanini, M., & *Scandola, M.* (2020, J
 
 ## 2020
 
+Rossato, E., Verzini, E., *Scandola, M.*, Ferrari, F., & Bonadiman, S. (2020). Role of LCF scale as an outcome prognostic index in patients with traumatic brain injury. Neurological Sciences, 1-6. https://doi.org/10.1007/s10072-020-04852-1
+
 Pacella, V., *Scandola, M.*, Beccherle, M., Bulgarelli, C., Avesani, R., Carbognin, G., Agostini, G., Thiebaut de Schotten, M., & Moro, V. (2020). Anosognosia for theory of mind deficits: A single case study and a review of the literature. Neuropsychologia, 148. https://doi.org/10.1016/j.neuropsychologia.2020.107641
 
 *Scandola M* (2020). **bmscstan: Bayesian Multilevel Single Case models using 'Stan'**. R package version 1.0.0,
