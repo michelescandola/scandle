@@ -1,0 +1,1601 @@
+# Multiple correlations in Stan
+
+
+
+<div id="TOC">
+true
+</div>
+
+<pre class="r"><code>library(knitr)
+library(ggplot2)
+library(ggExtra)</code></pre>
+<p>In Bayesian Statistics a lot of packages are devoted in applying the most
+complex and fascinating, model-based, statistics.</p>
+<p>Something that is less covered are base-level statistics, such as
+correlation.</p>
+<!--more-->
+<p>This post is based on <strong>Rasmus Bååth</strong>’s robust correlation model in JAGS, and
+<strong>Adrian Baez-Ortega</strong> conversion in Stan.</p>
+<p>For their original contributions, see:</p>
+<ul>
+<li><a href="http://www.sumsar.net/blog/2013/08/bayesian-estimation-of-correlation/">Bayesian correlation in JAGS</a></li>
+<li><a href="http://www.sumsar.net/blog/2013/08/robust-bayesian-estimation-of-correlation/">Robust Bayesian Correlation in JAGS</a></li>
+<li><a href="https://github.com/baezortega/bayes/tree/master/robust_correlation">Robust Bayesian Correlation in Stan</a></li>
+</ul>
+<p>In this post, I start from the <strong>Rasmus Bååth</strong> and <strong>Adrian Baez-Ortega</strong> work,
+to extend it later, by adding the possibility to obtain Savage-Dickey
+density ratio Bayes Factors and the possibility to compute multiple
+correlation with a single function
+(instead to compute many one-to-one correlations, saving time and computational
+resources).</p>
+<div id="the-basic-idea" class="section level2">
+<h2>The Basic Idea</h2>
+<p>In order to compute the correlation between two normally-distributed
+variables</p>
+<p><span class="math inline">\(y \sim \mathcal{N}(\mu_y,\sigma^2_y)\)</span>
+<span class="math inline">\(x \sim \mathcal{N}(\mu_x,\sigma^2_x)\)</span></p>
+<pre class="r"><code>set.seed(4)
+
+x &lt;- rnorm(100, mean = 10, sd = 5)
+y &lt;- x * 0.7 + rnorm(100, mean = 3.7, sd = pi/2)
+
+dat &lt;- data.frame(x , y)
+
+g1 &lt;- ggplot( dat, aes(y = y, x = x) )+
+  geom_density_2d()+
+  geom_point()+
+  xlim(c(-5, 30))+
+  ylim(c(-5, 30))
+
+ggMarginal(g1, type = &quot;histogram&quot;, bins = 20)</code></pre>
+<p><img src="/presentations/20210205bayesianmultiplecorrelation/2021-02-05-bayesian-multiple-correlation_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>The brilliant idea behind this is that two variables that correlate
+they obviously share some covariance, that is composed by the
+variances and their correlation.</p>
+</div>
+<div id="from-the-covariance-matrix-to-the-correlation-matrix" class="section level2">
+<h2>From the covariance matrix to the correlation matrix</h2>
+<p>Therefore, these two independent-but-correlating normal distributions,
+can be seen as a multinormal distribution with their own variance-covariance
+matrix (a.k.a covariance matrix).</p>
+<p>Thus, our dataset becomes:</p>
+<p><span class="math inline">\([y, x] \sim \mathcal{MN}(M, \Omega)\)</span></p>
+<p>where <span class="math inline">\(M = [\mu_y, \mu_x]\)</span> is the vector of the means,
+and</p>
+<p><span class="math display">\[\Omega = 
+\left[\begin{array}{cc} 
+\sigma_y^2 &amp; \sigma_x \sigma_y \rho_{x,y}\\
+\sigma_x \sigma_y \rho_{x,y} &amp; \sigma_x^2
+\end{array}\right]
+\]</span></p>
+<p>(in order to simplify the notation, <span class="math inline">\(\sigma\)</span> will be the variance and not,
+as usual, the standard deviation).</p>
+<p>The variance-covariance matrix <span class="math inline">\(\Omega\)</span> can be computed starting from the
+diagonal matrix of variances <span class="math inline">\(\Sigma\)</span> and the correlation matrix <span class="math inline">\(R\)</span></p>
+<p><span class="math display">\[\Omega = \Sigma \times R \times \Sigma =
+\left[\begin{array}{cc} 
+\sigma_y &amp; 0\\
+0 &amp; \sigma_x
+\end{array}\right] \times
+\left[\begin{array}{cc} 
+1 &amp; \rho_{x,y}\\
+\rho_{x,y} &amp; 1
+\end{array}\right] \times
+\left[\begin{array}{cc} 
+\sigma_y &amp; 0\\
+0 &amp; \sigma_x
+\end{array}\right] 
+\]</span></p>
+<p>Just to confirm that everything its written here is correct, some math:</p>
+<pre class="r"><code># std dev for    x  y    with square-elevation to have the variances
+Sigma &lt;- diag( c(5, pi/2)^2 )
+
+kable(Sigma, caption = &quot;Variances diagonal matrix&quot;)</code></pre>
+<pre><code>## Warning in kable_pipe(x = structure(c(&quot;25&quot;, &quot;0&quot;, &quot;0.000000&quot;, &quot;2.467401&quot;), .Dim =
+## c(2L, : The table should have a header (column names)</code></pre>
+<table>
+<caption><span id="tab:unnamed-chunk-3">Table 1: </span>Variances diagonal matrix</caption>
+<tbody>
+<tr class="odd">
+<td align="right">25</td>
+<td align="right">0.000000</td>
+</tr>
+<tr class="even">
+<td align="right">0</td>
+<td align="right">2.467401</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>R &lt;- matrix( c(1  , 0.7,
+               0.7, 1  ),
+             byrow = TRUE,
+             ncol = 2 )
+
+kable(R, caption = &quot;Correlation matrix&quot;)</code></pre>
+<pre><code>## Warning in kable_pipe(x = structure(c(&quot;1.0&quot;, &quot;0.7&quot;, &quot;0.7&quot;, &quot;1.0&quot;), .Dim =
+## c(2L, : The table should have a header (column names)</code></pre>
+<table>
+<caption><span id="tab:unnamed-chunk-3">Table 1: </span>Correlation matrix</caption>
+<tbody>
+<tr class="odd">
+<td align="right">1.0</td>
+<td align="right">0.7</td>
+</tr>
+<tr class="even">
+<td align="right">0.7</td>
+<td align="right">1.0</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>kable(Sigma %*% R %*% Sigma, digits = 2, caption = &quot;Covariance matrix&quot;)</code></pre>
+<pre><code>## Warning in kable_pipe(x = structure(c(&quot;625.00&quot;, &quot;43.18&quot;, &quot;43.18&quot;, &quot;6.09&quot;: The
+## table should have a header (column names)</code></pre>
+<table>
+<caption><span id="tab:unnamed-chunk-3">Table 1: </span>Covariance matrix</caption>
+<tbody>
+<tr class="odd">
+<td align="right">625.00</td>
+<td align="right">43.18</td>
+</tr>
+<tr class="even">
+<td align="right">43.18</td>
+<td align="right">6.09</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>kable(cov2cor(Sigma %*% R %*% Sigma),
+      caption = &quot;If everything is correct, we should have our correlation matrix back&quot;)</code></pre>
+<pre><code>## Warning in kable_pipe(x = structure(c(&quot;1.0&quot;, &quot;0.7&quot;, &quot;0.7&quot;, &quot;1.0&quot;), .Dim =
+## c(2L, : The table should have a header (column names)</code></pre>
+<table>
+<caption><span id="tab:unnamed-chunk-3">Table 1: </span>If everything is correct, we should have our correlation matrix back</caption>
+<tbody>
+<tr class="odd">
+<td align="right">1.0</td>
+<td align="right">0.7</td>
+</tr>
+<tr class="even">
+<td align="right">0.7</td>
+<td align="right">1.0</td>
+</tr>
+</tbody>
+</table>
+<p>Well, yes, nothing spectacular, but at least we are sure that the math is OK.</p>
+<div id="the-prior-distributions-from-the-rasmus-bååth-work-and-a-normal-bayesian-correlation" class="section level3">
+<h3>The prior distributions from the <strong>Rasmus Bååth</strong> work and a normal Bayesian correlation</h3>
+<p>In order to obtain a posterior distribution for <span class="math inline">\(\rho_{x,y}\)</span>,
+in our Bayesian code we should estimate the posterior distribution for:</p>
+<ul>
+<li><p><span class="math inline">\(M\)</span>, that for <strong>Rasmus Bååth</strong> suggestions, each element can be
+non-informative
+<span class="math inline">\(\mu \sim \mathcal{N}(0, 1000)\)</span></p></li>
+<li><p>The <span class="math inline">\(\Sigma\)</span> diagonal matrix, that with an non-informative prior each element
+would be:
+<span class="math inline">\(\sigma \sim \mathcal{U}(0, 1000)\)</span></p></li>
+<li><p><span class="math inline">\(rho\)</span>, whose non-informative distribution would be
+<span class="math inline">\(\rho \sim \mathcal{U}(-1, 1)\)</span></p>
+<p>Therefore, the Stan code is:</p></li>
+</ul>
+<pre class="r"><code>stancode1 &lt;-&quot;
+data {
+    int&lt;lower=1&gt; N;  // number of observations
+    vector[2] x[N];  // input data: rows are observations, columns are the two variables
+}
+
+parameters {
+    vector[2] mu;                 // means vector
+    real&lt;lower=0&gt; sigma[2];       // variances vector
+    real&lt;lower=-1, upper=1&gt; rho;    // correlation coefficient
+}
+
+transformed parameters {
+    // Covariance matrix
+    cov_matrix[2] cov = [[      sigma[1] ^ 2       , sigma[1] * sigma[2] * rho],
+                         [sigma[1] * sigma[2] * rho,       sigma[2] ^ 2       ]];
+}
+
+model {
+    // Likelihood
+    // Bivariate Student&#39;s t-distribution instead of normal for robustness
+    x ~ multi_normal(mu, cov);
+
+    // Noninformative priors on all parameters
+    sigma ~ uniform(0, 1000);
+    mu ~ normal(0, 1000);
+    rho ~ uniform(-1,1);//non informative prior between -1 and 1
+}
+
+generated quantities {
+    // Random samples from the estimated bivariate normal distribution (for assessment of fit)
+    vector[2] x_rand;
+    x_rand = multi_normal_rng(mu, cov);
+}&quot;</code></pre>
+<p>… and to call it, you just need to prepare you data list and run the analysis</p>
+<pre class="r"><code>library(rstan)</code></pre>
+<pre><code>## Carico il pacchetto richiesto: StanHeaders</code></pre>
+<pre><code>## rstan (Version 2.21.2, GitRev: 2e1f913d3ca3)</code></pre>
+<pre><code>## For execution on a local, multicore CPU with excess RAM we recommend calling
+## options(mc.cores = parallel::detectCores()).
+## To avoid recompilation of unchanged Stan programs, we recommend calling
+## rstan_options(auto_write = TRUE)</code></pre>
+<pre class="r"><code>library(bayesplot)</code></pre>
+<pre><code>## This is bayesplot version 1.7.2</code></pre>
+<pre><code>## - Online documentation and vignettes at mc-stan.org/bayesplot</code></pre>
+<pre><code>## - bayesplot theme set to bayesplot::theme_default()</code></pre>
+<pre><code>##    * Does _not_ affect other ggplot2 plots</code></pre>
+<pre><code>##    * See ?bayesplot_theme_set for details on theme setting</code></pre>
+<pre class="r"><code>data.list &lt;- list(
+  x = cbind( x, y ),
+  N = nrow( dat )
+)
+
+mdlCor1 &lt;- stan(
+  model_code = stancode1,
+  data = data.list,
+  pars = &quot;rho&quot;,
+  refresh = 0
+)</code></pre>
+<pre><code>## Trying to compile a simple C file</code></pre>
+<pre><code>## Running /usr/lib/R/bin/R CMD SHLIB foo.c
+## gcc -std=gnu99 -I&quot;/usr/share/R/include&quot; -DNDEBUG   -I&quot;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/Rcpp/include/&quot;  -I&quot;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppEigen/include/&quot;  -I&quot;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppEigen/include/unsupported&quot;  -I&quot;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/BH/include&quot; -I&quot;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/StanHeaders/include/src/&quot;  -I&quot;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/StanHeaders/include/&quot;  -I&quot;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppParallel/include/&quot;  -I&quot;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/rstan/include&quot; -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DBOOST_NO_AUTO_PTR  -include &#39;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp&#39;  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1      -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-8T8CYO/r-base-4.0.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c foo.c -o foo.o
+## In file included from /home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppEigen/include/Eigen/Core:88,
+##                  from /home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppEigen/include/Eigen/Dense:1,
+##                  from /home/michele/R/x86_64-pc-linux-gnu-library/4.0/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:13,
+##                  from &lt;command-line&gt;:
+## /home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppEigen/include/Eigen/src/Core/util/Macros.h:613:1: error: unknown type name ‘namespace’
+##   613 | namespace Eigen {
+##       | ^~~~~~~~~
+## /home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppEigen/include/Eigen/src/Core/util/Macros.h:613:17: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+##   613 | namespace Eigen {
+##       |                 ^
+## In file included from /home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppEigen/include/Eigen/Dense:1,
+##                  from /home/michele/R/x86_64-pc-linux-gnu-library/4.0/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:13,
+##                  from &lt;command-line&gt;:
+## /home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppEigen/include/Eigen/Core:96:10: fatal error: complex: File o directory non esistente
+##    96 | #include &lt;complex&gt;
+##       |          ^~~~~~~~~
+## compilation terminated.
+## make: *** [/usr/lib/R/etc/Makeconf:172: foo.o] Errore 1</code></pre>
+<pre class="r"><code>kable( summary(mdlCor1)[[1]] , digits = 3,
+       caption = &quot;Posterior distribution for the rho parameter&quot;)</code></pre>
+<table>
+<caption><span id="tab:unnamed-chunk-5">Table 2: </span>Posterior distribution for the rho parameter</caption>
+<colgroup>
+<col width="5%" />
+<col width="10%" />
+<col width="9%" />
+<col width="6%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="6%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">mean</th>
+<th align="right">se_mean</th>
+<th align="right">sd</th>
+<th align="right">2.5%</th>
+<th align="right">25%</th>
+<th align="right">50%</th>
+<th align="right">75%</th>
+<th align="right">97.5%</th>
+<th align="right">n_eff</th>
+<th align="right">Rhat</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">rho</td>
+<td align="right">0.879</td>
+<td align="right">0.001</td>
+<td align="right">0.023</td>
+<td align="right">0.827</td>
+<td align="right">0.866</td>
+<td align="right">0.881</td>
+<td align="right">0.896</td>
+<td align="right">0.919</td>
+<td align="right">1868.711</td>
+<td align="right">1.000</td>
+</tr>
+<tr class="even">
+<td align="left">lp__</td>
+<td align="right">-298.518</td>
+<td align="right">0.039</td>
+<td align="right">1.569</td>
+<td align="right">-302.417</td>
+<td align="right">-299.336</td>
+<td align="right">-298.207</td>
+<td align="right">-297.344</td>
+<td align="right">-296.436</td>
+<td align="right">1581.159</td>
+<td align="right">1.002</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>mcmc_combo(
+  mdlCor1,
+  pars = &quot;rho&quot;
+)</code></pre>
+<div class="figure"><span id="fig:unnamed-chunk-5"></span>
+<img src="/presentations/20210205bayesianmultiplecorrelation/2021-02-05-bayesian-multiple-correlation_files/figure-html/unnamed-chunk-5-1.png" alt="Density and trace plot for our rho parameter of the first bayesian correlation in stan" width="672" />
+<p class="caption">
+Figure 1: Density and trace plot for our rho parameter of the first bayesian correlation in stan
+</p>
+</div>
+<p>Ok, so here we have some results.</p>
+<p>I am not showing you how to check if the model is ok, etc… etc…
+<strong>Rasmus Bååth</strong> did a great job, so you might want to take a look at his page.</p>
+</div>
+</div>
+<div id="the-bayesian-robust-correlation" class="section level2">
+<h2>The Bayesian Robust Correlation</h2>
+<p>Anyway, the best part of the <strong>Rasmus Bååth</strong> work was to enhance the
+correlation concept towards a robust correlation that, at the best
+of my knowledge, has no similarities with any “traditional” correlation coefs.</p>
+<blockquote>
+<p>Robust: more resistent to outliers</p>
+</blockquote>
+<p>Therefore, as it is usually done to have robust linear models in Bayesian
+Statistics, the prior for our observed variables is not anymore a
+Normal distribution, but a Student’s t distribution with unknown <span class="math inline">\(\nu\)</span>
+degrees of freedom.</p>
+<p>The Student’s t distribution has strong connections with the Normal
+distribution but, changing its degrees of freedom (<span class="math inline">\(\nu\)</span>), the tails can allow
+more probability at the extremes (smaller degrees of freedom), or less probability
+(larger degrees of freedom). It is known that a Student’s t distribution with
+<span class="math inline">\(\nu \to + \inf\)</span> is a Normal distribution.</p>
+<p>Smaller <span class="math inline">\(\nu\)</span> it is allowed that extreme values are further from the
+center of the distribution (namely, the <span class="math inline">\(\mu\)</span> of the Student’s t
+distribution is more resilient to outliers), while greater <span class="math inline">\(\nu\)</span> values
+makes <span class="math inline">\(\mu\)</span> more dependent to extreme values.</p>
+<p>Consequently, in the code we changed these prior distributions:</p>
+<ul>
+<li><span class="math inline">\(M\)</span>, <span class="math inline">\(\mu \sim \mathcal{Student~t}(\nu, 0, 1000)\)</span></li>
+<li><span class="math inline">\(\nu \sim \mathcal{U}(0, 1000)\)</span></li>
+</ul>
+<pre class="r"><code>stancode2 &lt;-&quot;
+data {
+    int&lt;lower=1&gt; N;  // number of observations
+    vector[2] x[N];  // input data: rows are observations, columns are the two variables
+}
+
+parameters {
+    vector[2] mu;                 // mean vector of the marginal t distributions
+    real&lt;lower=0&gt; sigma[2];       // variance vector of the marginal t distributions
+    real&lt;lower=1&gt; nu;             // degrees of freedom of the marginal t distributions
+    real&lt;lower=-1, upper=1&gt; rho;  // correlation coefficient
+}
+
+transformed parameters {
+    // Covariance matrix
+    cov_matrix[2] cov = [[      sigma[1] ^ 2       , sigma[1] * sigma[2] * rho],
+                         [sigma[1] * sigma[2] * rho,       sigma[2] ^ 2       ]];
+}
+
+model {
+    // Likelihood
+    // Bivariate Student&#39;s t-distribution instead of normal for robustness
+    x ~ multi_student_t(nu, mu, cov);
+
+    // Noninformative priors on all parameters
+    sigma ~ uniform(0, 1000);
+    mu ~ normal(0, 1000);
+    nu ~ uniform(0,1000);
+    rho ~ uniform(-1,1);//non informative prior between -1 and 1
+}
+
+generated quantities {
+    // Random samples from the estimated bivariate t-distribution (for assessment of fit)
+    vector[2] x_rand;
+    x_rand = multi_student_t_rng(nu, mu, cov);
+}
+&quot;</code></pre>
+<p>and these are the new results:</p>
+<pre class="r"><code>mdlCor2 &lt;- stan(
+  model_code = stancode2,
+  data = data.list,
+  pars = c(&quot;rho&quot;,&quot;nu&quot;),
+  refresh = 0
+)</code></pre>
+<pre><code>## Trying to compile a simple C file</code></pre>
+<pre><code>## Running /usr/lib/R/bin/R CMD SHLIB foo.c
+## gcc -std=gnu99 -I&quot;/usr/share/R/include&quot; -DNDEBUG   -I&quot;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/Rcpp/include/&quot;  -I&quot;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppEigen/include/&quot;  -I&quot;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppEigen/include/unsupported&quot;  -I&quot;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/BH/include&quot; -I&quot;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/StanHeaders/include/src/&quot;  -I&quot;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/StanHeaders/include/&quot;  -I&quot;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppParallel/include/&quot;  -I&quot;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/rstan/include&quot; -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DBOOST_NO_AUTO_PTR  -include &#39;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp&#39;  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1      -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-8T8CYO/r-base-4.0.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c foo.c -o foo.o
+## In file included from /home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppEigen/include/Eigen/Core:88,
+##                  from /home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppEigen/include/Eigen/Dense:1,
+##                  from /home/michele/R/x86_64-pc-linux-gnu-library/4.0/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:13,
+##                  from &lt;command-line&gt;:
+## /home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppEigen/include/Eigen/src/Core/util/Macros.h:613:1: error: unknown type name ‘namespace’
+##   613 | namespace Eigen {
+##       | ^~~~~~~~~
+## /home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppEigen/include/Eigen/src/Core/util/Macros.h:613:17: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+##   613 | namespace Eigen {
+##       |                 ^
+## In file included from /home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppEigen/include/Eigen/Dense:1,
+##                  from /home/michele/R/x86_64-pc-linux-gnu-library/4.0/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:13,
+##                  from &lt;command-line&gt;:
+## /home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppEigen/include/Eigen/Core:96:10: fatal error: complex: File o directory non esistente
+##    96 | #include &lt;complex&gt;
+##       |          ^~~~~~~~~
+## compilation terminated.
+## make: *** [/usr/lib/R/etc/Makeconf:172: foo.o] Errore 1</code></pre>
+<pre><code>## Warning: There were 3290 divergent transitions after warmup. See
+## http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
+## to find out why this is a problem and how to eliminate them.</code></pre>
+<pre><code>## Warning: Examine the pairs() plot to diagnose sampling problems</code></pre>
+<pre><code>## Warning: Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable.
+## Running the chains for more iterations may help. See
+## http://mc-stan.org/misc/warnings.html#bulk-ess</code></pre>
+<pre class="r"><code>kable( summary(mdlCor2)[[1]] , digits = 3,
+       caption = &quot;Posterior distribution for the rho and nu parameters&quot;)</code></pre>
+<table>
+<caption><span id="tab:unnamed-chunk-7">Table 3: </span>Posterior distribution for the rho and nu parameters</caption>
+<colgroup>
+<col width="5%" />
+<col width="10%" />
+<col width="8%" />
+<col width="8%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="8%" />
+<col width="6%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">mean</th>
+<th align="right">se_mean</th>
+<th align="right">sd</th>
+<th align="right">2.5%</th>
+<th align="right">25%</th>
+<th align="right">50%</th>
+<th align="right">75%</th>
+<th align="right">97.5%</th>
+<th align="right">n_eff</th>
+<th align="right">Rhat</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">rho</td>
+<td align="right">0.878</td>
+<td align="right">0.001</td>
+<td align="right">0.023</td>
+<td align="right">0.825</td>
+<td align="right">0.865</td>
+<td align="right">0.879</td>
+<td align="right">0.894</td>
+<td align="right">0.916</td>
+<td align="right">328.758</td>
+<td align="right">1.020</td>
+</tr>
+<tr class="even">
+<td align="left">nu</td>
+<td align="right">514.408</td>
+<td align="right">13.514</td>
+<td align="right">273.050</td>
+<td align="right">54.721</td>
+<td align="right">284.376</td>
+<td align="right">512.978</td>
+<td align="right">752.251</td>
+<td align="right">973.033</td>
+<td align="right">408.216</td>
+<td align="right">1.019</td>
+</tr>
+<tr class="odd">
+<td align="left">lp__</td>
+<td align="right">-362.048</td>
+<td align="right">0.070</td>
+<td align="right">1.856</td>
+<td align="right">-366.584</td>
+<td align="right">-363.054</td>
+<td align="right">-361.739</td>
+<td align="right">-360.725</td>
+<td align="right">-359.387</td>
+<td align="right">709.467</td>
+<td align="right">1.012</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>mcmc_combo(
+  mdlCor2,
+  pars = c(&quot;rho&quot;, &quot;nu&quot;)
+)</code></pre>
+<p><img src="/presentations/20210205bayesianmultiplecorrelation/2021-02-05-bayesian-multiple-correlation_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>Well, the two distributions are directly coming from random normal
+distributions, so there should not be big differences between this robust
+and the non-robust version.</p>
+<p>However, here we gain the <span class="math inline">\(\nu\)</span> (nu) parameter, that as <strong>Krushcke</strong> said
+(in one of its books),
+it might be an index of normality of our distributions.</p>
+<p>We all know that a Student’s t distribution with <span class="math inline">\(\Inf\)</span> degrees of freedom
+is basically the same as a Normal distribution. Therefore, if our <span class="math inline">\(\nu\)</span>
+distribution stretched toward small numbers it should be an index that our
+distributions are not parametrically distributed (in fact, a Cauchy distribution
+is a Student’s t distribution with 1 degree of freedom).</p>
+</div>
+<div id="the-bayesian-robust-correlation-degrees-of-freedom-dependent-from-the-number-of-observations" class="section level2">
+<h2>The Bayesian Robust Correlation: degrees of freedom dependent from the number of observations</h2>
+<p>However, why should <span class="math inline">\(\nu\)</span> be unknown?</p>
+<p>We all know that, for an extension of the central limit theorem,
+the biggest the sample, the more “certain” is the mean.</p>
+<blockquote>
+<p>Central Limit Theorem: when independent random variables are added, their
+properly normalized sum tends toward a normal distribution</p>
+</blockquote>
+<p>Therefore, it might be reasonable to establish some relation between
+the number of observations and <span class="math inline">\(\nu\)</span>.</p>
+<p>Here it starts my personal contribution, that you can also find in my
+<a href="https://github.com/michelescandola">github</a>.</p>
+<p>I have decided that the number of degrees of freedom are equal to the
+number of observations divided by 10 plus 1.</p>
+<pre class="r"><code>stancode3 &lt;-&quot;
+data {
+    int&lt;lower=1&gt; N;  // number of observations
+    vector[2] x[N];  // input data: rows are observations, columns are the two variables
+}
+
+parameters {
+    vector[2] mu;                 // mean vector of the marginal t distributions
+    real&lt;lower=0&gt; sigma[2];       // variance vector of the marginal t distributions
+    real&lt;lower=-1, upper=1&gt; rho;  // correlation coefficient
+}
+
+transformed parameters {
+    // degrees of freedom of the marginal t distributions
+    real&lt;lower=1&gt; nu = (N / 10.0) + 1;
+
+    // Covariance matrix
+    cov_matrix[2] cov = [[      sigma[1] ^ 2       , sigma[1] * sigma[2] * rho],
+                         [sigma[1] * sigma[2] * rho,       sigma[2] ^ 2       ]];
+}
+
+model {
+    // Likelihood
+    // Bivariate Student&#39;s t-distribution instead of normal for robustness
+    x ~ multi_student_t(nu, mu, cov);
+
+    // Noninformative priors on all parameters
+    sigma ~ uniform(0, 1000);
+    mu ~ normal(0, 1000);
+    rho ~ uniform(-1,1);//non informative prior between -1 and 1
+}
+
+generated quantities {
+    // Random samples from the estimated bivariate t-distribution (for assessment of fit)
+    vector[2] x_rand;
+    x_rand = multi_student_t_rng(nu, mu, cov);
+}
+&quot;
+
+mdlCor3 &lt;- stan(
+  model_code = stancode3,
+  data = data.list,
+  pars = &quot;rho&quot;,
+  refresh = 0
+)</code></pre>
+<pre><code>## Trying to compile a simple C file</code></pre>
+<pre><code>## Running /usr/lib/R/bin/R CMD SHLIB foo.c
+## gcc -std=gnu99 -I&quot;/usr/share/R/include&quot; -DNDEBUG   -I&quot;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/Rcpp/include/&quot;  -I&quot;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppEigen/include/&quot;  -I&quot;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppEigen/include/unsupported&quot;  -I&quot;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/BH/include&quot; -I&quot;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/StanHeaders/include/src/&quot;  -I&quot;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/StanHeaders/include/&quot;  -I&quot;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppParallel/include/&quot;  -I&quot;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/rstan/include&quot; -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DBOOST_NO_AUTO_PTR  -include &#39;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp&#39;  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1      -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-8T8CYO/r-base-4.0.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c foo.c -o foo.o
+## In file included from /home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppEigen/include/Eigen/Core:88,
+##                  from /home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppEigen/include/Eigen/Dense:1,
+##                  from /home/michele/R/x86_64-pc-linux-gnu-library/4.0/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:13,
+##                  from &lt;command-line&gt;:
+## /home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppEigen/include/Eigen/src/Core/util/Macros.h:613:1: error: unknown type name ‘namespace’
+##   613 | namespace Eigen {
+##       | ^~~~~~~~~
+## /home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppEigen/include/Eigen/src/Core/util/Macros.h:613:17: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+##   613 | namespace Eigen {
+##       |                 ^
+## In file included from /home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppEigen/include/Eigen/Dense:1,
+##                  from /home/michele/R/x86_64-pc-linux-gnu-library/4.0/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:13,
+##                  from &lt;command-line&gt;:
+## /home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppEigen/include/Eigen/Core:96:10: fatal error: complex: File o directory non esistente
+##    96 | #include &lt;complex&gt;
+##       |          ^~~~~~~~~
+## compilation terminated.
+## make: *** [/usr/lib/R/etc/Makeconf:172: foo.o] Errore 1</code></pre>
+<pre class="r"><code>kable( summary(mdlCor3)[[1]] , digits = 3,
+       caption = &quot;Posterior distribution for the rho parameters&quot;)</code></pre>
+<table>
+<caption><span id="tab:unnamed-chunk-8">Table 4: </span>Posterior distribution for the rho parameters</caption>
+<colgroup>
+<col width="5%" />
+<col width="10%" />
+<col width="9%" />
+<col width="6%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="6%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">mean</th>
+<th align="right">se_mean</th>
+<th align="right">sd</th>
+<th align="right">2.5%</th>
+<th align="right">25%</th>
+<th align="right">50%</th>
+<th align="right">75%</th>
+<th align="right">97.5%</th>
+<th align="right">n_eff</th>
+<th align="right">Rhat</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">rho</td>
+<td align="right">0.878</td>
+<td align="right">0.001</td>
+<td align="right">0.024</td>
+<td align="right">0.824</td>
+<td align="right">0.863</td>
+<td align="right">0.880</td>
+<td align="right">0.895</td>
+<td align="right">0.919</td>
+<td align="right">1912.122</td>
+<td align="right">1.001</td>
+</tr>
+<tr class="even">
+<td align="left">lp__</td>
+<td align="right">-370.810</td>
+<td align="right">0.040</td>
+<td align="right">1.611</td>
+<td align="right">-374.715</td>
+<td align="right">-371.660</td>
+<td align="right">-370.476</td>
+<td align="right">-369.624</td>
+<td align="right">-368.725</td>
+<td align="right">1643.435</td>
+<td align="right">1.001</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>mcmc_combo(
+  mdlCor3,
+  pars = &quot;rho&quot;
+)</code></pre>
+<p><img src="/presentations/20210205bayesianmultiplecorrelation/2021-02-05-bayesian-multiple-correlation_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><a href="https://github.com/michelescandola/BayesianCorrelations/blob/main/robust_correlation_dog_from_sample_size.stan">Download the Stan code</a></p>
+</div>
+<div id="the-bayesian-robust-correlation-computing-the-savage-dickey-density-ratio" class="section level2">
+<h2>The Bayesian Robust Correlation: computing the Savage-Dickey density ratio</h2>
+<p>Until know the model was based on non-informative distributions, and
+our conclusions can be based on Credible Intervals
+(a.k.a Equally-Tailed Intervals), or in High Posterior Density Intervals.</p>
+<p>But what we can do to compute Bayes Factors?</p>
+<p>Among the simplest solutions, we can use the Savage-Dickey density ratio.</p>
+<blockquote>
+<p>Savage-Dickey Density Ratio: the ratio between the density distributions
+of the posterior distribution and the prior distribution, with <span class="math inline">\(\theta = 0\)</span>.
+Savage-Dickey’s <span class="math inline">\(BF_{01} = Pr(\theta = 0 | D, H_0) / Pr(\theta = 0 | H_0)\)</span></p>
+</blockquote>
+<p>The idea is the following:</p>
+<p>Assuming that our <span class="math inline">\(H_0\)</span> distribution is distributed around our “null” value
+(usually the zero), this should have the peak exactly on that value
+(otherwise, our null distribution is not a null distribution).</p>
+<pre class="r"><code>plot(
+  y = dnorm(x = seq(from = -10, to = 10, by = 0.01)),
+  x = seq(from = -10, to = 10, by = 0.01),
+  type = &quot;l&quot;,
+  ylim = c(0, 0.6)
+)
+abline(v = 0)</code></pre>
+<div class="figure"><span id="fig:unnamed-chunk-9"></span>
+<img src="/presentations/20210205bayesianmultiplecorrelation/2021-02-05-bayesian-multiple-correlation_files/figure-html/unnamed-chunk-9-1.png" alt="An example of informative prior for the null hypothesis" width="672" />
+<p class="caption">
+Figure 2: An example of informative prior for the null hypothesis
+</p>
+</div>
+<p>If our data are not distributed according our <span class="math inline">\(H_0\)</span> distribution, the peak
+of the posterior distribution should be elsewhere, and the elevation
+of the posterior distribution at the “null” value should be less than
+the peak at the same position for the <span class="math inline">\(H_0\)</span> distribution.</p>
+<pre class="r"><code>plot(
+  y = dnorm(x = seq(from = -10, to = 10, by = 0.01)),
+  x = seq(from = -10, to = 10, by = 0.01),
+  type = &quot;l&quot;,
+  ylim = c(0, 0.6)
+)
+points(
+  y = dnorm(x = seq(from = -10, to = 10, by = 0.01),
+            mean = -2, sd = 2),
+  x = seq(from = -10, to = 10, by = 0.01),
+  col = &quot;red&quot;,
+  type = &quot;l&quot;
+)
+abline(v = 0)</code></pre>
+<div class="figure"><span id="fig:unnamed-chunk-10"></span>
+<img src="/presentations/20210205bayesianmultiplecorrelation/2021-02-05-bayesian-multiple-correlation_files/figure-html/unnamed-chunk-10-1.png" alt="The prior and the posterior (red) distribution" width="672" />
+<p class="caption">
+Figure 3: The prior and the posterior (red) distribution
+</p>
+</div>
+<p>In this case, the Savage-Dickey <span class="math inline">\(BF_{01}\)</span> is
+0.3,
+that is obviously in favour of the alternative hypothesis.</p>
+<p>However, to compute the <span class="math inline">\(BF_{10}\)</span> we could compute the reciprocal:
+3.3.</p>
+<p>OK. So far, so good.</p>
+<p>As you have already noticed, we cannot rely anymore on non-informative prior
+distributions, at least for the <span class="math inline">\(\rho\)</span> parameter.</p>
+<p>Now, we should think to the possible informative prior for the correlation.</p>
+<p>A natural candidate is the Beta distribution (<span class="math inline">\(\mathcal{B}(\alpha, \beta) \rightarrow [0,1]\)</span>):</p>
+<pre class="r"><code>plot(
+  y = dbeta(x = seq(from = 0, to = 1, by = 0.01),
+            shape1 = 3, shape2 = 3),
+  x = seq(from = 0, to = 1, by = 0.01),
+  type = &quot;l&quot;
+)</code></pre>
+<div class="figure"><span id="fig:unnamed-chunk-11"></span>
+<img src="/presentations/20210205bayesianmultiplecorrelation/2021-02-05-bayesian-multiple-correlation_files/figure-html/unnamed-chunk-11-1.png" alt="A Beta distribution with alpha and beta = 3" width="672" />
+<p class="caption">
+Figure 4: A Beta distribution with alpha and beta = 3
+</p>
+</div>
+<p>but we should stretch it in order to have a [-1, 1] range.</p>
+<pre class="r"><code>plot(
+  y = dbeta(x = seq(from = 0, to = 1, by = 0.01),
+            shape1 = 3, shape2 = 3),
+  x = (seq(from = 0, to = 1, by = 0.01) - 0.5) * 2,
+  type = &quot;l&quot;
+)</code></pre>
+<div class="figure"><span id="fig:unnamed-chunk-12"></span>
+<img src="/presentations/20210205bayesianmultiplecorrelation/2021-02-05-bayesian-multiple-correlation_files/figure-html/unnamed-chunk-12-1.png" alt="A Beta distribution with alpha and beta = 3" width="672" />
+<p class="caption">
+Figure 5: A Beta distribution with alpha and beta = 3
+</p>
+</div>
+<p>Therefore, what we will do is to use a Beta distribution,
+with the two parameters equal to 3, in order to have high density when
+<span class="math inline">\(\theta\)</span> is equal to the “null” value. For a <span class="math inline">\(\mathcal{B}\)</span> distribution
+this value is not 0, but 0.5, because this probability distribution is
+defined in <span class="math inline">\([0,1]\)</span>, and not in <span class="math inline">\([-\inf, +\inf]\)</span>, as it happens in distributions
+such as the Student’s t and the Gaussian ones.</p>
+<p>Therefore, in the code below, I have declared the <code>rh</code> variable in the <code>parameters</code>
+block, set its prior distribution as a <span class="math inline">\(\mathcal{B}(3,3)\)</span> in the <code>model</code> block,
+and converted it in the <code>rho</code> parameter, necessary to compute the
+<code>cov</code> matrix in the <code>transformed parameters</code> block, necessary for the
+multiple Student’s t distribution.</p>
+<p>Finally, I have computed the <span class="math inline">\(BF_{10}\)</span> on the <code>rh</code> parameter,
+with a <span class="math inline">\(\theta = 0.5\)</span>, while we can use the <code>rho</code> parameter to get
+Credible Intervals and all these statistics.</p>
+<p><span class="math inline">\(BF_{10} = \frac{Pr(\theta = 0.5 | D, H_0 = \mathcal{B}(\alpha = 3, \beta = 3))}{Pr(\theta = 0.5 | H_0 = \mathcal{B}(\alpha = 3, \beta = 3))}\)</span></p>
+<pre class="r"><code>library(logspline)
+
+stancode4 &lt;-&quot;
+data {
+    int&lt;lower=1&gt; N;  // number of observations
+    vector[2] x[N];  // input data: rows are observations, columns are the two variables
+}
+
+parameters {
+    vector[2] mu;                 // locations of the marginal t distributions
+    real&lt;lower=0&gt; sigma[2];       // scales of the marginal t distributions
+    real&lt;lower=1&gt; nu;             // degrees of freedom of the marginal t distributions
+    real&lt;lower=0, upper=1&gt; rh;  // correlation coefficient
+}
+
+transformed parameters {
+    //correlation index rh is scaled to be within -1 and 1
+    real&lt;lower=-1, upper=1&gt; rho = 2*(rh-0.5);
+    // Covariance matrix
+    cov_matrix[2] cov = [[      sigma[1] ^ 2       , sigma[1] * sigma[2] * rho],
+                         [sigma[1] * sigma[2] * rho,       sigma[2] ^ 2       ]];
+}
+
+model {
+    // Likelihood
+    // Bivariate Student&#39;s t-distribution instead of normal for robustness
+    x ~ multi_student_t(nu, mu, cov);
+
+    // Noninformative priors on all parameters
+    sigma ~ normal(0, 1000);
+    mu ~ normal(0, 1000);
+    nu ~ uniform(0, 1000);
+    rh ~ beta(3, 3);//non informative prior between 0 and 1
+}
+
+generated quantities {
+    // Random samples from the estimated bivariate t-distribution (for assessment of fit)
+    vector[2] x_rand;
+    x_rand = multi_student_t_rng(nu, mu, cov);
+}
+&quot;
+
+mdlCor4 &lt;- stan(
+  model_code = stancode4,
+  data = data.list,
+  pars = c(&quot;rho&quot;,&quot;rh&quot;),
+  refresh = 0
+)</code></pre>
+<pre><code>## Trying to compile a simple C file</code></pre>
+<pre><code>## Running /usr/lib/R/bin/R CMD SHLIB foo.c
+## gcc -std=gnu99 -I&quot;/usr/share/R/include&quot; -DNDEBUG   -I&quot;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/Rcpp/include/&quot;  -I&quot;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppEigen/include/&quot;  -I&quot;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppEigen/include/unsupported&quot;  -I&quot;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/BH/include&quot; -I&quot;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/StanHeaders/include/src/&quot;  -I&quot;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/StanHeaders/include/&quot;  -I&quot;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppParallel/include/&quot;  -I&quot;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/rstan/include&quot; -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DBOOST_NO_AUTO_PTR  -include &#39;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp&#39;  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1      -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-8T8CYO/r-base-4.0.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c foo.c -o foo.o
+## In file included from /home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppEigen/include/Eigen/Core:88,
+##                  from /home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppEigen/include/Eigen/Dense:1,
+##                  from /home/michele/R/x86_64-pc-linux-gnu-library/4.0/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:13,
+##                  from &lt;command-line&gt;:
+## /home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppEigen/include/Eigen/src/Core/util/Macros.h:613:1: error: unknown type name ‘namespace’
+##   613 | namespace Eigen {
+##       | ^~~~~~~~~
+## /home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppEigen/include/Eigen/src/Core/util/Macros.h:613:17: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+##   613 | namespace Eigen {
+##       |                 ^
+## In file included from /home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppEigen/include/Eigen/Dense:1,
+##                  from /home/michele/R/x86_64-pc-linux-gnu-library/4.0/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:13,
+##                  from &lt;command-line&gt;:
+## /home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppEigen/include/Eigen/Core:96:10: fatal error: complex: File o directory non esistente
+##    96 | #include &lt;complex&gt;
+##       |          ^~~~~~~~~
+## compilation terminated.
+## make: *** [/usr/lib/R/etc/Makeconf:172: foo.o] Errore 1</code></pre>
+<pre><code>## Warning: There were 3264 divergent transitions after warmup. See
+## http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
+## to find out why this is a problem and how to eliminate them.</code></pre>
+<pre><code>## Warning: Examine the pairs() plot to diagnose sampling problems</code></pre>
+<pre><code>## Warning: Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable.
+## Running the chains for more iterations may help. See
+## http://mc-stan.org/misc/warnings.html#bulk-ess</code></pre>
+<pre class="r"><code>kable( summary(mdlCor4)[[1]] , digits = 3,
+       caption = &quot;Posterior distribution for the rho and rh parameters&quot;)</code></pre>
+<table>
+<caption><span id="tab:unnamed-chunk-13">Table 5: </span>Posterior distribution for the rho and rh parameters</caption>
+<colgroup>
+<col width="5%" />
+<col width="10%" />
+<col width="9%" />
+<col width="6%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="9%" />
+<col width="6%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">mean</th>
+<th align="right">se_mean</th>
+<th align="right">sd</th>
+<th align="right">2.5%</th>
+<th align="right">25%</th>
+<th align="right">50%</th>
+<th align="right">75%</th>
+<th align="right">97.5%</th>
+<th align="right">n_eff</th>
+<th align="right">Rhat</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">rho</td>
+<td align="right">0.872</td>
+<td align="right">0.002</td>
+<td align="right">0.025</td>
+<td align="right">0.815</td>
+<td align="right">0.857</td>
+<td align="right">0.874</td>
+<td align="right">0.890</td>
+<td align="right">0.915</td>
+<td align="right">260.699</td>
+<td align="right">1.022</td>
+</tr>
+<tr class="even">
+<td align="left">rh</td>
+<td align="right">0.936</td>
+<td align="right">0.001</td>
+<td align="right">0.013</td>
+<td align="right">0.907</td>
+<td align="right">0.929</td>
+<td align="right">0.937</td>
+<td align="right">0.945</td>
+<td align="right">0.957</td>
+<td align="right">260.699</td>
+<td align="right">1.022</td>
+</tr>
+<tr class="odd">
+<td align="left">lp__</td>
+<td align="right">-368.320</td>
+<td align="right">0.078</td>
+<td align="right">1.792</td>
+<td align="right">-372.699</td>
+<td align="right">-369.292</td>
+<td align="right">-368.046</td>
+<td align="right">-366.987</td>
+<td align="right">-365.741</td>
+<td align="right">529.762</td>
+<td align="right">1.007</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>mcmc_combo(
+  mdlCor4,
+  pars = c(&quot;rho&quot;, &quot;rh&quot;)
+)</code></pre>
+<p><img src="/presentations/20210205bayesianmultiplecorrelation/2021-02-05-bayesian-multiple-correlation_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<pre class="r"><code>rh_logspl &lt;- logspline( extract( mdlCor4 , pars = &quot;rh&quot;) )</code></pre>
+<pre><code>## Warning in logspline(extract(mdlCor4, pars = &quot;rh&quot;)): too much data close
+## together</code></pre>
+<pre><code>## Warning in logspline(extract(mdlCor4, pars = &quot;rh&quot;)): re-ran with oldlogspline</code></pre>
+<pre class="r"><code>BF10      &lt;- dbeta(0.5, 3, 3) / dlogspline(0.5, rh_logspl)</code></pre>
+<p>The <span class="math inline">\(BF_{10} =\)</span> 1.198786910^{26}.</p>
+<p>This is the version with unknown degrees of freedom
+<a href="https://github.com/michelescandola/BayesianCorrelations/blob/main/robust_correlation_dog_unknown_informed_prior.stan">download the Stan code</a></p>
+<p>Version with degrees of freedom coming from the sample size
+<a href="https://github.com/michelescandola/BayesianCorrelations/blob/main/robust_correlation_dog_from_sample_size_informative_prior.stan">download the Stan code</a></p>
+<p>Version with a Multi Normal distribution instead of a Multi Student’s t
+distribution (normal correlation)
+<a href="https://github.com/michelescandola/BayesianCorrelations/blob/main/correlation_dog_from_sample_size_informative_prior.stan">download the Stan code</a></p>
+</div>
+<div id="the-bayesian-robust-correlation-multiple-correlations" class="section level2">
+<h2>The Bayesian <del>Robust</del> Correlation: multiple correlations</h2>
+<p>OK, I hope that everything was clear until this point.</p>
+<p>Now, I had to compute correlations among 15 different questionnaires,
+that means 119
+correlations.</p>
+<p>It is true that the codes I showed you until now are pretty fast, but… the PC
+would have worked for days!</p>
+<p>Therefore I prepared a version for multiple correlations.</p>
+<ol style="list-style-type: decimal">
+<li>The Multi - something distributions can take 2 or N vectors.
+So this should not be a problem</li>
+<li>The messy thing could be the covariance matrix.
+I should find a more convenient way to compute it.</li>
+<li>Am I sure that I want to do a robust correlation? The No U-Turn Chains
+used in Stan are great, but adding parameters to estimate can lead to
+difficulties in the computations. Therefore, I would avoid a version
+with unknown <span class="math inline">\(\nu\)</span></li>
+</ol>
+<p>Fortunately, in Stan there is a convenient distribution that is a
+sort of generalisation of the <span class="math inline">\(\mathcal{B}\)</span> distribution, whose values
+are <span class="math inline">\([-1, 1]\)</span>.</p>
+<p>This distribution is the <a href="https://distribution-explorer.github.io/multivariate_continuous/lkj.html"><code>LKJ distribution</code></a>,
+that has only one parameter <span class="math inline">\(\eta\)</span> and it is marginally distributed along a
+<span class="math inline">\(\mathcal{B}(\alpha, \beta)\)</span>, where <span class="math inline">\((\alpha, \beta) = \eta - 1 + K / 2\)</span> and
+<span class="math inline">\(K\)</span> being the number of variables to be correlated.</p>
+<p>Because correlations matrix are very important also for
+(Generalised) Multilevel Linear Models, in Stan there are specific
+distributions and variable types helping us to easy the task.</p>
+<ul>
+<li><code>cholesky_factor_corr</code> is a variable type, it helps in creating triangular
+matrices perfect for correlation matrices.</li>
+<li><code>lkj_corr_cholesky</code> is a prior distribution for correlations</li>
+<li><code>multi_normal_cholesky</code> is a prior distribution for multi normal distributions,
+accepting a lower triangular covariation matrix instead of a covariance matrix</li>
+</ul>
+<p>Now, the covariance matrix and the correlation matrix are computed in the
+<code>generate quantities</code> block, together with the random sampling from the
+distribution for posterior predictive checking.</p>
+<p>This is done because, instead that extrapolate the cholesky matrices,
+it is easier to take our decisions by observing them.</p>
+<pre class="r"><code>set.seed(5)
+## let&#39;s add an uncorrelated variable to our data set
+dat$z &lt;- rnorm( nrow(dat) )
+
+data.list &lt;- list(
+  x = dat,
+  N = nrow(dat),
+  V = ncol(dat)## number of variable to be correlated
+)
+
+
+stancode5 &lt;- &quot;
+data {
+    int&lt;lower=1&gt; N;  // number of observations
+    int&lt;lower=2&gt; V;  // number of variables
+    vector[V] x[N];  // input data: rows are observations, columns are the V variables
+}
+
+parameters {
+    vector[V] mu;                           // locations of the normal distributions
+    vector&lt;lower=0&gt;[V] sigma;               // scales of the normal distributions
+    cholesky_factor_corr[V] Lrho;           // correlation matrix
+}
+
+model {
+    // Noninformative priors on all parameters
+    target += uniform_lpdf(sigma | 0, 10);
+    target += normal_lpdf(mu | 0, 10);
+    target += lkj_corr_cholesky_lpdf(Lrho| 3);
+    
+    // Likelihood
+    // Multivariate Normal distribution
+    target += multi_normal_cholesky_lpdf(x | mu, diag_pre_multiply(sigma, Lrho));
+}
+
+generated quantities {
+  matrix[V,V] Omega;
+  matrix[V,V] cov;
+  vector[V] x_rand;
+  
+  Omega = multiply_lower_tri_self_transpose(Lrho);
+  cov = quad_form_diag(Omega, sigma); 
+  
+  x_rand = multi_normal_rng(mu, cov);
+}
+&quot;
+
+mdlCor5 &lt;- stan(
+  model_code = stancode5,
+  data = data.list,
+  pars = &quot;Omega&quot;,
+  refresh = 0
+)</code></pre>
+<pre><code>## Trying to compile a simple C file</code></pre>
+<pre><code>## Running /usr/lib/R/bin/R CMD SHLIB foo.c
+## gcc -std=gnu99 -I&quot;/usr/share/R/include&quot; -DNDEBUG   -I&quot;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/Rcpp/include/&quot;  -I&quot;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppEigen/include/&quot;  -I&quot;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppEigen/include/unsupported&quot;  -I&quot;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/BH/include&quot; -I&quot;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/StanHeaders/include/src/&quot;  -I&quot;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/StanHeaders/include/&quot;  -I&quot;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppParallel/include/&quot;  -I&quot;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/rstan/include&quot; -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DBOOST_NO_AUTO_PTR  -include &#39;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp&#39;  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1      -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-8T8CYO/r-base-4.0.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c foo.c -o foo.o
+## In file included from /home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppEigen/include/Eigen/Core:88,
+##                  from /home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppEigen/include/Eigen/Dense:1,
+##                  from /home/michele/R/x86_64-pc-linux-gnu-library/4.0/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:13,
+##                  from &lt;command-line&gt;:
+## /home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppEigen/include/Eigen/src/Core/util/Macros.h:613:1: error: unknown type name ‘namespace’
+##   613 | namespace Eigen {
+##       | ^~~~~~~~~
+## /home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppEigen/include/Eigen/src/Core/util/Macros.h:613:17: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+##   613 | namespace Eigen {
+##       |                 ^
+## In file included from /home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppEigen/include/Eigen/Dense:1,
+##                  from /home/michele/R/x86_64-pc-linux-gnu-library/4.0/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:13,
+##                  from &lt;command-line&gt;:
+## /home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppEigen/include/Eigen/Core:96:10: fatal error: complex: File o directory non esistente
+##    96 | #include &lt;complex&gt;
+##       |          ^~~~~~~~~
+## compilation terminated.
+## make: *** [/usr/lib/R/etc/Makeconf:172: foo.o] Errore 1</code></pre>
+<pre class="r"><code>kable( summary(mdlCor5)[[1]] , digits = 3,
+       caption = &quot;Posterior distribution for the rho parameters (Omega matrix)&quot;)</code></pre>
+<table style="width:100%;">
+<caption><span id="tab:unnamed-chunk-14">Table 6: </span>Posterior distribution for the rho parameters (Omega matrix)</caption>
+<colgroup>
+<col width="11%" />
+<col width="9%" />
+<col width="8%" />
+<col width="6%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="6%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">mean</th>
+<th align="right">se_mean</th>
+<th align="right">sd</th>
+<th align="right">2.5%</th>
+<th align="right">25%</th>
+<th align="right">50%</th>
+<th align="right">75%</th>
+<th align="right">97.5%</th>
+<th align="right">n_eff</th>
+<th align="right">Rhat</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Omega[1,1]</td>
+<td align="right">1.000</td>
+<td align="right">NaN</td>
+<td align="right">0.000</td>
+<td align="right">1.000</td>
+<td align="right">1.000</td>
+<td align="right">1.000</td>
+<td align="right">1.000</td>
+<td align="right">1.000</td>
+<td align="right">NaN</td>
+<td align="right">NaN</td>
+</tr>
+<tr class="even">
+<td align="left">Omega[1,2]</td>
+<td align="right">0.868</td>
+<td align="right">0.000</td>
+<td align="right">0.025</td>
+<td align="right">0.815</td>
+<td align="right">0.853</td>
+<td align="right">0.870</td>
+<td align="right">0.886</td>
+<td align="right">0.910</td>
+<td align="right">3231.915</td>
+<td align="right">1.000</td>
+</tr>
+<tr class="odd">
+<td align="left">Omega[1,3]</td>
+<td align="right">0.063</td>
+<td align="right">0.001</td>
+<td align="right">0.094</td>
+<td align="right">-0.127</td>
+<td align="right">-0.004</td>
+<td align="right">0.066</td>
+<td align="right">0.127</td>
+<td align="right">0.245</td>
+<td align="right">4149.647</td>
+<td align="right">1.000</td>
+</tr>
+<tr class="even">
+<td align="left">Omega[2,1]</td>
+<td align="right">0.868</td>
+<td align="right">0.000</td>
+<td align="right">0.025</td>
+<td align="right">0.815</td>
+<td align="right">0.853</td>
+<td align="right">0.870</td>
+<td align="right">0.886</td>
+<td align="right">0.910</td>
+<td align="right">3231.915</td>
+<td align="right">1.000</td>
+</tr>
+<tr class="odd">
+<td align="left">Omega[2,2]</td>
+<td align="right">1.000</td>
+<td align="right">NaN</td>
+<td align="right">0.000</td>
+<td align="right">1.000</td>
+<td align="right">1.000</td>
+<td align="right">1.000</td>
+<td align="right">1.000</td>
+<td align="right">1.000</td>
+<td align="right">NaN</td>
+<td align="right">NaN</td>
+</tr>
+<tr class="even">
+<td align="left">Omega[2,3]</td>
+<td align="right">0.106</td>
+<td align="right">0.001</td>
+<td align="right">0.094</td>
+<td align="right">-0.084</td>
+<td align="right">0.041</td>
+<td align="right">0.106</td>
+<td align="right">0.169</td>
+<td align="right">0.291</td>
+<td align="right">4283.671</td>
+<td align="right">1.000</td>
+</tr>
+<tr class="odd">
+<td align="left">Omega[3,1]</td>
+<td align="right">0.063</td>
+<td align="right">0.001</td>
+<td align="right">0.094</td>
+<td align="right">-0.127</td>
+<td align="right">-0.004</td>
+<td align="right">0.066</td>
+<td align="right">0.127</td>
+<td align="right">0.245</td>
+<td align="right">4149.647</td>
+<td align="right">1.000</td>
+</tr>
+<tr class="even">
+<td align="left">Omega[3,2]</td>
+<td align="right">0.106</td>
+<td align="right">0.001</td>
+<td align="right">0.094</td>
+<td align="right">-0.084</td>
+<td align="right">0.041</td>
+<td align="right">0.106</td>
+<td align="right">0.169</td>
+<td align="right">0.291</td>
+<td align="right">4283.671</td>
+<td align="right">1.000</td>
+</tr>
+<tr class="odd">
+<td align="left">Omega[3,3]</td>
+<td align="right">1.000</td>
+<td align="right">0.000</td>
+<td align="right">0.000</td>
+<td align="right">1.000</td>
+<td align="right">1.000</td>
+<td align="right">1.000</td>
+<td align="right">1.000</td>
+<td align="right">1.000</td>
+<td align="right">3680.380</td>
+<td align="right">0.999</td>
+</tr>
+<tr class="even">
+<td align="left">lp__</td>
+<td align="right">-640.094</td>
+<td align="right">0.050</td>
+<td align="right">2.123</td>
+<td align="right">-644.979</td>
+<td align="right">-641.351</td>
+<td align="right">-639.759</td>
+<td align="right">-638.544</td>
+<td align="right">-636.963</td>
+<td align="right">1767.064</td>
+<td align="right">1.002</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>mcmc_combo(
+  mdlCor5,
+  regex_pars = &quot;Omega&quot;
+)</code></pre>
+<pre><code>## Warning in regularize.values(x, y, ties, missing(ties), na.rm = na.rm):
+## collapsing to unique &#39;x&#39; values</code></pre>
+<p><img src="/presentations/20210205bayesianmultiplecorrelation/2021-02-05-bayesian-multiple-correlation_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<pre class="r"><code>rrho &lt;- extract( mdlCor5 , pars = &quot;Omega&quot;)$Omega
+x_rho &lt;- rrho[ , 2:3, 1]# cor(x,y) and cor(x,z)
+y_rho &lt;- rrho[ ,   3, 2]# cor(y,z)
+
+out &lt;- as.data.frame(cbind(x_rho, y_rho))
+colnames(out) &lt;- c(&quot;cor(x,y)&quot;, &quot;cor(x,z)&quot;, &quot;cor(y,z)&quot;)
+
+rho_logspl &lt;- apply(out, 2, logspline)
+## to understand what is eta and why we are computing it in this way,
+## see some lines above where it is written
+## about the LKJ distribution
+## eta        &lt;- 3 + 1 - ncol(dat)/2 
+BF10       &lt;- lapply(rho_logspl,
+                     FUN = function(x, eta){
+                       dbeta(0.5, eta, eta) / dlogspline(0 , x)
+                       },
+                     eta = 3 + 1 - ncol(dat)/2
+                     )
+
+kable(do.call(&quot;c&quot;, BF10), digits = 2, caption = &quot;The Savage-Dickey BFs&quot;)</code></pre>
+<table>
+<caption><span id="tab:unnamed-chunk-14">Table 6: </span>The Savage-Dickey BFs</caption>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">x</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">cor(x,y)</td>
+<td align="right">1.583335e+21</td>
+</tr>
+<tr class="even">
+<td align="left">cor(x,z)</td>
+<td align="right">5.200000e-01</td>
+</tr>
+<tr class="odd">
+<td align="left">cor(y,z)</td>
+<td align="right">7.700000e-01</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://github.com/michelescandola/BayesianCorrelations/blob/main/multiple_correlation">Download the Stan code</a></p>
+<p>Do not worry for the NaNs in the summary of the posterior distribution.</p>
+<p>This is normal when a variable in a MCMC takes always the same value,
+in this case 1, because it is the correlation between a values and itself.</p>
+<p>Remember that in the Omega matrix 1 is the <code>x</code> variable, 2 the <code>y</code> and
+3 the <code>z</code> one.</p>
+</div>
+<div id="the-bayesian-robust-correlation-multiple-correlations-1" class="section level2">
+<h2>The Bayesian Robust Correlation: multiple correlations</h2>
+<p>So let’s try to use a Student’s t-test distribution.</p>
+<p>The <span class="math inline">\(\nu\)</span> parameter will be the number of observations, divided by 10.</p>
+<p>Because there is not a “cholensky” version of the multi Student’s t distribution,
+we should use the normal one, by passing as a parameter the covariance matrix.</p>
+<p>For this reason, the correlation and covariance matrices are now computed in the
+transformed parameters block.</p>
+<pre class="r"><code>stancode6 &lt;- &quot;
+data {
+    int&lt;lower=1&gt; N;  // number of observations
+    int&lt;lower=2&gt; V;  // number of variables
+    vector[V] x[N];  // input data: rows are observations, columns are the V variables
+}
+
+parameters {
+    vector[V] mu;                           // locations of the normal distributions
+    vector&lt;lower=0&gt;[V] sigma;               // scales of the normal distributions
+    cholesky_factor_corr[V] Lrho;           // correlation matrix
+}
+
+transformed parameters {
+    matrix[V,V] Omega;
+    matrix[V,V] cov;
+    // degrees of freedom of the marginal t distributions
+    real&lt;lower=1&gt; nu = (N / 10.0) + 1;
+
+    // Correlation and Covariance matrices
+    Omega = multiply_lower_tri_self_transpose(Lrho);
+    cov   = quad_form_diag(Omega, sigma); 
+}
+
+model {
+    // Noninformative priors on all parameters
+    target += uniform_lpdf(sigma | 0, 10);
+    target += normal_lpdf(mu | 0, 10);
+    target += lkj_corr_cholesky_lpdf(Lrho| 3);
+    
+    // Likelihood
+    // Multivariate Student&#39;s t distribution
+    target += multi_student_t_lpdf(x | nu, mu, cov);
+}
+
+generated quantities {
+  vector[V] x_rand;
+
+  x_rand = multi_student_t_rng(nu, mu, cov);
+}
+&quot;
+
+mdlCor6 &lt;- stan(
+  model_code = stancode6,
+  data = data.list,
+  pars = &quot;Omega&quot;,
+  refresh = 0
+)</code></pre>
+<pre><code>## Trying to compile a simple C file</code></pre>
+<pre><code>## Running /usr/lib/R/bin/R CMD SHLIB foo.c
+## gcc -std=gnu99 -I&quot;/usr/share/R/include&quot; -DNDEBUG   -I&quot;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/Rcpp/include/&quot;  -I&quot;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppEigen/include/&quot;  -I&quot;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppEigen/include/unsupported&quot;  -I&quot;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/BH/include&quot; -I&quot;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/StanHeaders/include/src/&quot;  -I&quot;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/StanHeaders/include/&quot;  -I&quot;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppParallel/include/&quot;  -I&quot;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/rstan/include&quot; -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DBOOST_NO_AUTO_PTR  -include &#39;/home/michele/R/x86_64-pc-linux-gnu-library/4.0/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp&#39;  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1      -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-8T8CYO/r-base-4.0.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c foo.c -o foo.o
+## In file included from /home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppEigen/include/Eigen/Core:88,
+##                  from /home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppEigen/include/Eigen/Dense:1,
+##                  from /home/michele/R/x86_64-pc-linux-gnu-library/4.0/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:13,
+##                  from &lt;command-line&gt;:
+## /home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppEigen/include/Eigen/src/Core/util/Macros.h:613:1: error: unknown type name ‘namespace’
+##   613 | namespace Eigen {
+##       | ^~~~~~~~~
+## /home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppEigen/include/Eigen/src/Core/util/Macros.h:613:17: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+##   613 | namespace Eigen {
+##       |                 ^
+## In file included from /home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppEigen/include/Eigen/Dense:1,
+##                  from /home/michele/R/x86_64-pc-linux-gnu-library/4.0/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:13,
+##                  from &lt;command-line&gt;:
+## /home/michele/R/x86_64-pc-linux-gnu-library/4.0/RcppEigen/include/Eigen/Core:96:10: fatal error: complex: File o directory non esistente
+##    96 | #include &lt;complex&gt;
+##       |          ^~~~~~~~~
+## compilation terminated.
+## make: *** [/usr/lib/R/etc/Makeconf:172: foo.o] Errore 1</code></pre>
+<pre class="r"><code>kable( summary(mdlCor6)[[1]] , digits = 3,
+       caption = &quot;Posterior distribution for the rho parameters (Omega matrix)&quot;)</code></pre>
+<table style="width:100%;">
+<caption><span id="tab:unnamed-chunk-15">Table 7: </span>Posterior distribution for the rho parameters (Omega matrix)</caption>
+<colgroup>
+<col width="11%" />
+<col width="9%" />
+<col width="8%" />
+<col width="6%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="6%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">mean</th>
+<th align="right">se_mean</th>
+<th align="right">sd</th>
+<th align="right">2.5%</th>
+<th align="right">25%</th>
+<th align="right">50%</th>
+<th align="right">75%</th>
+<th align="right">97.5%</th>
+<th align="right">n_eff</th>
+<th align="right">Rhat</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Omega[1,1]</td>
+<td align="right">1.000</td>
+<td align="right">NaN</td>
+<td align="right">0.000</td>
+<td align="right">1.000</td>
+<td align="right">1.000</td>
+<td align="right">1.000</td>
+<td align="right">1.000</td>
+<td align="right">1.000</td>
+<td align="right">NaN</td>
+<td align="right">NaN</td>
+</tr>
+<tr class="even">
+<td align="left">Omega[1,2]</td>
+<td align="right">0.863</td>
+<td align="right">0.000</td>
+<td align="right">0.027</td>
+<td align="right">0.803</td>
+<td align="right">0.846</td>
+<td align="right">0.866</td>
+<td align="right">0.882</td>
+<td align="right">0.909</td>
+<td align="right">3155.376</td>
+<td align="right">1.000</td>
+</tr>
+<tr class="odd">
+<td align="left">Omega[1,3]</td>
+<td align="right">0.094</td>
+<td align="right">0.002</td>
+<td align="right">0.100</td>
+<td align="right">-0.101</td>
+<td align="right">0.029</td>
+<td align="right">0.094</td>
+<td align="right">0.160</td>
+<td align="right">0.286</td>
+<td align="right">4016.328</td>
+<td align="right">0.999</td>
+</tr>
+<tr class="even">
+<td align="left">Omega[2,1]</td>
+<td align="right">0.863</td>
+<td align="right">0.000</td>
+<td align="right">0.027</td>
+<td align="right">0.803</td>
+<td align="right">0.846</td>
+<td align="right">0.866</td>
+<td align="right">0.882</td>
+<td align="right">0.909</td>
+<td align="right">3155.376</td>
+<td align="right">1.000</td>
+</tr>
+<tr class="odd">
+<td align="left">Omega[2,2]</td>
+<td align="right">1.000</td>
+<td align="right">NaN</td>
+<td align="right">0.000</td>
+<td align="right">1.000</td>
+<td align="right">1.000</td>
+<td align="right">1.000</td>
+<td align="right">1.000</td>
+<td align="right">1.000</td>
+<td align="right">NaN</td>
+<td align="right">NaN</td>
+</tr>
+<tr class="even">
+<td align="left">Omega[2,3]</td>
+<td align="right">0.130</td>
+<td align="right">0.002</td>
+<td align="right">0.099</td>
+<td align="right">-0.065</td>
+<td align="right">0.062</td>
+<td align="right">0.131</td>
+<td align="right">0.196</td>
+<td align="right">0.323</td>
+<td align="right">4304.939</td>
+<td align="right">0.999</td>
+</tr>
+<tr class="odd">
+<td align="left">Omega[3,1]</td>
+<td align="right">0.094</td>
+<td align="right">0.002</td>
+<td align="right">0.100</td>
+<td align="right">-0.101</td>
+<td align="right">0.029</td>
+<td align="right">0.094</td>
+<td align="right">0.160</td>
+<td align="right">0.286</td>
+<td align="right">4016.328</td>
+<td align="right">0.999</td>
+</tr>
+<tr class="even">
+<td align="left">Omega[3,2]</td>
+<td align="right">0.130</td>
+<td align="right">0.002</td>
+<td align="right">0.099</td>
+<td align="right">-0.065</td>
+<td align="right">0.062</td>
+<td align="right">0.131</td>
+<td align="right">0.196</td>
+<td align="right">0.323</td>
+<td align="right">4304.939</td>
+<td align="right">0.999</td>
+</tr>
+<tr class="odd">
+<td align="left">Omega[3,3]</td>
+<td align="right">1.000</td>
+<td align="right">0.000</td>
+<td align="right">0.000</td>
+<td align="right">1.000</td>
+<td align="right">1.000</td>
+<td align="right">1.000</td>
+<td align="right">1.000</td>
+<td align="right">1.000</td>
+<td align="right">3894.519</td>
+<td align="right">0.999</td>
+</tr>
+<tr class="even">
+<td align="left">lp__</td>
+<td align="right">-644.844</td>
+<td align="right">0.052</td>
+<td align="right">2.151</td>
+<td align="right">-649.951</td>
+<td align="right">-646.086</td>
+<td align="right">-644.445</td>
+<td align="right">-643.278</td>
+<td align="right">-641.624</td>
+<td align="right">1737.786</td>
+<td align="right">1.000</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>mcmc_combo(
+  mdlCor6,
+  regex_pars = &quot;Omega&quot;
+)</code></pre>
+<pre><code>## Warning in regularize.values(x, y, ties, missing(ties), na.rm = na.rm):
+## collapsing to unique &#39;x&#39; values</code></pre>
+<p><img src="/presentations/20210205bayesianmultiplecorrelation/2021-02-05-bayesian-multiple-correlation_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<pre class="r"><code>rrho &lt;- extract( mdlCor6 , pars = &quot;Omega&quot;)$Omega
+x_rho &lt;- rrho[ , 2:3, 1]# cor(x,y) and cor(x,z)
+y_rho &lt;- rrho[ ,   3, 2]# cor(y,z)
+
+out &lt;- as.data.frame(cbind(x_rho, y_rho))
+colnames(out) &lt;- c(&quot;cor(x,y)&quot;, &quot;cor(x,z)&quot;, &quot;cor(y,z)&quot;)
+
+rho_logspl &lt;- apply(out, 2, logspline)
+
+BF10       &lt;- lapply(rho_logspl,
+                     FUN = function(x, eta){
+                       dbeta(0.5, eta, eta) / dlogspline(0 , x)
+                       },
+                     eta = 3 + 1 - ncol(dat)/2
+                     )
+
+kable(do.call(&quot;c&quot;, BF10), digits = 2, caption = &quot;The Savage-Dickey BFs&quot;)</code></pre>
+<table>
+<caption><span id="tab:unnamed-chunk-15">Table 7: </span>The Savage-Dickey BFs</caption>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">x</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">cor(x,y)</td>
+<td align="right">1.046782e+22</td>
+</tr>
+<tr class="even">
+<td align="left">cor(x,z)</td>
+<td align="right">6.500000e-01</td>
+</tr>
+<tr class="odd">
+<td align="left">cor(y,z)</td>
+<td align="right">1.020000e+00</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://github.com/michelescandola/BayesianCorrelations/blob/main/robust_multiple_correlation_dog_from_sample_size_informative_prior.stan">Download the Stan code</a></p>
+</div>
+<div id="conclusions" class="section level2">
+<h2>Conclusions</h2>
+<p>We have seen how to compute Bayesian correlations using Stan.</p>
+<p>What we are actually doing, is to model a covariance matrix among all the
+observed variables, and extracting the correlations from it.</p>
+<p>I have spent a little time in explaining what to do for using robust
+correlations (that do not have an equivalent in the frequentist
+framework), how to compute Savage-Dickey ratios from them, and how
+to use this framework for multiple correlations.</p>
+<p>Actually, the versions for multiple correlations are faster than the versions
+for the correlations between two only variables, because they are not using
+ugly conversions of the <span class="math inline">\(\mathcal{B}(\alpha,\beta)\)</span> distribution, but they
+use the more convenient LKJ distributions.</p>
+<p>If you are not interested in computing the Savage-Dickey ratio, and you would
+like to have a non-informative distribution for the correlations (i.e.,
+<span class="math inline">\(\mathcal{U}(-1, 1)\)</span>), you just need to change
+<code>target += lkj_corr_cholesky_lpdf(Lrho| 3);</code>
+in <code>target += lkj_corr_cholesky_lpdf(Lrho| 1);</code>, that is equivalent to
+<span class="math inline">\(\mathcal{U}(-1, 1)\)</span>, but more powerful.</p>
+</div>
+<div id="would-you-like-to-learn-something-more-about-bayesian-statistics" class="section level2">
+<h2>Would you like to learn something more about Bayesian Statistics?</h2>
+<p>There are a lot of excellent books and tutorials online, but if you want
+to have an overall overview of the main aspects, you might be interested
+in a Summer School, such as the <strong><a href="https://sites.hss.univr.it/bayeshsc/">BayesHSC Summer School</a></strong>
+that will be held on-line or in Verona, from May <span class="math inline">\(31^{st}\)</span> to June <span class="math inline">\(5^{th}\)</span>, 2021.</p>
+<p>We are looking forward for you!</p>
+</div>
+

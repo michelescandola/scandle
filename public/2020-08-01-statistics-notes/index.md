@@ -12,4 +12,6 @@ Some notes of mine concerning various aspects of psychometry
   [HTML version](/presentations/20200819linearregression/unbiased-linear-regression/index.html)
 - Biased estimators for linear regression (Ridge and Lasso regressions),
   [HTML version](/presentations/20200903biasedestimators/biased-estimators-ridge-and-lasso-regressions/index.html)
+- Bayesian Correlations (robust, multiple, Savage-Dickey density ratio),
+  [HTML version](/presentations/20210205bayesianmultiplecorrelation/multiple-correlations-in-stan/index.html)
 

@@ -7,10 +7,32 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Sat, 22 Aug 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 07 Feb 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/presentations/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Multiple correlations in Stan</title>
+      <link>/presentations/20210205bayesianmultiplecorrelation/multiple-correlations-in-stan/</link>
+      <pubDate>Sun, 07 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/presentations/20210205bayesianmultiplecorrelation/multiple-correlations-in-stan/</guid>
+      <description>
+
+&lt;div id=&#34;TOC&#34;&gt;
+true
+&lt;/div&gt;
+
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(knitr)
+library(ggplot2)
+library(ggExtra)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In Bayesian Statistics a lot of packages are devoted in applying the most
+complex and fascinating, model-based, statistics.&lt;/p&gt;
+&lt;p&gt;Something that is less covered are base-level statistics, such as
+correlation.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Biased Estimators - Ridge and Lasso regressions</title>

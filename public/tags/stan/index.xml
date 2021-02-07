@@ -1,0 +1,27 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Stan - Tag - Michele Scandola&#39;s personal webpage</title>
+        <link>/tags/stan/</link>
+        <description>Stan - Tag - Michele Scandola&#39;s personal webpage</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 07 Feb 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/stan/" rel="self" type="application/rss+xml" /><item>
+    <title>Multiple correlations in Stan</title>
+    <link>/presentations/20210205bayesianmultiplecorrelation/multiple-correlations-in-stan/</link>
+    <pubDate>Sun, 07 Feb 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/presentations/20210205bayesianmultiplecorrelation/multiple-correlations-in-stan/</guid>
+    <description><![CDATA[
+
+<div id="TOC">
+true
+</div>
+
+<pre class="r"><code>library(knitr)
+library(ggplot2)
+library(ggExtra)</code></pre>
+<p>In Bayesian Statistics a lot of packages are devoted in applying the most
+complex and fascinating, model-based, statistics.</p>
+<p>Something that is less covered are base-level statistics, such as
+correlation.</p>
+]]></description>
+</item></channel>
+</rss>

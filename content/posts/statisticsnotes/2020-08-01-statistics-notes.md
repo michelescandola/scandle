@@ -12,7 +12,7 @@ tags:
 - Network Analysis
 - Multivariate Lesion Analysis
 - R
-lastmod: '2020-08-01T18:11:09+02:00'
+lastmod: '2021-02-07T12:49:09+02:00'
 hiddenFromHomePage: no
 hiddenFromSearch: no
 featuredImage: '../assets/images/statistics_notes.jpg'
@@ -36,3 +36,5 @@ Some notes of mine concerning various aspects of psychometry
   [HTML version](/presentations/20200819linearregression/unbiased-linear-regression/index.html)
 - Biased estimators for linear regression (Ridge and Lasso regressions),
   [HTML version](/presentations/20200903biasedestimators/biased-estimators-ridge-and-lasso-regressions/index.html)
+- Bayesian Correlations (robust, multiple, Savage-Dickey density ratio),
+  [HTML version](/presentations/20210205bayesianmultiplecorrelation/multiple-correlations-in-stan/index.html)

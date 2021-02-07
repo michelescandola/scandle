@@ -3,7 +3,7 @@
         <title>Bayesian Statistics - Tag - Michele Scandola&#39;s personal webpage</title>
         <link>/tags/bayesian-statistics/</link>
         <description>Bayesian Statistics - Tag - Michele Scandola&#39;s personal webpage</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 09 Sep 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/bayesian-statistics/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 07 Feb 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/bayesian-statistics/" rel="self" type="application/rss+xml" /><item>
     <title>Statistics Notes</title>
     <link>/2020-08-01-statistics-notes/</link>
     <pubDate>Sat, 01 Aug 2020 00:00:00 &#43;0000</pubDate>
@@ -12,6 +12,26 @@
     <description><![CDATA[<div class="featured-image">
                 <img src="/assets/images/statistics_notes.jpg" referrerpolicy="no-referrer">
             </div><p>Some notes of mine concerning various aspects of psychometry</p>]]></description>
+</item><item>
+    <title>Multiple correlations in Stan</title>
+    <link>/presentations/20210205bayesianmultiplecorrelation/multiple-correlations-in-stan/</link>
+    <pubDate>Sun, 07 Feb 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/presentations/20210205bayesianmultiplecorrelation/multiple-correlations-in-stan/</guid>
+    <description><![CDATA[
+
+<div id="TOC">
+true
+</div>
+
+<pre class="r"><code>library(knitr)
+library(ggplot2)
+library(ggExtra)</code></pre>
+<p>In Bayesian Statistics a lot of packages are devoted in applying the most
+complex and fascinating, model-based, statistics.</p>
+<p>Something that is less covered are base-level statistics, such as
+correlation.</p>
+]]></description>
 </item><item>
     <title>The `bmscstan` package is on CRAN!</title>
     <link>/blog/2020-09-09-bmscstan-cran/the-bmscstan-package-is-on-cran/</link>
@@ -85,13 +105,6 @@ and you can install it by typing in the R console
     <pubDate>Wed, 29 Jul 2020 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
     <guid>/blog/2020-07-29-preprint-pps/new-preprint-peripersonal-space-from-a-multisensory-perspective/</guid>
-    <description><![CDATA[<p>A new preprint was released today July $29^{th}$!</p>]]></description>
-</item><item>
-    <title>New preprint! Peripersonal space from a multisensory perspective</title>
-    <link>/post/new-preprint-peripersonal-space-from-a-multisensory-perspective/</link>
-    <pubDate>Wed, 29 Jul 2020 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>/post/new-preprint-peripersonal-space-from-a-multisensory-perspective/</guid>
     <description><![CDATA[<p>A new preprint was released today July $29^{th}$!</p>]]></description>
 </item></channel>
 </rss>

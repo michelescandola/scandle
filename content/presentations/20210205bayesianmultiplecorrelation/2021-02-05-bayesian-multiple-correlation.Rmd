@@ -1,0 +1,874 @@
+---
+title: Multiple correlations in Stan
+author: Michele Scandola
+date: '2021-02-07'
+slug: multiple-correlations-in-stan
+categories:
+- Statistics
+tags:
+- Stan
+- R
+- Bayesian Statistics
+- Correlations
+subtitle: ''
+lastmod: '2021-02-07T12:52:05+02:00'
+authorLink: 'https://michelescandola.netlify.app/'
+description: ''
+hiddenFromHomePage: yes
+hiddenFromSearch: no
+featuredImage: ''
+featuredImagePreview: ''
+toc:
+  enable: yes
+math:
+  enable: yes
+lightgallery: no
+license: ''
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+library(knitr)
+library(ggplot2)
+library(ggExtra)
+```
+
+
+In Bayesian Statistics a lot of packages are devoted in applying the most
+complex and fascinating, model-based, statistics.
+
+Something that is less covered are base-level statistics, such as 
+correlation.
+
+<!--more-->
+
+This post is based on **Rasmus Bååth**'s robust correlation model in JAGS, and
+**Adrian Baez-Ortega** conversion in Stan.
+
+For their original contributions, see:
+
+- [Bayesian correlation in JAGS](http://www.sumsar.net/blog/2013/08/bayesian-estimation-of-correlation/)
+- [Robust Bayesian Correlation in JAGS](http://www.sumsar.net/blog/2013/08/robust-bayesian-estimation-of-correlation/)
+- [Robust Bayesian Correlation in Stan](https://github.com/baezortega/bayes/tree/master/robust_correlation)
+
+In this post, I start from the **Rasmus Bååth** and  **Adrian Baez-Ortega** work,
+to extend it later, by adding the possibility to obtain Savage-Dickey
+density ratio Bayes Factors and the possibility to compute multiple
+correlation with a single function
+(instead to compute many one-to-one correlations, saving time and computational
+resources).
+
+## The Basic Idea
+
+In order to compute the correlation between two normally-distributed
+variables
+
+$y \sim \mathcal{N}(\mu_y,\sigma^2_y)$
+$x \sim \mathcal{N}(\mu_x,\sigma^2_x)$
+
+```{r}
+set.seed(4)
+
+x <- rnorm(100, mean = 10, sd = 5)
+y <- x * 0.7 + rnorm(100, mean = 3.7, sd = pi/2)
+
+dat <- data.frame(x , y)
+
+g1 <- ggplot( dat, aes(y = y, x = x) )+
+  geom_density_2d()+
+  geom_point()+
+  xlim(c(-5, 30))+
+  ylim(c(-5, 30))
+
+ggMarginal(g1, type = "histogram", bins = 20)
+```
+
+The brilliant idea behind this is that two variables that correlate
+they obviously share some covariance, that is composed by the
+variances and their correlation.
+
+## From the covariance matrix to the correlation matrix
+
+Therefore, these two independent-but-correlating normal distributions,
+can be seen as a multinormal distribution with their own variance-covariance
+matrix (a.k.a covariance matrix).
+
+Thus, our dataset becomes:
+
+$[y, x] \sim \mathcal{MN}(M, \Omega)$
+
+where $M = [\mu_y, \mu_x]$ is the vector of the means,
+and 
+
+$$\Omega = 
+\left[\begin{array}{cc} 
+\sigma_y^2 & \sigma_x \sigma_y \rho_{x,y}\\
+\sigma_x \sigma_y \rho_{x,y} & \sigma_x^2
+\end{array}\right]
+$$
+
+(in order to simplify the notation, $\sigma$ will be the variance and not,
+as usual, the standard deviation).
+
+The variance-covariance matrix $\Omega$ can be computed starting from the
+diagonal matrix of variances $\Sigma$ and the correlation matrix $R$
+
+$$\Omega = \Sigma \times R \times \Sigma =
+\left[\begin{array}{cc} 
+\sigma_y & 0\\
+0 & \sigma_x
+\end{array}\right] \times
+\left[\begin{array}{cc} 
+1 & \rho_{x,y}\\
+\rho_{x,y} & 1
+\end{array}\right] \times
+\left[\begin{array}{cc} 
+\sigma_y & 0\\
+0 & \sigma_x
+\end{array}\right] 
+$$
+
+Just to confirm that everything its written here is correct, some math:
+
+```{r}
+
+# std dev for    x  y    with square-elevation to have the variances
+Sigma <- diag( c(5, pi/2)^2 )
+
+kable(Sigma, caption = "Variances diagonal matrix")
+
+R <- matrix( c(1  , 0.7,
+               0.7, 1  ),
+             byrow = TRUE,
+             ncol = 2 )
+
+kable(R, caption = "Correlation matrix")
+
+kable(Sigma %*% R %*% Sigma, digits = 2, caption = "Covariance matrix")
+
+kable(cov2cor(Sigma %*% R %*% Sigma),
+      caption = "If everything is correct, we should have our correlation matrix back")
+```
+
+Well, yes, nothing spectacular, but at least we are sure that the math is OK.
+
+### The prior distributions from the **Rasmus Bååth** work and a normal Bayesian correlation
+
+In order to obtain a posterior distribution for $\rho_{x,y}$,
+in our Bayesian code we should estimate the posterior distribution for:
+
+- $M$, that for **Rasmus Bååth** suggestions, each element can be
+  non-informative
+  $\mu \sim \mathcal{N}(0, 1000)$
+- The $\Sigma$ diagonal matrix, that with an non-informative prior each element
+  would be:
+  $\sigma \sim \mathcal{U}(0, 1000)$
+- $rho$, whose non-informative distribution would be
+  $\rho \sim \mathcal{U}(-1, 1)$
+  
+  Therefore, the Stan code is:
+  
+```{r}
+stancode1 <-"
+data {
+    int<lower=1> N;  // number of observations
+    vector[2] x[N];  // input data: rows are observations, columns are the two variables
+}
+
+parameters {
+    vector[2] mu;                 // means vector
+    real<lower=0> sigma[2];       // variances vector
+    real<lower=-1, upper=1> rho;    // correlation coefficient
+}
+
+transformed parameters {
+    // Covariance matrix
+    cov_matrix[2] cov = [[      sigma[1] ^ 2       , sigma[1] * sigma[2] * rho],
+                         [sigma[1] * sigma[2] * rho,       sigma[2] ^ 2       ]];
+}
+
+model {
+    // Likelihood
+    // Bivariate Student's t-distribution instead of normal for robustness
+    x ~ multi_normal(mu, cov);
+
+    // Noninformative priors on all parameters
+    sigma ~ uniform(0, 1000);
+    mu ~ normal(0, 1000);
+    rho ~ uniform(-1,1);//non informative prior between -1 and 1
+}
+
+generated quantities {
+    // Random samples from the estimated bivariate normal distribution (for assessment of fit)
+    vector[2] x_rand;
+    x_rand = multi_normal_rng(mu, cov);
+}"
+```
+
+... and to call it, you just need to prepare you data list and run the analysis
+
+```{r, fig.cap="Density and trace plot for our rho parameter of the first bayesian correlation in stan"}
+
+library(rstan)
+library(bayesplot)
+
+data.list <- list(
+  x = cbind( x, y ),
+  N = nrow( dat )
+)
+
+mdlCor1 <- stan(
+  model_code = stancode1,
+  data = data.list,
+  pars = "rho",
+  refresh = 0
+)
+
+kable( summary(mdlCor1)[[1]] , digits = 3,
+       caption = "Posterior distribution for the rho parameter")
+
+mcmc_combo(
+  mdlCor1,
+  pars = "rho"
+)
+
+```
+
+Ok, so here we have some results.
+
+I am not showing you how to check if the model is ok, etc... etc...
+**Rasmus Bååth** did a great job, so you might want to take a look at his page.
+
+## The Bayesian Robust Correlation
+
+Anyway, the best part of the **Rasmus Bååth** work was to enhance the
+correlation concept towards a robust correlation that, at the best
+of my knowledge, has no similarities with any "traditional" correlation coefs.
+
+> Robust: more resistent to outliers
+
+Therefore, as it is usually done to have robust linear models in Bayesian
+Statistics, the prior for our observed variables is not anymore a 
+Normal distribution, but a Student's t distribution with unknown $\nu$
+degrees of freedom.
+
+The Student's t distribution has strong connections with the Normal
+distribution but, changing its degrees of freedom ($\nu$), the tails can allow
+more probability at the extremes (smaller degrees of freedom), or less probability
+(larger degrees of freedom). It is known that a Student's t distribution with
+$\nu \to + \inf$ is a Normal distribution.
+
+Smaller $\nu$ it is allowed that extreme values are further from the 
+center of the distribution (namely, the $\mu$ of the Student's t
+distribution is more resilient to outliers), while greater $\nu$ values
+makes $\mu$ more dependent to extreme values.
+
+Consequently, in the code we changed these prior distributions:
+
+- $M$, $\mu \sim \mathcal{Student~t}(\nu, 0, 1000)$
+- $\nu \sim \mathcal{U}(0, 1000)$
+
+```{r}
+stancode2 <-"
+data {
+    int<lower=1> N;  // number of observations
+    vector[2] x[N];  // input data: rows are observations, columns are the two variables
+}
+
+parameters {
+    vector[2] mu;                 // mean vector of the marginal t distributions
+    real<lower=0> sigma[2];       // variance vector of the marginal t distributions
+    real<lower=1> nu;             // degrees of freedom of the marginal t distributions
+    real<lower=-1, upper=1> rho;  // correlation coefficient
+}
+
+transformed parameters {
+    // Covariance matrix
+    cov_matrix[2] cov = [[      sigma[1] ^ 2       , sigma[1] * sigma[2] * rho],
+                         [sigma[1] * sigma[2] * rho,       sigma[2] ^ 2       ]];
+}
+
+model {
+    // Likelihood
+    // Bivariate Student's t-distribution instead of normal for robustness
+    x ~ multi_student_t(nu, mu, cov);
+
+    // Noninformative priors on all parameters
+    sigma ~ uniform(0, 1000);
+    mu ~ normal(0, 1000);
+    nu ~ uniform(0,1000);
+    rho ~ uniform(-1,1);//non informative prior between -1 and 1
+}
+
+generated quantities {
+    // Random samples from the estimated bivariate t-distribution (for assessment of fit)
+    vector[2] x_rand;
+    x_rand = multi_student_t_rng(nu, mu, cov);
+}
+"
+```
+
+and these are the new results:
+
+```{r}
+mdlCor2 <- stan(
+  model_code = stancode2,
+  data = data.list,
+  pars = c("rho","nu"),
+  refresh = 0
+)
+
+kable( summary(mdlCor2)[[1]] , digits = 3,
+       caption = "Posterior distribution for the rho and nu parameters")
+
+mcmc_combo(
+  mdlCor2,
+  pars = c("rho", "nu")
+)
+
+```
+
+Well, the two distributions are directly coming from random normal
+distributions, so there should not be big differences between this robust
+and the non-robust version.
+
+However, here we gain the $\nu$ (nu) parameter, that as **Krushcke** said
+(in one of its books),
+it might be an index of normality of our distributions.
+
+We all know that a Student's t distribution with $\Inf$ degrees of freedom
+is basically the same as a Normal distribution. Therefore, if our $\nu$
+distribution stretched toward small numbers it should be an index that our
+distributions are not parametrically distributed (in fact, a Cauchy distribution
+is a Student's t distribution with 1 degree of freedom).
+
+## The Bayesian Robust Correlation: degrees of freedom dependent from the number of observations
+
+However, why should $\nu$ be unknown?
+
+We all know that, for an extension of the central limit theorem,
+the biggest the sample, the more "certain" is the mean.
+
+> Central Limit Theorem: when independent random variables are added, their
+  properly normalized sum tends toward a normal distribution
+  
+Therefore, it might be reasonable to establish some relation between 
+the number of observations and $\nu$.
+
+Here it starts my personal contribution, that you can also find in my
+[github](https://github.com/michelescandola).
+
+I have decided that the number of degrees of freedom are equal to the 
+number of observations divided by 10 plus 1.
+
+```{r}
+stancode3 <-"
+data {
+    int<lower=1> N;  // number of observations
+    vector[2] x[N];  // input data: rows are observations, columns are the two variables
+}
+
+parameters {
+    vector[2] mu;                 // mean vector of the marginal t distributions
+    real<lower=0> sigma[2];       // variance vector of the marginal t distributions
+    real<lower=-1, upper=1> rho;  // correlation coefficient
+}
+
+transformed parameters {
+    // degrees of freedom of the marginal t distributions
+    real<lower=1> nu = (N / 10.0) + 1;
+
+    // Covariance matrix
+    cov_matrix[2] cov = [[      sigma[1] ^ 2       , sigma[1] * sigma[2] * rho],
+                         [sigma[1] * sigma[2] * rho,       sigma[2] ^ 2       ]];
+}
+
+model {
+    // Likelihood
+    // Bivariate Student's t-distribution instead of normal for robustness
+    x ~ multi_student_t(nu, mu, cov);
+
+    // Noninformative priors on all parameters
+    sigma ~ uniform(0, 1000);
+    mu ~ normal(0, 1000);
+    rho ~ uniform(-1,1);//non informative prior between -1 and 1
+}
+
+generated quantities {
+    // Random samples from the estimated bivariate t-distribution (for assessment of fit)
+    vector[2] x_rand;
+    x_rand = multi_student_t_rng(nu, mu, cov);
+}
+"
+
+mdlCor3 <- stan(
+  model_code = stancode3,
+  data = data.list,
+  pars = "rho",
+  refresh = 0
+)
+
+kable( summary(mdlCor3)[[1]] , digits = 3,
+       caption = "Posterior distribution for the rho parameters")
+
+mcmc_combo(
+  mdlCor3,
+  pars = "rho"
+)
+
+```
+
+[Download the Stan code](https://github.com/michelescandola/BayesianCorrelations/blob/main/robust_correlation_dog_from_sample_size.stan)
+
+## The Bayesian Robust Correlation: computing the Savage-Dickey density ratio
+
+Until know the model was based on non-informative distributions, and 
+our conclusions can be based on Credible Intervals
+(a.k.a Equally-Tailed Intervals), or in High Posterior Density Intervals.
+
+But what we can do to compute Bayes Factors?
+
+Among the simplest solutions, we can use the Savage-Dickey density ratio.
+
+> Savage-Dickey Density Ratio: the ratio between the density distributions
+  of the posterior distribution and the prior distribution, with $\theta = 0$.
+  Savage-Dickey's $BF_{01} = Pr(\theta = 0 | D, H_0) / Pr(\theta = 0 | H_0)$
+  
+The idea is the following:
+
+Assuming that our $H_0$ distribution is distributed around our "null" value
+(usually the zero), this should have the peak exactly on that value
+(otherwise, our null distribution is not a null distribution).
+
+```{r, fig.cap = "An example of informative prior for the null hypothesis"}
+
+plot(
+  y = dnorm(x = seq(from = -10, to = 10, by = 0.01)),
+  x = seq(from = -10, to = 10, by = 0.01),
+  type = "l",
+  ylim = c(0, 0.6)
+)
+abline(v = 0)
+```
+
+
+If our data are not distributed according our $H_0$ distribution, the peak
+of the posterior distribution should be elsewhere, and the elevation
+of the posterior distribution at the "null" value should be less than 
+the peak at the same position for the $H_0$ distribution.
+
+```{r, fig.cap = "The prior and the posterior (red) distribution"}
+
+plot(
+  y = dnorm(x = seq(from = -10, to = 10, by = 0.01)),
+  x = seq(from = -10, to = 10, by = 0.01),
+  type = "l",
+  ylim = c(0, 0.6)
+)
+points(
+  y = dnorm(x = seq(from = -10, to = 10, by = 0.01),
+            mean = -2, sd = 2),
+  x = seq(from = -10, to = 10, by = 0.01),
+  col = "red",
+  type = "l"
+)
+abline(v = 0)
+```
+
+In this case, the Savage-Dickey $BF_{01}$ is
+`r round(dnorm(x = 0, mean = -2, sd =2)/dnorm(x = 0),2)`,
+that is obviously in favour of the alternative hypothesis.
+
+However, to compute the $BF_{10}$ we could compute the reciprocal: 
+`r round(dnorm(x = 0)/dnorm(x = 0, mean = -2, sd =2),2)`.
+
+OK. So far, so good.
+
+As you have already noticed, we cannot rely anymore on non-informative prior
+distributions, at least for the $\rho$ parameter.
+
+Now, we should think to the possible informative prior for the correlation.
+
+A natural candidate is the Beta distribution ($\mathcal{B}(\alpha, \beta) \rightarrow [0,1]$):
+
+```{r, fig.cap = "A Beta distribution with alpha and beta = 3"}
+plot(
+  y = dbeta(x = seq(from = 0, to = 1, by = 0.01),
+            shape1 = 3, shape2 = 3),
+  x = seq(from = 0, to = 1, by = 0.01),
+  type = "l"
+)
+```
+
+but we should stretch it in order to have a [-1, 1] range.
+
+```{r, fig.cap = "A Beta distribution with alpha and beta = 3"}
+plot(
+  y = dbeta(x = seq(from = 0, to = 1, by = 0.01),
+            shape1 = 3, shape2 = 3),
+  x = (seq(from = 0, to = 1, by = 0.01) - 0.5) * 2,
+  type = "l"
+)
+```
+
+Therefore, what we will do is to use a Beta distribution,
+with the two parameters equal to 3, in order to have high density when
+$\theta$ is equal to the "null" value. For a $\mathcal{B}$ distribution
+this value is not 0, but 0.5, because this probability distribution is
+defined in $[0,1]$, and not in $[-\inf, +\inf]$, as it happens in distributions
+such as the Student's t and the Gaussian ones.
+
+Therefore, in the code below, I have declared the `rh` variable in the `parameters`
+block, set its prior distribution as a $\mathcal{B}(3,3)$ in the `model` block,
+and converted it in the `rho` parameter, necessary to compute the
+`cov` matrix in the `transformed parameters` block, necessary for the 
+multiple Student's t distribution.
+
+Finally, I have computed the $BF_{10}$ on the `rh` parameter,
+with a $\theta = 0.5$, while we can use the `rho` parameter to get
+Credible Intervals and all these statistics.
+
+$BF_{10} = \frac{Pr(\theta = 0.5 | D, H_0 = \mathcal{B}(\alpha = 3, \beta = 3))}{Pr(\theta = 0.5 | H_0 = \mathcal{B}(\alpha = 3, \beta = 3))}$
+
+```{r}
+library(logspline)
+
+stancode4 <-"
+data {
+    int<lower=1> N;  // number of observations
+    vector[2] x[N];  // input data: rows are observations, columns are the two variables
+}
+
+parameters {
+    vector[2] mu;                 // locations of the marginal t distributions
+    real<lower=0> sigma[2];       // scales of the marginal t distributions
+    real<lower=1> nu;             // degrees of freedom of the marginal t distributions
+    real<lower=0, upper=1> rh;  // correlation coefficient
+}
+
+transformed parameters {
+    //correlation index rh is scaled to be within -1 and 1
+    real<lower=-1, upper=1> rho = 2*(rh-0.5);
+    // Covariance matrix
+    cov_matrix[2] cov = [[      sigma[1] ^ 2       , sigma[1] * sigma[2] * rho],
+                         [sigma[1] * sigma[2] * rho,       sigma[2] ^ 2       ]];
+}
+
+model {
+    // Likelihood
+    // Bivariate Student's t-distribution instead of normal for robustness
+    x ~ multi_student_t(nu, mu, cov);
+
+    // Noninformative priors on all parameters
+    sigma ~ normal(0, 1000);
+    mu ~ normal(0, 1000);
+    nu ~ uniform(0, 1000);
+    rh ~ beta(3, 3);//non informative prior between 0 and 1
+}
+
+generated quantities {
+    // Random samples from the estimated bivariate t-distribution (for assessment of fit)
+    vector[2] x_rand;
+    x_rand = multi_student_t_rng(nu, mu, cov);
+}
+"
+
+mdlCor4 <- stan(
+  model_code = stancode4,
+  data = data.list,
+  pars = c("rho","rh"),
+  refresh = 0
+)
+
+kable( summary(mdlCor4)[[1]] , digits = 3,
+       caption = "Posterior distribution for the rho and rh parameters")
+
+mcmc_combo(
+  mdlCor4,
+  pars = c("rho", "rh")
+)
+
+rh_logspl <- logspline( extract( mdlCor4 , pars = "rh") )
+BF10      <- dbeta(0.5, 3, 3) / dlogspline(0.5, rh_logspl)
+
+```
+
+The $BF_{10} =$ `r round( BF10, 2 )`.
+
+This is the version with unknown degrees of freedom
+[download the Stan code](https://github.com/michelescandola/BayesianCorrelations/blob/main/robust_correlation_dog_unknown_informed_prior.stan)
+
+Version with degrees of freedom coming from the sample size
+[download the Stan code](https://github.com/michelescandola/BayesianCorrelations/blob/main/robust_correlation_dog_from_sample_size_informative_prior.stan)
+
+Version with a Multi Normal distribution instead of a Multi Student's t
+distribution (normal correlation)
+[download the Stan code](https://github.com/michelescandola/BayesianCorrelations/blob/main/correlation_dog_from_sample_size_informative_prior.stan)
+
+## The Bayesian ~~Robust~~ Correlation: multiple correlations
+
+OK, I hope that everything was clear until this point.
+
+Now, I had to compute correlations among 15 different questionnaires,
+that means `r 15 + 14 + 13 + 12 + 11 + 10 + 9 + 8 + 7 + 6 + 5 + 4 + 3 + 2`
+correlations.
+
+It is true that the codes I showed you until now are pretty fast, but... the PC
+would have worked for days!
+
+Therefore I prepared a version for multiple correlations.
+
+1. The Multi - something distributions can take 2 or N vectors.
+   So this should not be a problem
+2. The messy thing could be the covariance matrix.
+   I should find a more convenient way to compute it.
+3. Am I sure that I want to do a robust correlation? The No U-Turn Chains
+   used in Stan are great, but adding parameters to estimate can lead to
+   difficulties in the computations. Therefore, I would avoid a version 
+   with unknown $\nu$
+
+Fortunately, in Stan there is a convenient distribution that is a
+sort of generalisation of the $\mathcal{B}$ distribution, whose values
+are $[-1, 1]$.
+
+This distribution is the [`LKJ distribution`](https://distribution-explorer.github.io/multivariate_continuous/lkj.html),
+that has only one parameter $\eta$ and it is marginally distributed along a 
+$\mathcal{B}(\alpha, \beta)$, where $(\alpha, \beta) = \eta - 1 + K / 2$ and
+$K$ being the number of variables to be correlated.
+
+Because correlations matrix are very important also for
+(Generalised) Multilevel Linear Models, in Stan there are specific
+distributions and variable types helping us to easy the task.
+
+- `cholesky_factor_corr` is a variable type, it helps in creating triangular 
+  matrices perfect for correlation matrices.
+- `lkj_corr_cholesky` is a prior distribution for correlations
+- `multi_normal_cholesky` is a prior distribution for multi normal distributions,
+  accepting a lower triangular covariation matrix instead of a covariance matrix
+  
+Now, the covariance matrix and the correlation matrix are computed in the
+`generate quantities` block, together with the random sampling from the
+distribution for posterior predictive checking.
+
+This is done because, instead that extrapolate the cholesky matrices,
+it is easier to take our decisions by observing them.
+  
+```{r, fig.height= 9}
+set.seed(5)
+## let's add an uncorrelated variable to our data set
+dat$z <- rnorm( nrow(dat) )
+
+data.list <- list(
+  x = dat,
+  N = nrow(dat),
+  V = ncol(dat)## number of variable to be correlated
+)
+
+
+stancode5 <- "
+data {
+    int<lower=1> N;  // number of observations
+    int<lower=2> V;  // number of variables
+    vector[V] x[N];  // input data: rows are observations, columns are the V variables
+}
+
+parameters {
+    vector[V] mu;                           // locations of the normal distributions
+    vector<lower=0>[V] sigma;               // scales of the normal distributions
+    cholesky_factor_corr[V] Lrho;           // correlation matrix
+}
+
+model {
+    // Noninformative priors on all parameters
+    target += uniform_lpdf(sigma | 0, 10);
+    target += normal_lpdf(mu | 0, 10);
+    target += lkj_corr_cholesky_lpdf(Lrho| 3);
+    
+    // Likelihood
+    // Multivariate Normal distribution
+    target += multi_normal_cholesky_lpdf(x | mu, diag_pre_multiply(sigma, Lrho));
+}
+
+generated quantities {
+  matrix[V,V] Omega;
+  matrix[V,V] cov;
+  vector[V] x_rand;
+  
+  Omega = multiply_lower_tri_self_transpose(Lrho);
+  cov = quad_form_diag(Omega, sigma); 
+  
+  x_rand = multi_normal_rng(mu, cov);
+}
+"
+
+mdlCor5 <- stan(
+  model_code = stancode5,
+  data = data.list,
+  pars = "Omega",
+  refresh = 0
+)
+
+kable( summary(mdlCor5)[[1]] , digits = 3,
+       caption = "Posterior distribution for the rho parameters (Omega matrix)")
+
+mcmc_combo(
+  mdlCor5,
+  regex_pars = "Omega"
+)
+
+rrho <- extract( mdlCor5 , pars = "Omega")$Omega
+x_rho <- rrho[ , 2:3, 1]# cor(x,y) and cor(x,z)
+y_rho <- rrho[ ,   3, 2]# cor(y,z)
+
+out <- as.data.frame(cbind(x_rho, y_rho))
+colnames(out) <- c("cor(x,y)", "cor(x,z)", "cor(y,z)")
+
+rho_logspl <- apply(out, 2, logspline)
+## to understand what is eta and why we are computing it in this way,
+## see some lines above where it is written
+## about the LKJ distribution
+## eta        <- 3 + 1 - ncol(dat)/2 
+BF10       <- lapply(rho_logspl,
+                     FUN = function(x, eta){
+                       dbeta(0.5, eta, eta) / dlogspline(0 , x)
+                       },
+                     eta = 3 + 1 - ncol(dat)/2
+                     )
+
+kable(do.call("c", BF10), digits = 2, caption = "The Savage-Dickey BFs")
+```
+
+[Download the Stan code](https://github.com/michelescandola/BayesianCorrelations/blob/main/multiple_correlation)
+
+Do not worry for the NaNs in the summary of the posterior distribution.
+
+This is normal when a variable in a MCMC takes always the same value,
+in this case 1, because it is the correlation between a values and itself.
+
+Remember that in the Omega matrix 1 is the `x` variable, 2 the `y` and
+3 the `z` one.
+
+## The Bayesian Robust Correlation: multiple correlations
+
+So let's try to use a Student's t-test distribution.
+
+The $\nu$ parameter will be the number of observations, divided by 10.
+
+Because there is not a "cholensky" version of the multi Student's t distribution,
+we should use the normal one, by passing as a parameter the covariance matrix.
+
+For this reason, the correlation and covariance matrices are now computed in the
+transformed parameters block.
+
+```{r, fig.height= 9}
+stancode6 <- "
+data {
+    int<lower=1> N;  // number of observations
+    int<lower=2> V;  // number of variables
+    vector[V] x[N];  // input data: rows are observations, columns are the V variables
+}
+
+parameters {
+    vector[V] mu;                           // locations of the normal distributions
+    vector<lower=0>[V] sigma;               // scales of the normal distributions
+    cholesky_factor_corr[V] Lrho;           // correlation matrix
+}
+
+transformed parameters {
+    matrix[V,V] Omega;
+    matrix[V,V] cov;
+    // degrees of freedom of the marginal t distributions
+    real<lower=1> nu = (N / 10.0) + 1;
+
+    // Correlation and Covariance matrices
+    Omega = multiply_lower_tri_self_transpose(Lrho);
+    cov   = quad_form_diag(Omega, sigma); 
+}
+
+model {
+    // Noninformative priors on all parameters
+    target += uniform_lpdf(sigma | 0, 10);
+    target += normal_lpdf(mu | 0, 10);
+    target += lkj_corr_cholesky_lpdf(Lrho| 3);
+    
+    // Likelihood
+    // Multivariate Student's t distribution
+    target += multi_student_t_lpdf(x | nu, mu, cov);
+}
+
+generated quantities {
+  vector[V] x_rand;
+
+  x_rand = multi_student_t_rng(nu, mu, cov);
+}
+"
+
+mdlCor6 <- stan(
+  model_code = stancode6,
+  data = data.list,
+  pars = "Omega",
+  refresh = 0
+)
+
+kable( summary(mdlCor6)[[1]] , digits = 3,
+       caption = "Posterior distribution for the rho parameters (Omega matrix)")
+
+mcmc_combo(
+  mdlCor6,
+  regex_pars = "Omega"
+)
+
+rrho <- extract( mdlCor6 , pars = "Omega")$Omega
+x_rho <- rrho[ , 2:3, 1]# cor(x,y) and cor(x,z)
+y_rho <- rrho[ ,   3, 2]# cor(y,z)
+
+out <- as.data.frame(cbind(x_rho, y_rho))
+colnames(out) <- c("cor(x,y)", "cor(x,z)", "cor(y,z)")
+
+rho_logspl <- apply(out, 2, logspline)
+
+BF10       <- lapply(rho_logspl,
+                     FUN = function(x, eta){
+                       dbeta(0.5, eta, eta) / dlogspline(0 , x)
+                       },
+                     eta = 3 + 1 - ncol(dat)/2
+                     )
+
+kable(do.call("c", BF10), digits = 2, caption = "The Savage-Dickey BFs")
+```
+
+[Download the Stan code](https://github.com/michelescandola/BayesianCorrelations/blob/main/robust_multiple_correlation_dog_from_sample_size_informative_prior.stan)
+
+## Conclusions
+
+We have seen how to compute Bayesian correlations using Stan.
+
+What we are actually doing, is to model a covariance matrix among all the 
+observed variables, and extracting the correlations from it.
+
+I have spent a little time in explaining what to do for using robust
+correlations (that do not have an equivalent in the frequentist
+framework), how to compute Savage-Dickey ratios from them, and how
+to use this framework for multiple correlations.
+
+Actually, the versions for multiple correlations are faster than the versions
+for the correlations between two only variables, because they are not using
+ugly conversions of the $\mathcal{B}(\alpha,\beta)$ distribution, but they
+use the more convenient LKJ distributions.
+
+If you are not interested in computing the Savage-Dickey ratio, and you would
+like to have a non-informative distribution for the correlations (i.e., 
+$\mathcal{U}(-1, 1)$), you just need to change
+`target += lkj_corr_cholesky_lpdf(Lrho| 3);`
+in `target += lkj_corr_cholesky_lpdf(Lrho| 1);`, that is equivalent to
+$\mathcal{U}(-1, 1)$, but more powerful.
+
+## Would you like to learn something more about Bayesian Statistics?
+
+There are a lot of excellent books and tutorials online, but if you want
+to have an overall overview of the main aspects, you might be interested
+in a Summer School, such as the **[BayesHSC Summer School](https://sites.hss.univr.it/bayeshsc/)**
+that will be held on-line or in Verona, from May $31^{st}$ to June $5^{th}$, 2021.
+
+We are looking forward for you!
