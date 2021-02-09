@@ -6,4 +6,4 @@ blogdown::new_site(theme = "dillonzq/LoveIt")
 blogdown::build_site()
 
 blogdown::serve_site()## ricarica sito
-blogdown::new_post("A new article is out: Anosognosia for theory of mind deficits: A single case study and a review of the literature")
+blogdown::new_post("New preprint! The development of a standard procedure for the optimal reliability-feasibility trade-off in Multilevel Linear Models analyses in Psychology and Neuroscience.")

@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Mon, 02 Nov 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 09 Feb 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>New preprint! The development of a standard procedure for the optimal reliability-feasibility trade-off in Multilevel Linear Models analyses in Psychology and Neuroscience.</title>
+      <link>/blog/2021-02-09-random-effects/standardrandomeffects/</link>
+      <pubDate>Tue, 09 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/2021-02-09-random-effects/standardrandomeffects/</guid>
+      <description>&lt;p&gt;A new preprint was released yesterday February $8^{th}$!&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>A new article is out: Anosognosia for theory of mind deficits: A single case study and a review of the literature</title>

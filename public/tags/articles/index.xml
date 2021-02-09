@@ -3,7 +3,7 @@
         <title>article(s) - Tag - Michele Scandola&#39;s personal webpage</title>
         <link>/tags/articles/</link>
         <description>article(s) - Tag - Michele Scandola&#39;s personal webpage</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 02 Nov 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/articles/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 09 Feb 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/articles/" rel="self" type="application/rss+xml" /><item>
     <title>Publications</title>
     <link>/2020-08-01-publications/</link>
     <pubDate>Sun, 19 Jul 2020 00:00:00 &#43;0000</pubDate>
@@ -12,6 +12,20 @@
     <description><![CDATA[<div class="featured-image">
                 <img src="/assets/images/publications.jpg" referrerpolicy="no-referrer">
             </div><p>This is the list of my publications:</p>]]></description>
+</item><item>
+    <title>New preprint! The development of a standard procedure for the optimal reliability-feasibility trade-off in Multilevel Linear Models analyses in Psychology and Neuroscience.</title>
+    <link>/blog/2021-02-09-random-effects/standardrandomeffects/</link>
+    <pubDate>Tue, 09 Feb 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/blog/2021-02-09-random-effects/standardrandomeffects/</guid>
+    <description><![CDATA[<p>A new preprint was released yesterday February $8^{th}$!</p>]]></description>
+</item><item>
+    <title>New preprint! The development of a standard procedure for the optimal reliability-feasibility trade-off in Multilevel Linear Models analyses in Psychology and Neuroscience.</title>
+    <link>/post/standardrandomeffects/</link>
+    <pubDate>Tue, 09 Feb 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/post/standardrandomeffects/</guid>
+    <description><![CDATA[<p>A new preprint was released yesterday February $8^{th}$!</p>]]></description>
 </item><item>
     <title>A new article is out: Anosognosia for theory of mind deficits: A single case study and a review of the literature</title>
     <link>/blog/2020-11-02-neuropsychologia-tom-awareness-deficit/a-new-article-is-out-anosognosia-for-theory-of-mind-deficits-a-single-case-study-and-a-review-of-the-literature/</link>
@@ -67,13 +81,6 @@
     <pubDate>Wed, 29 Jul 2020 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
     <guid>/blog/2020-07-29-preprint-pps/new-preprint-peripersonal-space-from-a-multisensory-perspective/</guid>
-    <description><![CDATA[<p>A new preprint was released today July $29^{th}$!</p>]]></description>
-</item><item>
-    <title>New preprint! Peripersonal space from a multisensory perspective</title>
-    <link>/post/new-preprint-peripersonal-space-from-a-multisensory-perspective/</link>
-    <pubDate>Wed, 29 Jul 2020 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>/post/new-preprint-peripersonal-space-from-a-multisensory-perspective/</guid>
     <description><![CDATA[<p>A new preprint was released today July $29^{th}$!</p>]]></description>
 </item></channel>
 </rss>
