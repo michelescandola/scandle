@@ -15,6 +15,12 @@ This is the list of my publications:
 
 Beccherle, M., Facchetti, S., Villani, F., Zanini, M., & *Scandola, M.* (2020, July 29). Peripersonal Space from a multisensory perspective: the distinct effect of the visual and tactile components of Visuo-Tactile stimuli. https://doi.org/10.31234/osf.io/358xc
 
+## 2021
+
+Moro, V., Besharati, S., *Scandola, M.*, Bertagnoli, S., Gobbetto, V., Ponzo, S., Bulgarelli, C., Fotopoulou, A., & Jenkinson, P.M. (2021) The Motor Unawareness Assessment (MUNA): A new tool for the assessment of Anosognosia for hemiplegia, Journal of Clinical and Experimental Neuropsychology, https://doi.org/10.1080/13803395.2021.1876842 
+
+Fusco, G., *Scandola, M.*, Lin, H., Inzlicht, M., & Aglioti, S. M. (Registered Report: 2021, February 15). Modulating preferences during intertemporal choices through exogenous midfrontal theta transcranial alternating current. https://doi.org/10.17605/OSF.IO/7V6ED
+
 ## 2020
 
 Rossato, E., Verzini, E., *Scandola, M.*, Ferrari, F., & Bonadiman, S. (2020). Role of LCF scale as an outcome prognostic index in patients with traumatic brain injury. Neurological Sciences, 1-6. https://doi.org/10.1007/s10072-020-04852-1
