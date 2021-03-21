@@ -30,6 +30,8 @@ This is the list of my publications:
 
 ## preprints
 
+Pacella, V., Ricciardi, G.K., Bonadiman, S., Verzini, E., Faraoni, F., *Scandola, M.*, Moro, V. The Role of White Matter Disconnection in the Symptoms Relating to the Anarchic Hand Syndrome: A Single Case Study. Preprints 2021, 2021030466 (doi: 10.20944/preprints202103.0466.v1).
+
 *Scandola, M.*, Tidoni, E. (2021, February 8). The development of a standard procedure for the optimal reliability-feasibility trade-off in Multilevel Linear Models analyses in Psychology and Neuroscience. https://doi.org/10.31234/osf.io/kfhgv
 
 *Scandola, M.*, Gobbetto, V., Bertagnoli, S., Bulgarelli, C., Canzano, L., Aglioti, S. M., & Moro, V. (2020, August 12). Gesture errors in left and right hemisphere damaged patients: a behavioural and anatomical study. https://doi.org/10.31234/osf.io/7u3nq
@@ -39,6 +41,8 @@ This is the list of my publications:
 Beccherle, M., Facchetti, S., Villani, F., Zanini, M., & *Scandola, M.* (2020, July 29). Peripersonal Space from a multisensory perspective: the distinct effect of the visual and tactile components of Visuo-Tactile stimuli. https://doi.org/10.31234/osf.io/358xc
 
 ## 2021
+
+Marucci, M., Di Flumeri, G., Borghini, G., Sciaraffa,, N., *Scandola, M.*, Pavone, E.F., Babiloni, F., Betti, V., & Aricò, P. (2021). The impact of multisensory integration and perceptual load in virtual reality settings on performance, workload and presence. Scientific Reports, 11, 4831. https://doi.org/10.1038/s41598-021-84196-8
 
 Moro, V., Besharati, S., *Scandola, M.*, Bertagnoli, S., Gobbetto, V., Ponzo, S., Bulgarelli, C., Fotopoulou, A., & Jenkinson, P.M. (2021) The Motor Unawareness Assessment (MUNA): A new tool for the assessment of Anosognosia for hemiplegia, Journal of Clinical and Experimental Neuropsychology, https://doi.org/10.1080/13803395.2021.1876842 
 

@@ -3,7 +3,7 @@
         <title>Single Case Analysis - Tag - Michele Scandola&#39;s personal webpage</title>
         <link>/tags/single-case-analysis/</link>
         <description>Single Case Analysis - Tag - Michele Scandola&#39;s personal webpage</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 02 Nov 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/single-case-analysis/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 21 Mar 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/single-case-analysis/" rel="self" type="application/rss+xml" /><item>
     <title>Statistics Notes</title>
     <link>/2020-08-01-statistics-notes/</link>
     <pubDate>Sat, 01 Aug 2020 00:00:00 &#43;0000</pubDate>
@@ -12,6 +12,26 @@
     <description><![CDATA[<div class="featured-image">
                 <img src="/assets/images/statistics_notes.jpg" referrerpolicy="no-referrer">
             </div><p>Some notes of mine concerning various aspects of psychometry</p>]]></description>
+</item><item>
+    <title>New preprint! The Role of White Matter Disconnection in the Symptoms Relating to the Anarchic Hand Syndrome: A Single Case Study.</title>
+    <link>/blog/2021-03-21-preprint-anarchic-hand/new-preprint-the-role-of-white-matter-disconnection-in-the-symptoms-relating-to-the-anarchic-hand-syndrome-a-single-case-study/</link>
+    <pubDate>Sun, 21 Mar 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/blog/2021-03-21-preprint-anarchic-hand/new-preprint-the-role-of-white-matter-disconnection-in-the-symptoms-relating-to-the-anarchic-hand-syndrome-a-single-case-study/</guid>
+    <description><![CDATA[<p>A new preprint was released March $18^{th}, 2021$!</p>
+<p>A single-case study with complete lesional and tractography analysis,
+and additional review of the literature on a patient with
+Anarchic Hand.</p>]]></description>
+</item><item>
+    <title>New preprint! The Role of White Matter Disconnection in the Symptoms Relating to the Anarchic Hand Syndrome: A Single Case Study.</title>
+    <link>/post/new-preprint-the-role-of-white-matter-disconnection-in-the-symptoms-relating-to-the-anarchic-hand-syndrome-a-single-case-study/</link>
+    <pubDate>Sun, 21 Mar 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/post/new-preprint-the-role-of-white-matter-disconnection-in-the-symptoms-relating-to-the-anarchic-hand-syndrome-a-single-case-study/</guid>
+    <description><![CDATA[<p>A new preprint was released March $18^{th}, 2021$!</p>
+<p>A single-case study with complete lesional and tractography analysis,
+and additional review of the literature on a patient with
+Anarchic Hand.</p>]]></description>
 </item><item>
     <title>A new article is out: Anosognosia for theory of mind deficits: A single case study and a review of the literature</title>
     <link>/blog/2020-11-02-neuropsychologia-tom-awareness-deficit/a-new-article-is-out-anosognosia-for-theory-of-mind-deficits-a-single-case-study-and-a-review-of-the-literature/</link>
@@ -82,13 +102,6 @@ and you can install it by typing in the R console
     <pubDate>Mon, 03 Aug 2020 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
     <guid>/blog/2020-08-03-preprint-bmscstan/new-preprint-bayesian-multilevel-single-case-models-using-stan-a-new-tool-to-study-single-cases-in-neuropsychology/</guid>
-    <description><![CDATA[<p>A new preprint was released today!</p>]]></description>
-</item><item>
-    <title>New preprint! Bayesian Multilevel Single Case Models using &#39;Stan&#39;</title>
-    <link>/post/new-preprint-bayesian-multilevel-single-case-models-using-stan-a-new-tool-to-study-single-cases-in-neuropsychology/</link>
-    <pubDate>Mon, 03 Aug 2020 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>/post/new-preprint-bayesian-multilevel-single-case-models-using-stan-a-new-tool-to-study-single-cases-in-neuropsychology/</guid>
     <description><![CDATA[<p>A new preprint was released today!</p>]]></description>
 </item></channel>
 </rss>
