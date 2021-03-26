@@ -6,4 +6,4 @@ blogdown::new_site(theme = "dillonzq/LoveIt")
 blogdown::build_site()
 
 blogdown::serve_site()## ricarica sito
-blogdown::new_post("A new article is out: The impact of multisensory integration and perceptual load in virtual reality settings on performance, workload and presence.")
+blogdown::new_post("A new article is out: Bayesian Multilevel Single Case Models using 'Stan'. A new tool to study single cases in Neuropsychology")

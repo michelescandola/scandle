@@ -42,6 +42,8 @@ Beccherle, M., Facchetti, S., Villani, F., Zanini, M., & *Scandola, M.* (2020, J
 
 ## 2021
 
+*Scandola, M.*, & Romano, D. (2021). Bayesian Multilevel Single Case Models using 'Stan'. A new tool to study single cases in Neuropsychology. Neuropsychologia (in press) https://doi.org/10.1016/j.neuropsychologia.2021.107834
+
 Marucci, M., Di Flumeri, G., Borghini, G., Sciaraffa,, N., *Scandola, M.*, Pavone, E.F., Babiloni, F., Betti, V., & Aricò, P. (2021). The impact of multisensory integration and perceptual load in virtual reality settings on performance, workload and presence. Scientific Reports, 11, 4831. https://doi.org/10.1038/s41598-021-84196-8
 
 Moro, V., Besharati, S., *Scandola, M.*, Bertagnoli, S., Gobbetto, V., Ponzo, S., Bulgarelli, C., Fotopoulou, A., & Jenkinson, P.M. (2021) The Motor Unawareness Assessment (MUNA): A new tool for the assessment of Anosognosia for hemiplegia, Journal of Clinical and Experimental Neuropsychology, https://doi.org/10.1080/13803395.2021.1876842 

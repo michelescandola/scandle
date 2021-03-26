@@ -3,7 +3,7 @@
         <title>Bayesian Statistics - Tag - Michele Scandola&#39;s personal webpage</title>
         <link>/tags/bayesian-statistics/</link>
         <description>Bayesian Statistics - Tag - Michele Scandola&#39;s personal webpage</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 07 Feb 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/bayesian-statistics/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 26 Mar 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/bayesian-statistics/" rel="self" type="application/rss+xml" /><item>
     <title>Statistics Notes</title>
     <link>/2020-08-01-statistics-notes/</link>
     <pubDate>Sat, 01 Aug 2020 00:00:00 &#43;0000</pubDate>
@@ -12,6 +12,30 @@
     <description><![CDATA[<div class="featured-image">
                 <img src="/assets/images/statistics_notes.jpg" referrerpolicy="no-referrer">
             </div><p>Some notes of mine concerning various aspects of psychometry</p>]]></description>
+</item><item>
+    <title>A new article is out: Bayesian Multilevel Single Case Models using &#39;Stan&#39;. A new tool to study single cases in Neuropsychology</title>
+    <link>/blog/2021-03-26-bmscstan-article/a-new-article-is-out-bayesian-multilevel-single-case-models-using-stan-a-new-tool-to-study-single-cases-in-neuropsychology/</link>
+    <pubDate>Fri, 26 Mar 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/blog/2021-03-26-bmscstan-article/a-new-article-is-out-bayesian-multilevel-single-case-models-using-stan-a-new-tool-to-study-single-cases-in-neuropsychology/</guid>
+    <description><![CDATA[<p>Dear all, it is with the greatest pleasure that announce that this new article
+is finally accepted by Neuropsychologia!</p>
+<p>This article, co-authored with a friend, Daniele Romano, is potentially
+the beginning of a new way and of a new field in Single Case studies.</p>
+<p>The github version of the R package is already able to manage
+binomial data!</p>]]></description>
+</item><item>
+    <title>A new article is out: Bayesian Multilevel Single Case Models using &#39;Stan&#39;. A new tool to study single cases in Neuropsychology</title>
+    <link>/post/a-new-article-is-out-bayesian-multilevel-single-case-models-using-stan-a-new-tool-to-study-single-cases-in-neuropsychology/</link>
+    <pubDate>Fri, 26 Mar 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/post/a-new-article-is-out-bayesian-multilevel-single-case-models-using-stan-a-new-tool-to-study-single-cases-in-neuropsychology/</guid>
+    <description><![CDATA[<p>Dear all, it is with the greatest pleasure that announce that this new article
+is finally accepted by Neuropsychologia!</p>
+<p>This article, co-authored with a friend, Daniele Romano, is potentially
+the beginning of a new way and of a new field in Single Case studies.</p>
+<p>The github version of the R package is already able to manage
+binomial data!</p>]]></description>
 </item><item>
     <title>Multiple correlations in Stan</title>
     <link>/presentations/20210205bayesianmultiplecorrelation/multiple-correlations-in-stan/</link>
@@ -92,19 +116,5 @@ and you can install it by typing in the R console
     <author>Author</author>
     <guid>/blog/2020-08-03-preprint-bmscstan/new-preprint-bayesian-multilevel-single-case-models-using-stan-a-new-tool-to-study-single-cases-in-neuropsychology/</guid>
     <description><![CDATA[<p>A new preprint was released today!</p>]]></description>
-</item><item>
-    <title>New preprint! Bayesian Multilevel Single Case Models using &#39;Stan&#39;</title>
-    <link>/post/new-preprint-bayesian-multilevel-single-case-models-using-stan-a-new-tool-to-study-single-cases-in-neuropsychology/</link>
-    <pubDate>Mon, 03 Aug 2020 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>/post/new-preprint-bayesian-multilevel-single-case-models-using-stan-a-new-tool-to-study-single-cases-in-neuropsychology/</guid>
-    <description><![CDATA[<p>A new preprint was released today!</p>]]></description>
-</item><item>
-    <title>New preprint! Peripersonal space from a multisensory perspective</title>
-    <link>/blog/2020-07-29-preprint-pps/new-preprint-peripersonal-space-from-a-multisensory-perspective/</link>
-    <pubDate>Wed, 29 Jul 2020 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>/blog/2020-07-29-preprint-pps/new-preprint-peripersonal-space-from-a-multisensory-perspective/</guid>
-    <description><![CDATA[<p>A new preprint was released today July $29^{th}$!</p>]]></description>
 </item></channel>
 </rss>

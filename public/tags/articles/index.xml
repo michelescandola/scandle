@@ -3,7 +3,7 @@
         <title>article(s) - Tag - Michele Scandola&#39;s personal webpage</title>
         <link>/tags/articles/</link>
         <description>article(s) - Tag - Michele Scandola&#39;s personal webpage</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 21 Mar 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/articles/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 26 Mar 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/articles/" rel="self" type="application/rss+xml" /><item>
     <title>Publications</title>
     <link>/2020-08-01-publications/</link>
     <pubDate>Sun, 19 Jul 2020 00:00:00 &#43;0000</pubDate>
@@ -12,6 +12,30 @@
     <description><![CDATA[<div class="featured-image">
                 <img src="/assets/images/publications.jpg" referrerpolicy="no-referrer">
             </div><p>This is the list of my publications:</p>]]></description>
+</item><item>
+    <title>A new article is out: Bayesian Multilevel Single Case Models using &#39;Stan&#39;. A new tool to study single cases in Neuropsychology</title>
+    <link>/blog/2021-03-26-bmscstan-article/a-new-article-is-out-bayesian-multilevel-single-case-models-using-stan-a-new-tool-to-study-single-cases-in-neuropsychology/</link>
+    <pubDate>Fri, 26 Mar 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/blog/2021-03-26-bmscstan-article/a-new-article-is-out-bayesian-multilevel-single-case-models-using-stan-a-new-tool-to-study-single-cases-in-neuropsychology/</guid>
+    <description><![CDATA[<p>Dear all, it is with the greatest pleasure that announce that this new article
+is finally accepted by Neuropsychologia!</p>
+<p>This article, co-authored with a friend, Daniele Romano, is potentially
+the beginning of a new way and of a new field in Single Case studies.</p>
+<p>The github version of the R package is already able to manage
+binomial data!</p>]]></description>
+</item><item>
+    <title>A new article is out: Bayesian Multilevel Single Case Models using &#39;Stan&#39;. A new tool to study single cases in Neuropsychology</title>
+    <link>/post/a-new-article-is-out-bayesian-multilevel-single-case-models-using-stan-a-new-tool-to-study-single-cases-in-neuropsychology/</link>
+    <pubDate>Fri, 26 Mar 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/post/a-new-article-is-out-bayesian-multilevel-single-case-models-using-stan-a-new-tool-to-study-single-cases-in-neuropsychology/</guid>
+    <description><![CDATA[<p>Dear all, it is with the greatest pleasure that announce that this new article
+is finally accepted by Neuropsychologia!</p>
+<p>This article, co-authored with a friend, Daniele Romano, is potentially
+the beginning of a new way and of a new field in Single Case studies.</p>
+<p>The github version of the R package is already able to manage
+binomial data!</p>]]></description>
 </item><item>
     <title>A new article is out: The impact of multisensory integration and perceptual load in virtual reality settings on performance, workload and presence.</title>
     <link>/blog/2021-03-21-marucci/a-new-article-is-out-the-impact-of-multisensory-integration-and-perceptual-load-in-virtual-reality-settings-on-performance-workload-and-presence/</link>
@@ -77,23 +101,5 @@ Anarchic Hand.</p>]]></description>
 through exogenous midfrontal theta transcranial alternating current</em>,
 which I am co-authoring,
 received a &ldquo;In Principle Acceptance&rdquo; by Cortex!</p>]]></description>
-</item><item>
-    <title>New registered report! Modulating preferences during intertemporal choices through exogenous midfrontal theta transcranial alternating current.</title>
-    <link>/post/regrepfusco2021/</link>
-    <pubDate>Tue, 16 Feb 2021 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>/post/regrepfusco2021/</guid>
-    <description><![CDATA[<p>I am happy to announce that Gabriele Fusco&rsquo;s Registered Report
-<em>Modulating preferences during intertemporal choices
-through exogenous midfrontal theta transcranial alternating current</em>,
-which I am co-authoring,
-received a &ldquo;In Principle Acceptance&rdquo; by Cortex!</p>]]></description>
-</item><item>
-    <title>New preprint! The development of a standard procedure for the optimal reliability-feasibility trade-off in Multilevel Linear Models analyses in Psychology and Neuroscience.</title>
-    <link>/blog/2021-02-09-random-effects/standardrandomeffects/</link>
-    <pubDate>Tue, 09 Feb 2021 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>/blog/2021-02-09-random-effects/standardrandomeffects/</guid>
-    <description><![CDATA[<p>A new preprint was released yesterday February $8^{th}$!</p>]]></description>
 </item></channel>
 </rss>

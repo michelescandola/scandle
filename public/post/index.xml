@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Sun, 21 Mar 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 26 Mar 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
@@ -27,6 +27,20 @@ from both the sensorial and motor functionality. I finished my Ph.D. in 2015 in
 Social and Affective Neuroscience at the University “La Sapienza” or Rome
 (Italy) of &lt;a href=&#34;https://agliotilab.org/lab-staff/principal-investigator&#34; target=&#34;_blank&#34; rel=&#34;noopener noreffer&#34;&gt;prof. Salvatore M. Aglioti&lt;/a&gt;, under the
 supervision of &lt;a href=&#34;https://michelescandola.github.io/www.dsu.univr.it/?ent=persona&amp;amp;id=2097&#34; target=&#34;_blank&#34; rel=&#34;noopener noreffer&#34;&gt;prof. Valentina Moro&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>A new article is out: Bayesian Multilevel Single Case Models using &#39;Stan&#39;. A new tool to study single cases in Neuropsychology</title>
+      <link>/post/a-new-article-is-out-bayesian-multilevel-single-case-models-using-stan-a-new-tool-to-study-single-cases-in-neuropsychology/</link>
+      <pubDate>Fri, 26 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/a-new-article-is-out-bayesian-multilevel-single-case-models-using-stan-a-new-tool-to-study-single-cases-in-neuropsychology/</guid>
+      <description>&lt;p&gt;Dear all, it is with the greatest pleasure that announce that this new article
+is finally accepted by Neuropsychologia!&lt;/p&gt;
+&lt;p&gt;This article, co-authored with a friend, Daniele Romano, is potentially
+the beginning of a new way and of a new field in Single Case studies.&lt;/p&gt;
+&lt;p&gt;The github version of the R package is already able to manage
+binomial data!&lt;/p&gt;</description>
     </item>
     
     <item>
