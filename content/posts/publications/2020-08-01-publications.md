@@ -50,6 +50,8 @@ Moro, V., Besharati, S., *Scandola, M.*, Bertagnoli, S., Gobbetto, V., Ponzo, S.
 
 Fusco, G., *Scandola, M.*, Lin, H., Inzlicht, M., & Aglioti, S. M. (Registered Report: 2021, February 15). Modulating preferences during intertemporal choices through exogenous midfrontal theta transcranial alternating current. https://doi.org/10.17605/OSF.IO/7V6ED
 
+*Scandola, M.*, Canzano, L., Avesani, R., Leder, M., Bertagnoli, S., Gobbetto, V., Aglioti, S. M., & Moro, V. (2021). Anosognosia for limb and bucco‐facial apraxia as inferred from the recognition of gestural errors. Journal of Neuropsychology. https://doi.org/10.1111/jnp.12203
+
 ## 2020
 
 Rossato, E., Verzini, E., *Scandola, M.*, Ferrari, F., & Bonadiman, S. (2020). Role of LCF scale as an outcome prognostic index in patients with traumatic brain injury. Neurological Sciences, 1-6. https://doi.org/10.1007/s10072-020-04852-1
@@ -62,8 +64,6 @@ Pacella, V., *Scandola, M.*, Beccherle, M., Bulgarelli, C., Avesani, R., Carbogn
 *Scandola, M.*, Aglioti, S. M., Lazzeri, G., Avesani, R., Ionta, S., & Moro, V. (2020). Visuo-motor and interoceptive influences on peripersonal space representation following spinal cord injury. Scientific Reports, 10(1), 1–16. https://doi.org/10.1038/s41598-020-62080-1
 
 Moro, V., Valbusa, V., Corsi, N., Bonazzi, A., Condoleo, M. T., Broggio, E., *Scandola, M.*, & Gambina, G. (2020). Correction to: Comprehension of written texts for the assessment of clinical competence and decision making in people with mild to moderate Alzheimer disease. Neurological Sciences, 10072. https://doi.org/10.1007/s10072-020-04255-2
-
-*Scandola, M.*, Canzano, L., Avesani, R., Leder, M., Bertagnoli, S., Gobbetto, V., Aglioti, S. M., & Moro, V. (2020). Anosognosia for limb and bucco‐facial apraxia as inferred from the recognition of gestural errors. Journal of Neuropsychology, in press. https://doi.org/10.1111/jnp.12203
 
 D’Imperio, D., Avesani, R., Rossato, E., Aganetto, S., *Scandola, M.*, & Moro, V. (2020). Recovery from tactile agnosia: a single case study. Neurocase, 26(1), 18–28. https://doi.org/10.1080/13554794.2019.1694951
 
