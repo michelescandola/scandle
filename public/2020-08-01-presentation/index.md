@@ -80,10 +80,18 @@ The main goal of the [BASIC-NPSY Research Group][BASIC-NPSY] is to spread
 the knowledge of Bayesian Inference techniques in the many subfields of the
 neuroscientific and neuropsychological science.
 
+The main outcomes of this group are:
+
+- the development of a clear step-by-step tutorial in selecting the
+  random effects of a Multilevel Model [^12]
+- the development of a new tool for the computing of Bayesian Multilevel
+  Single Case models [^13]
+
 ## Teaching
 
-I teach at the [University of Verona][UniVR] [“Neuroscience of Learning”][learning]
-and the laboratory [“Body and disability”][labdisability].
+I teach at the [University of Verona][UniVR] [“Neuroscience of Learning”][learning],
+the laboratory [“Body and disability”][labdisability] and
+["Psychobiology and disability"][psydisability].
 
 Both courses are based on the notion of neuroplasticity from different perspectives.
 
@@ -115,6 +123,7 @@ programs.
 [BayesHSC]: https://sites.hss.univr.it/bayeshsc/
 [learning]: https://www.dsu.univr.it/?ent=oi&aa=2020%2F2021&codiceCs=W24&codins=4S007362&cs=861&discr=&discrCd=
 [labdisability]: https://www.dsu.univr.it/?ent=oi&aa=2020%2F2021&codiceCs=W23&codins=4S000871&cs=360&discr=&discrCd=
+[psydisability]: https://www.dsu.univr.it/?ent=oi&aa=2020%2F2021&codiceCs=W23&codins=4S000871&cs=360&discr=&discrCd=
 [myself]: ../assets/images/myself_real_work.jpg "This may actually be me, working at home, during the COVID-19 Italian lockdown"
 
 [^1]: Moro, V. (2013). The interaction between implicit and explicit awareness in anosognosia: Emergent awareness. Cognitive Neuroscience, 4(3–4), 199–200. https://doi.org/10.1080/17588928.2013.853656
@@ -128,3 +137,5 @@ programs.
 [^9]: Scandola, M., Aglioti, S. M., Bonente, C., Avesani, R., & Moro, V. (2016). Spinal cord lesions shrink peripersonal space around the feet, passive mobilization of paraplegic limbs restores it. Scientific Reports, 6(April), 24126. https://doi.org/10.1038/srep24126
 [^10]: Scandola, M., Togni, R., Tieri, G., Avesani, R., Brambilla, M., Aglioti, S. M., & Moro, V. (2019). Embodying their own wheelchair modifies extrapersonal space perception in people with spinal cord injury. Experimental Brain Research, 237(10), 2621–2632. https://doi.org/10.1007/s00221-019-05618-8
 [^11]: Scandola, M., Aglioti, S. M., Avesani, R., Bertagnoni, G., Marangoni, A., & Moro, V. (2017). Corporeal Illusions in Chronic Spinal Cord Injuries. Consciousness and Cognition, 49, 278–290. https://doi.org/10.1016/j.concog.2017.01.010
+[^12]: Scandola, M., Tidoni, E. (2021, February 8). The development of a standard procedure for the optimal reliability-feasibility trade-off in Multilevel Linear Models analyses in Psychology and Neuroscience. https://doi.org/10.31234/osf.io/kfhgv 
+[^13]: Scandola, M., & Romano, D. (2021). Bayesian Multilevel Single Case Models using 'Stan'. A new tool to study single cases in Neuropsychology. Neuropsychologia. https://doi.org/10.1016/j.neuropsychologia.2021.107834 pre-print: https://doi.org/10.31234/osf.io/sajdq
