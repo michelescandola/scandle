@@ -3,7 +3,7 @@
         <title>Statistics - Category - Michele Scandola&#39;s personal webpage</title>
         <link>/categories/statistics/</link>
         <description>Statistics - Category - Michele Scandola&#39;s personal webpage</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 26 Mar 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="/categories/statistics/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 30 Apr 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="/categories/statistics/" rel="self" type="application/rss+xml" /><item>
     <title>Statistics Notes</title>
     <link>/2020-08-01-statistics-notes/</link>
     <pubDate>Sat, 01 Aug 2020 00:00:00 &#43;0000</pubDate>
@@ -12,6 +12,30 @@
     <description><![CDATA[<div class="featured-image">
                 <img src="/assets/images/statistics_notes.jpg" referrerpolicy="no-referrer">
             </div><p>Some notes of mine concerning various aspects of psychometry</p>]]></description>
+</item><item>
+    <title>Guida Bayesiana per Autostoppisti</title>
+    <link>/post/guida-bayesiana-per-autostoppisti/</link>
+    <pubDate>Fri, 30 Apr 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/post/guida-bayesiana-per-autostoppisti/</guid>
+    <description><![CDATA[<p>Happy to share my invited webinar
+from the Italian Society of Psychophysiology and Cognitive Neuroscience (SIPF)
+about a general introduction on
+Bayesian Statistics, and my first
+Shiny presentation ;)</p>
+<p>Sorry, only available in Italian.</p>]]></description>
+</item><item>
+    <title>Guida Bayesiana per Autostoppisti</title>
+    <link>/presentations/20210430guidabayesianaautostop/guida-bayesiana-per-autostoppisti/</link>
+    <pubDate>Fri, 30 Apr 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/presentations/20210430guidabayesianaautostop/guida-bayesiana-per-autostoppisti/</guid>
+    <description><![CDATA[<p>Happy to share my invited webinar
+from the Italian Society of Psychophysiology and Cognitive Neuroscience (SIPF)
+about a general introduction on
+Bayesian Statistics, and my first
+Shiny presentation ;)</p>
+<p>Sorry, only available in Italian.</p>]]></description>
 </item><item>
     <title>A new article is out: Bayesian Multilevel Single Case Models using &#39;Stan&#39;. A new tool to study single cases in Neuropsychology</title>
     <link>/blog/2021-03-26-bmscstan-article/a-new-article-is-out-bayesian-multilevel-single-case-models-using-stan-a-new-tool-to-study-single-cases-in-neuropsychology/</link>

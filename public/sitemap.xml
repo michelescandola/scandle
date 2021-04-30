@@ -2,45 +2,52 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>/2020-08-01-presentation/</loc><lastmod>2021-03-27T10:37:25&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/2020-08-01-presentation/</loc><lastmod>2021-03-27T10:37:25&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
             <loc>/post/2020-08-01-presentation/</loc><lastmod>2020-08-02T11:58:44&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>/2020-08-01-publications/</loc><lastmod>2021-03-27T10:08:23&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/2020-08-01-publications/</loc><lastmod>2021-03-27T10:43:19&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
             <loc>/2020-08-01-statistics-notes/</loc><lastmod>2021-02-07T13:07:07&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>/tags/generalized-linear-moldes/</loc><lastmod>2021-03-26T22:41:12&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/blog/2021-03-26-bmscstan-article/a-new-article-is-out-bayesian-multilevel-single-case-models-using-stan-a-new-tool-to-study-single-cases-in-neuropsychology/</loc><lastmod>2021-03-26T22:41:12&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/post/a-new-article-is-out-bayesian-multilevel-single-case-models-using-stan-a-new-tool-to-study-single-cases-in-neuropsychology/</loc><lastmod>2021-03-26T22:41:12&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/tags/articles/</loc><lastmod>2021-03-27T10:08:23&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/tags/bayesian-statistics/</loc><lastmod>2021-03-26T22:41:12&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/blog/</loc><lastmod>2021-03-26T22:41:12&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/categories/</loc><lastmod>2021-03-27T10:08:23&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/</loc><lastmod>2021-03-27T10:37:25&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/tags/multivariate-lesion-analysis/</loc><lastmod>2021-03-26T22:41:12&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/tags/neuropsychologia/</loc><lastmod>2021-03-26T22:41:12&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/post/</loc><lastmod>2021-03-26T22:41:12&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/categories/publications/</loc><lastmod>2021-03-27T10:08:23&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/tags/r/</loc><lastmod>2021-03-26T22:41:12&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/categories/r-package/</loc><lastmod>2021-03-26T22:41:12&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/tags/single-case-analysis/</loc><lastmod>2021-03-26T22:41:12&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/tags/stan/</loc><lastmod>2021-03-26T22:41:12&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/categories/statistics/</loc><lastmod>2021-03-26T22:41:12&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/tags/</loc><lastmod>2021-03-27T10:08:23&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/tags/validation/</loc><lastmod>2021-03-26T22:41:12&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/blog/2021-03-21-marucci/a-new-article-is-out-the-impact-of-multisensory-integration-and-perceptual-load-in-virtual-reality-settings-on-performance-workload-and-presence/</loc><lastmod>2021-03-21T17:00:47&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/post/a-new-article-is-out-the-impact-of-multisensory-integration-and-perceptual-load-in-virtual-reality-settings-on-performance-workload-and-presence/</loc><lastmod>2021-03-21T17:00:47&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/tags/anarchic-hand-syndrome/</loc><lastmod>2021-03-21T17:00:47&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/tags/cognitive-load/</loc><lastmod>2021-03-21T17:00:47&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/tags/dti/</loc><lastmod>2021-03-21T17:00:47&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/tags/eeg/</loc><lastmod>2021-03-21T17:00:47&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/tags/galvanic-skin-response/</loc><lastmod>2021-03-21T17:00:47&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/tags/lesion-mapping/</loc><lastmod>2021-03-21T17:00:47&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/blog/2021-03-21-preprint-anarchic-hand/new-preprint-the-role-of-white-matter-disconnection-in-the-symptoms-relating-to-the-anarchic-hand-syndrome-a-single-case-study/</loc><lastmod>2021-03-21T17:00:47&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/post/new-preprint-the-role-of-white-matter-disconnection-in-the-symptoms-relating-to-the-anarchic-hand-syndrome-a-single-case-study/</loc><lastmod>2021-03-21T17:00:47&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/tags/posterior-lesions/</loc><lastmod>2021-03-21T17:00:47&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/categories/preprint/</loc><lastmod>2021-03-21T17:00:47&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/tags/sense-of-agency/</loc><lastmod>2021-03-21T17:00:47&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/tags/tractography/</loc><lastmod>2021-03-21T17:00:47&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/tags/virtual-reality/</loc><lastmod>2021-03-21T17:00:47&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/tags/white-matter-disconnection/</loc><lastmod>2021-03-21T17:00:47&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/tags/bayesian-parameter-estimation/</loc><lastmod>2021-04-30T14:42:49&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/tags/bayesian-predictive-models/</loc><lastmod>2021-04-30T14:42:49&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/tags/bayesian-statistics/</loc><lastmod>2021-04-30T14:42:49&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/categories/</loc><lastmod>2021-04-30T14:42:49&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/post/guida-bayesiana-per-autostoppisti/</loc><lastmod>2021-04-30T14:42:49&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/presentations/20210430guidabayesianaautostop/guida-bayesiana-per-autostoppisti/</loc><lastmod>2021-04-30T14:42:49&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/</loc><lastmod>2021-04-30T14:42:49&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/tags/model-selection/</loc><lastmod>2021-04-30T14:42:49&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/post/</loc><lastmod>2021-04-30T14:42:49&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/presentations/</loc><lastmod>2021-04-30T14:42:49&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/categories/statistics/</loc><lastmod>2021-04-30T14:42:49&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/tags/</loc><lastmod>2021-04-30T14:42:49&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/tags/talk/</loc><lastmod>2021-04-30T14:42:49&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/tags/generalized-linear-moldes/</loc><lastmod>2021-03-26T22:41:12&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>/blog/2021-03-26-bmscstan-article/a-new-article-is-out-bayesian-multilevel-single-case-models-using-stan-a-new-tool-to-study-single-cases-in-neuropsychology/</loc><lastmod>2021-03-26T22:41:12&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>/post/a-new-article-is-out-bayesian-multilevel-single-case-models-using-stan-a-new-tool-to-study-single-cases-in-neuropsychology/</loc><lastmod>2021-03-26T22:41:12&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>/tags/articles/</loc><lastmod>2021-03-27T10:43:19&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>/blog/</loc><lastmod>2021-03-26T22:41:12&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>/tags/multivariate-lesion-analysis/</loc><lastmod>2021-03-26T22:41:12&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>/tags/neuropsychologia/</loc><lastmod>2021-03-26T22:41:12&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>/categories/publications/</loc><lastmod>2021-03-27T10:43:19&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>/tags/r/</loc><lastmod>2021-03-26T22:41:12&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>/categories/r-package/</loc><lastmod>2021-03-26T22:41:12&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>/tags/single-case-analysis/</loc><lastmod>2021-03-26T22:41:12&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>/tags/stan/</loc><lastmod>2021-03-26T22:41:12&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>/tags/validation/</loc><lastmod>2021-03-26T22:41:12&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>/blog/2021-03-21-marucci/a-new-article-is-out-the-impact-of-multisensory-integration-and-perceptual-load-in-virtual-reality-settings-on-performance-workload-and-presence/</loc><lastmod>2021-03-21T17:00:47&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/post/a-new-article-is-out-the-impact-of-multisensory-integration-and-perceptual-load-in-virtual-reality-settings-on-performance-workload-and-presence/</loc><lastmod>2021-03-21T17:00:47&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/tags/anarchic-hand-syndrome/</loc><lastmod>2021-03-21T17:00:47&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/tags/cognitive-load/</loc><lastmod>2021-03-21T17:00:47&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/tags/dti/</loc><lastmod>2021-03-21T17:00:47&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/tags/eeg/</loc><lastmod>2021-03-21T17:00:47&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/tags/galvanic-skin-response/</loc><lastmod>2021-03-21T17:00:47&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/tags/lesion-mapping/</loc><lastmod>2021-03-21T17:00:47&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/blog/2021-03-21-preprint-anarchic-hand/new-preprint-the-role-of-white-matter-disconnection-in-the-symptoms-relating-to-the-anarchic-hand-syndrome-a-single-case-study/</loc><lastmod>2021-03-21T17:00:47&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/post/new-preprint-the-role-of-white-matter-disconnection-in-the-symptoms-relating-to-the-anarchic-hand-syndrome-a-single-case-study/</loc><lastmod>2021-03-21T17:00:47&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/tags/posterior-lesions/</loc><lastmod>2021-03-21T17:00:47&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/categories/preprint/</loc><lastmod>2021-03-21T17:00:47&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/tags/sense-of-agency/</loc><lastmod>2021-03-21T17:00:47&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/tags/tractography/</loc><lastmod>2021-03-21T17:00:47&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/tags/virtual-reality/</loc><lastmod>2021-03-21T17:00:47&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/tags/white-matter-disconnection/</loc><lastmod>2021-03-21T17:00:47&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/blog/2021-02-16-muna/muna/</loc><lastmod>2021-02-16T16:12:28&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/post/muna/</loc><lastmod>2021-02-16T16:12:28&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/tags/anosognosia/</loc><lastmod>2021-02-16T16:12:28&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
@@ -53,13 +60,11 @@
             <loc>/tags/theta-activity/</loc><lastmod>2021-02-16T16:12:28&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/tags/transcranial-alternating-current-stimulation/</loc><lastmod>2021-02-16T16:12:28&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/tags/model-reduction/</loc><lastmod>2021-02-16T16:12:28&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>/tags/model-selection/</loc><lastmod>2021-02-16T16:12:28&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/tags/multilevel-linear-models/</loc><lastmod>2021-02-16T16:12:28&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/blog/2021-02-09-random-effects/standardrandomeffects/</loc><lastmod>2021-02-09T09:24:12&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/post/standardrandomeffects/</loc><lastmod>2021-02-16T16:12:28&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/tags/correlations/</loc><lastmod>2021-02-07T13:07:07&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/presentations/20210205bayesianmultiplecorrelation/multiple-correlations-in-stan/</loc><lastmod>2021-02-07T13:07:07&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>/presentations/</loc><lastmod>2021-02-07T13:07:07&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/blog/2020-11-02-neuropsychologia-tom-awareness-deficit/a-new-article-is-out-anosognosia-for-theory-of-mind-deficits-a-single-case-study-and-a-review-of-the-literature/</loc><lastmod>2020-11-02T12:51:54&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/post/a-new-article-is-out-anosognosia-for-theory-of-mind-deficits-a-single-case-study-and-a-review-of-the-literature/</loc><lastmod>2020-11-02T12:51:54&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/tags/theory-of-mind/</loc><lastmod>2020-11-02T12:51:54&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
@@ -76,10 +81,10 @@
             <loc>/blog/2020-08-06-bmscstan/new-r-package-on-github-bmscstan-bayesian-multilevel-single-case-models/</loc><lastmod>2020-08-06T09:23:41&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/blog/2020-08-03-preprint-bmscstan/new-preprint-bayesian-multilevel-single-case-models-using-stan-a-new-tool-to-study-single-cases-in-neuropsychology/</loc><lastmod>2020-08-06T08:40:05&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/post/new-preprint-bayesian-multilevel-single-case-models-using-stan-a-new-tool-to-study-single-cases-in-neuropsychology/</loc><lastmod>2020-08-03T19:32:32&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>/tags/books/</loc><lastmod>2021-03-27T10:08:23&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/tags/books/</loc><lastmod>2021-03-27T10:43:19&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
             <loc>/tags/network-analysis/</loc><lastmod>2021-02-07T13:07:07&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>/tags/posters/</loc><lastmod>2021-03-27T10:08:23&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/posts/</loc><lastmod>2021-03-27T10:37:25&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/tags/posters/</loc><lastmod>2021-03-27T10:43:19&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>/posts/</loc><lastmod>2021-03-27T10:43:19&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
             <loc>/post/publications/</loc><lastmod>2020-08-02T11:58:44&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/post/statistics-notes/</loc><lastmod>2020-08-02T11:58:44&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/blog/2020-07-29-preprint-pps/new-preprint-peripersonal-space-from-a-multisensory-perspective/</loc><lastmod>2020-08-06T08:40:05&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
