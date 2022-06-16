@@ -5,29 +5,59 @@ This is the list of my publications:
 
 <!--more-->
 
+## pre-registered studies
+
+Fusco, G., *Scandola, M.*, Lin, H., Inzlicht, M., & Aglioti, S. M. (Registered Report: 2021, February 15). Modulating preferences during intertemporal choices through exogenous midfrontal theta transcranial alternating current. https://doi.org/10.17605/OSF.IO/7V6ED
+
 ## preprints
 
-Pacella, V., Ricciardi, G.K., Bonadiman, S., Verzini, E., Faraoni, F., *Scandola, M.*, Moro, V. The Role of White Matter Disconnection in the Symptoms Relating to the Anarchic Hand Syndrome: A Single Case Study. Preprints 2021, 2021030466 https://doi.org/10.20944/preprints202103.0466.v1
+Moro V., Pacella V., *Scandola M.*, Besharati S., Rossato E., Jenkinson P., Fotopoulou A. (2021, April 19) A fronto-insular-parietal network for the sense of body ownership,  https://doi.org/10.21203/rs.3.rs-428666/v1 published peer-review version: https://doi.org/10.1093/cercor/bhac081
 
-*Scandola, M.*, Tidoni, E. (2021, February 8). The development of a standard procedure for the optimal reliability-feasibility trade-off in Multilevel Linear Models analyses in Psychology and Neuroscience. https://doi.org/10.31234/osf.io/kfhgv 
+Pacella, V., Ricciardi, G.K., Bonadiman, S., Verzini, E., Faraoni, F., *Scandola, M.*, Moro, V. The Role of White Matter Disconnection in the Symptoms Relating to the Anarchic Hand Syndrome: A Single Case Study. Preprints 2021, 2021030466 https://doi.org/10.20944/preprints202103.0466.v1 published peer-review version: https://doi.org/10.3390/brainsci11050632
 
-*Scandola, M.*, Gobbetto, V., Bertagnoli, S., Bulgarelli, C., Canzano, L., Aglioti, S. M., & Moro, V. (2020, August 12). Gesture errors in left and right hemisphere damaged patients: a behavioural and anatomical study. https://doi.org/10.31234/osf.io/7u3nq
+*Scandola, M.*, Tidoni, E. (version 2: 2022, May 9 - version 1: 2021, February 8). The development of a standard procedure for the optimal reliability-feasibility trade-off in Multilevel Linear Models analyses in Psychology and Neuroscience. https://doi.org/10.31234/osf.io/kfhgv 
 
-*Scandola, M.*, & Romano, D. (2020, August 3). Bayesian Multilevel Single Case Models using 'Stan'. A new tool to study single cases in Neuropsychology. https://doi.org/10.31234/osf.io/sajdq published version: https://doi.org/10.1016/j.neuropsychologia.2021.107834
+*Scandola, M.*, Gobbetto, V., Bertagnoli, S., Bulgarelli, C., Canzano, L., Aglioti, S. M., & Moro, V. (2020, August 12). Gesture errors in left and right hemisphere damaged patients: a behavioural and anatomical study. https://doi.org/10.31234/osf.io/7u3nq published peer-review version: https://doi.org/10.1016/j.neuropsychologia.2021.108027
 
-Beccherle, M., Facchetti, S., Villani, F., Zanini, M., & *Scandola, M.* (2020, July 29). Peripersonal Space from a multisensory perspective: the distinct effect of the visual and tactile components of Visuo-Tactile stimuli. https://doi.org/10.31234/osf.io/358xc
+*Scandola, M.*, & Romano, D. (2020, August 3). Bayesian Multilevel Single Case Models using 'Stan'. A new tool to study single cases in Neuropsychology. https://doi.org/10.31234/osf.io/sajdq published peer-review version:  https://doi.org/10.1016/j.neuropsychologia.2021.107834
+
+Beccherle, M., Facchetti, S., Villani, F., Zanini, M., & *Scandola, M.* (2020, July 29). Peripersonal Space from a multisensory perspective: the distinct effect of the visual and tactile components of Visuo-Tactile stimuli. https://doi.org/10.31234/osf.io/358xc published peer-review version: https://doi.org/10.1007/s00221-022-06324-8
+
+## 2022
+
+Moro, V., *Scandola, M.*, & Aglioti, S. M. (2022). What the study of spinal cord injured patients can tell us about the significance of the body in cognition. Psychonomic Bulletin & Review. https://doi.org/10.3758/s13423-022-02129-6
+
+Moro, V., Pacella, V., *Scandola, M.*, Besharati, S., Rossato, E., Jenkinson, P. M., & Fotopoulou, A. (2022). A fronto-insular-parietal network for the sense of body ownership. Cerebral Cortex, 1–11. https://doi.org/10.1093/cercor/bhac081 pre-print: https://doi.org/10.21203/rs.3.rs-428666/v1
+
+Bertagnoli, S., Pacella, V., Rossato, E., Jenkinson, P. M., Fotopoulou, A., *Scandola, M.*, & Moro, V. (2022). Disconnections in personal neglect. Brain Structure and Function, 0123456789, 1–19. https://doi.org/10.1007/s00429-022-02511-z
+
+Tidoni, E., Holle, H., *Scandola, M.*, Schindler, I., Hill, L., & Cross, E. S. (2022). Human but not robotic gaze facilitates action prediction. IScience, 25(6), 104462. https://doi.org/10.1016/j.isci.2022.104462
+
+Beccherle, M., Facchetti, S., Villani, F., Zanini, M., & *Scandola, M.* (2022). Peripersonal Space from a multisensory perspective: the distinct effect of the visual and tactile components of Visuo-Tactile stimuli. Experimental Brain Research, 240(4), 1205–1217. https://doi.org/10.1007/s00221-022-06324-8 pre-print: https://doi.org/10.31234/osf.io/358xc
+
+*Scandola, M.* (2022). (*in Italian*) Body, action, and space representations in people affected by spinal cord injuries. In R. Rajendram, V. Preedy, & C. Martin (Eds.), Diagnosis and Treatment of Spinal Cord Injury (1st ed., pp. 27–39). Elsevier. https://doi.org/10.1016/B978-0-12-822498-4.00003-8
+
+*Scandola, M.*, Pietroni, G., Landuzzi, G., Polati, E., Schweiger, V., & Moro, V. (2022). Bodily Illusions and Motor Imagery in Fibromyalgia. Frontiers in Human Neuroscience, 15(January), 1–13. https://doi.org/10.3389/fnhum.2021.798912
 
 ## 2021
 
-*Scandola, M.*, & Romano, D. (2021). Bayesian Multilevel Single Case Models using 'Stan'. A new tool to study single cases in Neuropsychology. Neuropsychologia. https://doi.org/10.1016/j.neuropsychologia.2021.107834 pre-print: https://doi.org/10.31234/osf.io/sajdq
+Moro, V., Corbella, M., Ionta, S., Ferrari, F., & *Scandola, M.* (2021). Cognitive Training Improves Disconnected Limbs’ Mental Representation and Peripersonal Space after Spinal Cord Injury. International Journal of Environmental Research and Public Health, 18(18), 9589. https://doi.org/10.3390/ijerph18189589
 
 Marucci, M., Di Flumeri, G., Borghini, G., Sciaraffa,, N., *Scandola, M.*, Pavone, E.F., Babiloni, F., Betti, V., & Aricò, P. (2021). The impact of multisensory integration and perceptual load in virtual reality settings on performance, workload and presence. Scientific Reports, 11, 4831. https://doi.org/10.1038/s41598-021-84196-8
 
 Moro, V., Besharati, S., *Scandola, M.*, Bertagnoli, S., Gobbetto, V., Ponzo, S., Bulgarelli, C., Fotopoulou, A., & Jenkinson, P.M. (2021) The Motor Unawareness Assessment (MUNA): A new tool for the assessment of Anosognosia for hemiplegia, Journal of Clinical and Experimental Neuropsychology, https://doi.org/10.1080/13803395.2021.1876842 
 
-Fusco, G., *Scandola, M.*, Lin, H., Inzlicht, M., & Aglioti, S. M. (Registered Report: 2021, February 15). Modulating preferences during intertemporal choices through exogenous midfrontal theta transcranial alternating current. https://doi.org/10.17605/OSF.IO/7V6ED
+*Scandola, M.*, & Romano, D. (2021). Bayesian Multilevel Single Case Models using 'Stan'. A new tool to study single cases in Neuropsychology. Neuropsychologia. https://doi.org/10.1016/j.neuropsychologia.2021.107834 pre-print: https://doi.org/10.31234/osf.io/sajdq
+
+Rossato, E., Verzini, E., *Scandola, M.*, Ferrari, F., & Bonadiman, S. (2021). Role of LCF scale as an outcome prognostic index in patients with traumatic brain injury. Neurological Sciences, 42(7), 2747–2752. https://doi.org/10.1007/s10072-020-04852-1
 
 *Scandola, M.*, Canzano, L., Avesani, R., Leder, M., Bertagnoli, S., Gobbetto, V., Aglioti, S. M., & Moro, V. (2021). Anosognosia for limb and bucco‐facial apraxia as inferred from the recognition of gestural errors. Journal of Neuropsychology. https://doi.org/10.1111/jnp.12203
+
+Moro, V., Beccherle, M., Facci, E., & *Scandola, M.* (2021). (*in Italian*) Una città in carrozzina: fragilità e risorse per la mobilità delle persone con disabilità motoria. In A. De Vita (Ed.), Fragilità contemporanee. Fenomenologie della violenza e della vulnerabilità. Mimesis.
+
+*Scandola, M.*, Gobbetto, V., Bertagnoli, S., Bulgarelli, C., Canzano, L., Aglioti, S. M., & Moro, V. (2021). Gesture errors in left and right hemisphere damaged patients: A behavioural and anatomical study. Neuropsychologia, 162(March), 108027. https://doi.org/10.1016/j.neuropsychologia.2021.108027 pre-print: https://doi.org/10.31234/osf.io/7u3nq
+
+Pacella, V., Ricciardi, G. K., Bonadiman, S., Verzini, E., Faraoni, F., *Scandola, M.*, & Moro, V. (2021). The Role of White Matter Disconnection in the Symptoms Relating to the Anarchic Hand Syndrome: A Single Case Study. Brain Sciences, 11(5), 632. https://doi.org/10.3390/brainsci11050632 pre-print: https://doi.org/10.20944/preprints202103.0466.v1
 
 ## 2020
 

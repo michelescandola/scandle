@@ -15,7 +15,7 @@ tags:
 - Neuropsychologia
 - Bayesian Statistics
 - R
-- (Generalized) Linear Moldes
+- (Generalized) Linear Models
 - Stan
 - Validation
 subtitle: ''

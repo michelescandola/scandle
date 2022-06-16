@@ -3,103 +3,106 @@
         <title>publications - Category - Michele Scandola&#39;s personal webpage</title>
         <link>/categories/publications/</link>
         <description>publications - Category - Michele Scandola&#39;s personal webpage</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 26 Mar 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="/categories/publications/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 17 Jun 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="/categories/publications/" rel="self" type="application/rss+xml" /><item>
     <title>Publications</title>
     <link>/2020-08-01-publications/</link>
-    <pubDate>Sun, 19 Jul 2020 00:00:00 &#43;0000</pubDate>
+    <pubDate>Thu, 16 Jun 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
     <guid>/2020-08-01-publications/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/assets/images/publications.jpg" referrerpolicy="no-referrer">
             </div><p>This is the list of my publications:</p>]]></description>
 </item><item>
-    <title>A new article is out: Bayesian Multilevel Single Case Models using &#39;Stan&#39;. A new tool to study single cases in Neuropsychology</title>
-    <link>/blog/2021-03-26-bmscstan-article/a-new-article-is-out-bayesian-multilevel-single-case-models-using-stan-a-new-tool-to-study-single-cases-in-neuropsychology/</link>
-    <pubDate>Fri, 26 Mar 2021 00:00:00 &#43;0000</pubDate>
+    <title>A new article is out: Human but not robotic gaze facilitates action prediction.</title>
+    <link>/blog/2022-robotic-gaze/a-new-article-is-out-human-but-not-robotic-gaze-facilitates-action-prediction/</link>
+    <pubDate>Fri, 17 Jun 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>/blog/2021-03-26-bmscstan-article/a-new-article-is-out-bayesian-multilevel-single-case-models-using-stan-a-new-tool-to-study-single-cases-in-neuropsychology/</guid>
-    <description><![CDATA[<p>Dear all, it is with the greatest pleasure that announce that this new article
-is finally accepted by Neuropsychologia!</p>
-<p>This article, co-authored with a friend, Daniele Romano, is potentially
-the beginning of a new way and of a new field in Single Case studies.</p>
-<p>The github version of the R package is already able to manage
-binomial data!</p>]]></description>
+    <guid>/blog/2022-robotic-gaze/a-new-article-is-out-human-but-not-robotic-gaze-facilitates-action-prediction/</guid>
+    <description><![CDATA[<p>A new article, leaded by Emmanuele Tidoni, is out!</p>
+<blockquote>
+<p>Tidoni, E., Holle, H., Scandola, M., Schindler, I., Hill, L., &amp; Cross, E. S. (2022). Human but not robotic gaze facilitates action prediction. IScience, 25(6), 104462. <a href="https://doi.org/10.1016/j.isci.2022.104462">https://doi.org/10.1016/j.isci.2022.104462</a></p>
+</blockquote>]]></description>
 </item><item>
-    <title>A new article is out: Bayesian Multilevel Single Case Models using &#39;Stan&#39;. A new tool to study single cases in Neuropsychology</title>
-    <link>/post/a-new-article-is-out-bayesian-multilevel-single-case-models-using-stan-a-new-tool-to-study-single-cases-in-neuropsychology/</link>
-    <pubDate>Fri, 26 Mar 2021 00:00:00 &#43;0000</pubDate>
+    <title>A new article is out: Human but not robotic gaze facilitates action prediction.</title>
+    <link>/post/a-new-article-is-out-human-but-not-robotic-gaze-facilitates-action-prediction/</link>
+    <pubDate>Fri, 17 Jun 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>/post/a-new-article-is-out-bayesian-multilevel-single-case-models-using-stan-a-new-tool-to-study-single-cases-in-neuropsychology/</guid>
-    <description><![CDATA[<p>Dear all, it is with the greatest pleasure that announce that this new article
-is finally accepted by Neuropsychologia!</p>
-<p>This article, co-authored with a friend, Daniele Romano, is potentially
-the beginning of a new way and of a new field in Single Case studies.</p>
-<p>The github version of the R package is already able to manage
-binomial data!</p>]]></description>
+    <guid>/post/a-new-article-is-out-human-but-not-robotic-gaze-facilitates-action-prediction/</guid>
+    <description><![CDATA[<p>A new article, leaded by Emmanuele Tidoni, is out!</p>
+<blockquote>
+<p>Tidoni, E., Holle, H., Scandola, M., Schindler, I., Hill, L., &amp; Cross, E. S. (2022). Human but not robotic gaze facilitates action prediction. IScience, 25(6), 104462. <a href="https://doi.org/10.1016/j.isci.2022.104462">https://doi.org/10.1016/j.isci.2022.104462</a></p>
+</blockquote>]]></description>
 </item><item>
-    <title>A new article is out: The impact of multisensory integration and perceptual load in virtual reality settings on performance, workload and presence.</title>
-    <link>/blog/2021-03-21-marucci/a-new-article-is-out-the-impact-of-multisensory-integration-and-perceptual-load-in-virtual-reality-settings-on-performance-workload-and-presence/</link>
-    <pubDate>Sun, 21 Mar 2021 00:00:00 &#43;0000</pubDate>
+    <title>A new article is out: A fronto-insular-parietal network for the sense of body ownership</title>
+    <link>/blog/2022-dso/a-new-article-is-out-a-fronto-insular-parietal-network-for-the-sense-of-body-ownership/</link>
+    <pubDate>Thu, 16 Jun 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>/blog/2021-03-21-marucci/a-new-article-is-out-the-impact-of-multisensory-integration-and-perceptual-load-in-virtual-reality-settings-on-performance-workload-and-presence/</guid>
-    <description><![CDATA[<p>A new article is out!</p>
-<p>Marucci, M., Di Flumeri, G., Borghini, G., Sciaraffa,, N., <em>Scandola, M.</em>, Pavone, E.F., Babiloni, F., Betti, V., &amp; Aricò, P. (2021). The impact of multisensory integration and perceptual load in virtual reality settings on performance, workload and presence. Scientific Reports, 11, 4831. <a href="https://doi.org/10.1038/s41598-021-84196-8">https://doi.org/10.1038/s41598-021-84196-8</a></p>]]></description>
+    <guid>/blog/2022-dso/a-new-article-is-out-a-fronto-insular-parietal-network-for-the-sense-of-body-ownership/</guid>
+    <description><![CDATA[<p>Another gret work combining lesional and disconnection analyses.</p>
+<blockquote>
+<p>Moro, V., Pacella, V., Scandola, M., Besharati, S., Rossato, E., Jenkinson, P. M., &amp; Fotopoulou, A. (2022). A fronto-insular-parietal network for the sense of body ownership. Cerebral Cortex, 1–11. <a href="https://doi.org/10.1093/cercor/bhac081">https://doi.org/10.1093/cercor/bhac081</a></p>
+</blockquote>]]></description>
 </item><item>
-    <title>A new article is out: The impact of multisensory integration and perceptual load in virtual reality settings on performance, workload and presence.</title>
-    <link>/post/a-new-article-is-out-the-impact-of-multisensory-integration-and-perceptual-load-in-virtual-reality-settings-on-performance-workload-and-presence/</link>
-    <pubDate>Sun, 21 Mar 2021 00:00:00 &#43;0000</pubDate>
+    <title>A new article is out: A fronto-insular-parietal network for the sense of body ownership</title>
+    <link>/post/a-new-article-is-out-a-fronto-insular-parietal-network-for-the-sense-of-body-ownership/</link>
+    <pubDate>Thu, 16 Jun 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>/post/a-new-article-is-out-the-impact-of-multisensory-integration-and-perceptual-load-in-virtual-reality-settings-on-performance-workload-and-presence/</guid>
-    <description><![CDATA[<p>A new article is out!</p>
-<p>Marucci, M., Di Flumeri, G., Borghini, G., Sciaraffa,, N., <em>Scandola, M.</em>, Pavone, E.F., Babiloni, F., Betti, V., &amp; Aricò, P. (2021). The impact of multisensory integration and perceptual load in virtual reality settings on performance, workload and presence. Scientific Reports, 11, 4831. <a href="https://doi.org/10.1038/s41598-021-84196-8">https://doi.org/10.1038/s41598-021-84196-8</a></p>]]></description>
+    <guid>/post/a-new-article-is-out-a-fronto-insular-parietal-network-for-the-sense-of-body-ownership/</guid>
+    <description><![CDATA[<p>Another gret work combining lesional and disconnection analyses.</p>
+<blockquote>
+<p>Moro, V., Pacella, V., Scandola, M., Besharati, S., Rossato, E., Jenkinson, P. M., &amp; Fotopoulou, A. (2022). A fronto-insular-parietal network for the sense of body ownership. Cerebral Cortex, 1–11. <a href="https://doi.org/10.1093/cercor/bhac081">https://doi.org/10.1093/cercor/bhac081</a></p>
+</blockquote>]]></description>
 </item><item>
-    <title>New preprint! The Role of White Matter Disconnection in the Symptoms Relating to the Anarchic Hand Syndrome: A Single Case Study.</title>
-    <link>/blog/2021-03-21-preprint-anarchic-hand/new-preprint-the-role-of-white-matter-disconnection-in-the-symptoms-relating-to-the-anarchic-hand-syndrome-a-single-case-study/</link>
-    <pubDate>Sun, 21 Mar 2021 00:00:00 &#43;0000</pubDate>
+    <title>A new article is out: Disconnections in personal neglect</title>
+    <link>/blog/2022-personal-neglect/a-new-article-is-out-disconnections-in-personal-neglect/</link>
+    <pubDate>Thu, 16 Jun 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>/blog/2021-03-21-preprint-anarchic-hand/new-preprint-the-role-of-white-matter-disconnection-in-the-symptoms-relating-to-the-anarchic-hand-syndrome-a-single-case-study/</guid>
-    <description><![CDATA[<p>A new preprint was released March $18^{th}, 2021$!</p>
-<p>A single-case study with complete lesional and tractography analysis,
-and additional review of the literature on a patient with
-Anarchic Hand.</p>]]></description>
+    <guid>/blog/2022-personal-neglect/a-new-article-is-out-disconnections-in-personal-neglect/</guid>
+    <description><![CDATA[<p>Great work with a great, and well-prove team!</p>
+<blockquote>
+<p>Bertagnoli, S., Pacella, V., Rossato, E., Jenkinson, P. M., Fotopoulou, A., Scandola, M., &amp; Moro, V. (2022). Disconnections in personal neglect. Brain Structure and Function, 0123456789, 1–19. <a href="https://doi.org/10.1007/s00429-022-02511-z">https://doi.org/10.1007/s00429-022-02511-z</a></p>
+</blockquote>]]></description>
 </item><item>
-    <title>New preprint! The Role of White Matter Disconnection in the Symptoms Relating to the Anarchic Hand Syndrome: A Single Case Study.</title>
-    <link>/post/new-preprint-the-role-of-white-matter-disconnection-in-the-symptoms-relating-to-the-anarchic-hand-syndrome-a-single-case-study/</link>
-    <pubDate>Sun, 21 Mar 2021 00:00:00 &#43;0000</pubDate>
+    <title>A new article is out: Disconnections in personal neglect</title>
+    <link>/post/a-new-article-is-out-disconnections-in-personal-neglect/</link>
+    <pubDate>Thu, 16 Jun 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>/post/new-preprint-the-role-of-white-matter-disconnection-in-the-symptoms-relating-to-the-anarchic-hand-syndrome-a-single-case-study/</guid>
-    <description><![CDATA[<p>A new preprint was released March $18^{th}, 2021$!</p>
-<p>A single-case study with complete lesional and tractography analysis,
-and additional review of the literature on a patient with
-Anarchic Hand.</p>]]></description>
+    <guid>/post/a-new-article-is-out-disconnections-in-personal-neglect/</guid>
+    <description><![CDATA[<p>Great work with a great, and well-prove team!</p>
+<blockquote>
+<p>Bertagnoli, S., Pacella, V., Rossato, E., Jenkinson, P. M., Fotopoulou, A., Scandola, M., &amp; Moro, V. (2022). Disconnections in personal neglect. Brain Structure and Function, 0123456789, 1–19. <a href="https://doi.org/10.1007/s00429-022-02511-z">https://doi.org/10.1007/s00429-022-02511-z</a></p>
+</blockquote>]]></description>
 </item><item>
-    <title>A new article is out: The Motor Unawareness Assessment (MUNA): A new tool for the assessment of Anosognosia for hemiplegia</title>
-    <link>/blog/2021-02-16-muna/muna/</link>
-    <pubDate>Tue, 16 Feb 2021 00:00:00 &#43;0000</pubDate>
+    <title>A new article is out: Peripersonal Space from a multisensory perspective: the distinct effect of the visual and tactile components of Visuo-Tactile stimuli.</title>
+    <link>/blog/2022-pps-beccherle/a-new-article-is-out-peripersonal-space-from-a-multisensory-perspective-the-distinct-effect-of-the-visual-and-tactile-components-of-visuo-tactile-stimuli/</link>
+    <pubDate>Thu, 16 Jun 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>/blog/2021-02-16-muna/muna/</guid>
-    <description><![CDATA[Dear all, it is with extreme plaseure that I am announcing the new article of Valentina Moro (that I am co-authoring).
- Moro, V., Besharati, S., Scandola, M., Bertagnoli, S., Gobbetto, V., Ponzo, S., Bulgarelli, C., Fotopoulou, A., &amp; Jenkinson, P.M. (2021) The Motor Unawareness Assessment (MUNA): A new tool for the assessment of Anosognosia for hemiplegia, Journal of Clinical and Experimental Neuropsychology, https://doi.org/10.1080/13803395.2021.1876842
- Abstract: Introduction: Anosognosia for hemiplegia (AHP) is a condition in which patients with paralysis are unaware of their motor deficits.]]></description>
+    <guid>/blog/2022-pps-beccherle/a-new-article-is-out-peripersonal-space-from-a-multisensory-perspective-the-distinct-effect-of-the-visual-and-tactile-components-of-visuo-tactile-stimuli/</guid>
+    <description><![CDATA[<p>Finally, this article that was already available as a pre-print, is now
+published on Experimental Brain Research!</p>
+<blockquote>
+<p>Beccherle, M., Facchetti, S., Villani, F., Zanini, M., &amp; Scandola, M. (2022). Peripersonal Space from a multisensory perspective: the distinct effect of the visual and tactile components of Visuo-Tactile stimuli. Experimental Brain Research, 240(4), 1205–1217. <a href="https://doi.org/10.1007/s00221-022-06324-8">https://doi.org/10.1007/s00221-022-06324-8</a></p>
+</blockquote>]]></description>
 </item><item>
-    <title>A new article is out: The Motor Unawareness Assessment (MUNA): A new tool for the assessment of Anosognosia for hemiplegia</title>
-    <link>/post/muna/</link>
-    <pubDate>Tue, 16 Feb 2021 00:00:00 &#43;0000</pubDate>
+    <title>A new article is out: Peripersonal Space from a multisensory perspective: the distinct effect of the visual and tactile components of Visuo-Tactile stimuli.</title>
+    <link>/post/a-new-article-is-out-peripersonal-space-from-a-multisensory-perspective-the-distinct-effect-of-the-visual-and-tactile-components-of-visuo-tactile-stimuli/</link>
+    <pubDate>Thu, 16 Jun 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>/post/muna/</guid>
-    <description><![CDATA[Dear all, it is with extreme plaseure that I am announcing the new article of Valentina Moro (that I am co-authoring).
- Moro, V., Besharati, S., Scandola, M., Bertagnoli, S., Gobbetto, V., Ponzo, S., Bulgarelli, C., Fotopoulou, A., &amp; Jenkinson, P.M. (2021) The Motor Unawareness Assessment (MUNA): A new tool for the assessment of Anosognosia for hemiplegia, Journal of Clinical and Experimental Neuropsychology, https://doi.org/10.1080/13803395.2021.1876842
- Abstract: Introduction: Anosognosia for hemiplegia (AHP) is a condition in which patients with paralysis are unaware of their motor deficits.]]></description>
+    <guid>/post/a-new-article-is-out-peripersonal-space-from-a-multisensory-perspective-the-distinct-effect-of-the-visual-and-tactile-components-of-visuo-tactile-stimuli/</guid>
+    <description><![CDATA[<p>Finally, this article that was already available as a pre-print, is now
+published on Experimental Brain Research!</p>
+<blockquote>
+<p>Beccherle, M., Facchetti, S., Villani, F., Zanini, M., &amp; Scandola, M. (2022). Peripersonal Space from a multisensory perspective: the distinct effect of the visual and tactile components of Visuo-Tactile stimuli. Experimental Brain Research, 240(4), 1205–1217. <a href="https://doi.org/10.1007/s00221-022-06324-8">https://doi.org/10.1007/s00221-022-06324-8</a></p>
+</blockquote>]]></description>
 </item><item>
-    <title>New registered report! Modulating preferences during intertemporal choices through exogenous midfrontal theta transcranial alternating current.</title>
-    <link>/blog/2021-02-10-regrep-fusco/regrepfusco2021/</link>
-    <pubDate>Tue, 16 Feb 2021 00:00:00 &#43;0000</pubDate>
+    <title>A new article is out: What the study of spinal cord injured patients can tell us about the significance of the body in cognition</title>
+    <link>/blog/2022-psychonomics-sci/a-new-article-is-out-what-the-study-of-spinal-cord-injured-patients-can-tell-us-about-the-significance-of-the-body-in-cognition/</link>
+    <pubDate>Thu, 16 Jun 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>/blog/2021-02-10-regrep-fusco/regrepfusco2021/</guid>
-    <description><![CDATA[<p>I am happy to announce that Gabriele Fusco&rsquo;s Registered Report
-<em>Modulating preferences during intertemporal choices
-through exogenous midfrontal theta transcranial alternating current</em>,
-which I am co-authoring,
-received a &ldquo;In Principle Acceptance&rdquo; by Cortex!</p>]]></description>
+    <guid>/blog/2022-psychonomics-sci/a-new-article-is-out-what-the-study-of-spinal-cord-injured-patients-can-tell-us-about-the-significance-of-the-body-in-cognition/</guid>
+    <description><![CDATA[<p>A new, comprehensive review of the literature on cognitive Spinal Cord Injury studies.</p>
+<blockquote>
+<p>Moro, V., Scandola, M., &amp; Aglioti, S. M. (2022). What the study of spinal cord injured patients can tell us about the significance of the body in cognition. Psychonomic Bulletin &amp; Review. <a href="https://doi.org/10.3758/s13423-022-02129-6">https://doi.org/10.3758/s13423-022-02129-6</a></p>
+</blockquote>]]></description>
 </item></channel>
 </rss>

@@ -1,6 +1,7 @@
 # Linear regressions
 
 
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 <div id="TOC">
 true

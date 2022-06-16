@@ -1,6 +1,7 @@
 # The estimation of the unknown coefficients of a linear model by means of unbiased estimators
 
 
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 <div id="TOC">
 true

@@ -5,6 +5,6 @@ appunti su come gestire questo sito:
   featuredImagePreview: '../assets/images/publications.jpg'
 - blogdown::serve_site()## ricarica sito
 - post si creano con blogdown::new_post ma crea il tutto nella cartella
-  content/post, bisogna spostarlo nella cartella content/posts
+  content/post, bisogna spostarlo nella cartella content/blog/directory
 - le pagine statiche pubblicazioni, statistic notes, etc le trovi su
   scandle/content/posts/directory

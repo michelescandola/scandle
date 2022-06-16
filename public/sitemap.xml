@@ -2,55 +2,105 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>/2020-08-01-presentation/</loc><lastmod>2021-03-27T10:37:25&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>/2020-08-01-presentation/</loc><lastmod>2021-03-27T10:37:25&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/post/2020-08-01-presentation/</loc><lastmod>2020-08-02T11:58:44&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>/2020-08-01-publications/</loc><lastmod>2021-03-27T10:43:19&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
-            <loc>/2020-08-01-statistics-notes/</loc><lastmod>2021-02-07T13:07:07&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>/tags/bayesian-parameter-estimation/</loc><lastmod>2021-04-30T14:42:49&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/tags/bayesian-predictive-models/</loc><lastmod>2021-04-30T14:42:49&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/tags/bayesian-statistics/</loc><lastmod>2021-04-30T14:42:49&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/categories/</loc><lastmod>2021-04-30T14:42:49&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/post/guida-bayesiana-per-autostoppisti/</loc><lastmod>2021-04-30T14:42:49&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/presentations/20210430guidabayesianaautostop/guida-bayesiana-per-autostoppisti/</loc><lastmod>2021-04-30T14:42:49&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/</loc><lastmod>2021-04-30T14:42:49&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/tags/model-selection/</loc><lastmod>2021-04-30T14:42:49&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/post/</loc><lastmod>2021-04-30T14:42:49&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/presentations/</loc><lastmod>2021-04-30T14:42:49&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/categories/statistics/</loc><lastmod>2021-04-30T14:42:49&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/tags/</loc><lastmod>2021-04-30T14:42:49&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/tags/talk/</loc><lastmod>2021-04-30T14:42:49&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/tags/generalized-linear-moldes/</loc><lastmod>2021-03-26T22:41:12&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
-            <loc>/blog/2021-03-26-bmscstan-article/a-new-article-is-out-bayesian-multilevel-single-case-models-using-stan-a-new-tool-to-study-single-cases-in-neuropsychology/</loc><lastmod>2021-03-26T22:41:12&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
-            <loc>/post/a-new-article-is-out-bayesian-multilevel-single-case-models-using-stan-a-new-tool-to-study-single-cases-in-neuropsychology/</loc><lastmod>2021-03-26T22:41:12&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
-            <loc>/tags/articles/</loc><lastmod>2021-03-27T10:43:19&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
-            <loc>/blog/</loc><lastmod>2021-03-26T22:41:12&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
-            <loc>/tags/multivariate-lesion-analysis/</loc><lastmod>2021-03-26T22:41:12&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
-            <loc>/tags/neuropsychologia/</loc><lastmod>2021-03-26T22:41:12&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
-            <loc>/categories/publications/</loc><lastmod>2021-03-27T10:43:19&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
-            <loc>/tags/r/</loc><lastmod>2021-03-26T22:41:12&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
-            <loc>/categories/r-package/</loc><lastmod>2021-03-26T22:41:12&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
-            <loc>/tags/single-case-analysis/</loc><lastmod>2021-03-26T22:41:12&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
-            <loc>/tags/stan/</loc><lastmod>2021-03-26T22:41:12&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
-            <loc>/tags/validation/</loc><lastmod>2021-03-26T22:41:12&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>/2020-08-01-publications/</loc><lastmod>2021-03-27T10:43:19&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/2020-08-01-statistics-notes/</loc><lastmod>2021-04-30T15:24:38&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/blog/2022-robotic-gaze/a-new-article-is-out-human-but-not-robotic-gaze-facilitates-action-prediction/</loc><lastmod>2022-06-17T16:56:09&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/post/a-new-article-is-out-human-but-not-robotic-gaze-facilitates-action-prediction/</loc><lastmod>2022-06-17T16:56:09&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/tags/action-prediction/</loc><lastmod>2022-06-17T16:56:09&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/tags/articles/</loc><lastmod>2022-06-17T16:56:09&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/blog/</loc><lastmod>2022-06-17T16:56:09&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/categories/</loc><lastmod>2022-06-17T16:56:09&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/tags/human-gaze/</loc><lastmod>2022-06-17T16:56:09&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/</loc><lastmod>2022-06-17T16:56:09&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/post/</loc><lastmod>2022-06-17T16:56:09&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/categories/publications/</loc><lastmod>2022-06-17T16:56:09&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/tags/robot-gaze/</loc><lastmod>2022-06-17T16:56:09&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/tags/</loc><lastmod>2022-06-17T16:56:09&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/blog/2022-dso/a-new-article-is-out-a-fronto-insular-parietal-network-for-the-sense-of-body-ownership/</loc><lastmod>2022-06-16T17:06:37&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/post/a-new-article-is-out-a-fronto-insular-parietal-network-for-the-sense-of-body-ownership/</loc><lastmod>2022-06-16T17:06:37&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/blog/2022-personal-neglect/a-new-article-is-out-disconnections-in-personal-neglect/</loc><lastmod>2022-06-16T17:00:33&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/post/a-new-article-is-out-disconnections-in-personal-neglect/</loc><lastmod>2022-06-16T17:00:33&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/blog/2022-pps-beccherle/a-new-article-is-out-peripersonal-space-from-a-multisensory-perspective-the-distinct-effect-of-the-visual-and-tactile-components-of-visuo-tactile-stimuli/</loc><lastmod>2022-06-16T14:08:06&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/post/a-new-article-is-out-peripersonal-space-from-a-multisensory-perspective-the-distinct-effect-of-the-visual-and-tactile-components-of-visuo-tactile-stimuli/</loc><lastmod>2022-06-16T14:08:06&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/blog/2022-psychonomics-sci/a-new-article-is-out-what-the-study-of-spinal-cord-injured-patients-can-tell-us-about-the-significance-of-the-body-in-cognition/</loc><lastmod>2022-06-16T17:09:59&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/post/a-new-article-is-out-what-the-study-of-spinal-cord-injured-patients-can-tell-us-about-the-significance-of-the-body-in-cognition/</loc><lastmod>2022-06-16T17:09:59&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/tags/action-representation/</loc><lastmod>2022-06-16T17:09:59&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/tags/bayesian-statistics/</loc><lastmod>2022-06-16T17:06:37&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/tags/body-represantations/</loc><lastmod>2022-06-16T17:09:59&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/tags/books/</loc><lastmod>2022-06-16T11:29:33&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/tags/embodied-cognition-theory/</loc><lastmod>2022-06-16T17:09:59&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/tags/multivariate-lesion-analysis/</loc><lastmod>2022-06-16T17:06:37&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/tags/neurospychologia/</loc><lastmod>2022-06-16T17:06:37&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/tags/peripersonal-space/</loc><lastmod>2022-06-16T14:08:06&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/tags/posters/</loc><lastmod>2021-03-27T10:43:19&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/posts/</loc><lastmod>2021-04-30T15:24:38&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/tags/r/</loc><lastmod>2022-06-16T14:08:06&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/tags/space-representation/</loc><lastmod>2022-06-16T17:09:59&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/tags/spinal-cord-injury/</loc><lastmod>2022-06-16T17:09:59&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/tags/white-matter-disconnection/</loc><lastmod>2022-06-16T17:06:37&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/blog/2022-chapter-sci/a-new-chapter-of-book-is-out-body-action-and-space-representations-in-people-affected-by-spinal-cord-injuries/</loc><lastmod>2022-04-18T12:38:39&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/post/a-new-chapter-of-book-is-out-body-action-and-space-representations-in-people-affected-by-spinal-cord-injuries/</loc><lastmod>2022-04-18T12:38:39&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/tags/body-awareness/</loc><lastmod>2022-04-18T12:38:39&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/tags/body-representation/</loc><lastmod>2022-04-18T12:38:39&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/tags/extrapersonal-space/</loc><lastmod>2022-06-16T11:29:33&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/tags/review/</loc><lastmod>2022-04-18T12:38:39&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/tags/spinal-cord-injuries/</loc><lastmod>2022-06-16T11:29:33&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/blog/2021-06-cognitive-training-sci/a-new-article-is-out-cognitive-training-improves-disconnected-limbs-mental-representation-and-peripersonal-space-after-spinal-cord-injury/</loc><lastmod>2021-09-12T12:04:25&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/post/a-new-article-is-out-cognitive-training-improves-disconnected-limbs-mental-representation-and-peripersonal-space-after-spinal-cord-injury/</loc><lastmod>2021-09-12T12:04:25&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/tags/body-representations/</loc><lastmod>2021-09-12T12:04:25&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/tags/rehabilitation/</loc><lastmod>2021-09-12T12:04:25&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/tags/training/</loc><lastmod>2021-09-12T12:04:25&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/blog/2022-06-lcf-tbi/a-new-article-is-out-role-of-lcf-scale-as-an-outcome-prognostic-index-in-patients-with-traumatic-brain-injury/</loc><lastmod>2021-07-21T11:57:19&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/post/a-new-article-is-out-role-of-lcf-scale-as-an-outcome-prognostic-index-in-patients-with-traumatic-brain-injury/</loc><lastmod>2021-07-21T11:57:19&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/tags/epidemiology/</loc><lastmod>2021-07-21T11:57:19&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/tags/traumatic-brain-injury/</loc><lastmod>2021-07-21T11:57:19&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/blog/2021-06-chapter-citt%C3%A0-in-carrozzina/a-new-chapter-of-book-in-italian-is-out-una-citt%C3%A0-in-carrozzina-fragilit%C3%A0-e-risorse-per-la-mobilit%C3%A0-delle-persone-con-disabilit%C3%A0-motoria/</loc><lastmod>2022-06-16T11:29:33&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/post/a-new-chapter-of-book-in-italian-is-out-una-citt%C3%A0-in-carrozzina-fragilit%C3%A0-e-risorse-per-la-mobilit%C3%A0-delle-persone-con-disabilit%C3%A0-motoria/</loc><lastmod>2022-06-16T11:29:33&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/tags/italian/</loc><lastmod>2022-06-16T11:29:33&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/blog/2021-05-14-anarchic-hand/a-new-article-is-out-the-role-of-white-matter-disconnection-in-the-symptoms-relating-to-the-anarchic-hand-syndrome-a-single-case-study/</loc><lastmod>2022-06-16T08:48:44&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/post/a-new-article-is-out-the-role-of-white-matter-disconnection-in-the-symptoms-relating-to-the-anarchic-hand-syndrome-a-single-case-study/</loc><lastmod>2022-06-16T08:48:44&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/tags/anarchic-hand-syndrome/</loc><lastmod>2022-06-16T08:48:44&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/tags/dti/</loc><lastmod>2022-06-16T08:48:44&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/tags/lesion-mapping/</loc><lastmod>2022-06-16T08:48:44&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/tags/neuropsychologia/</loc><lastmod>2022-06-16T08:48:44&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/tags/posterior-lesions/</loc><lastmod>2022-06-16T08:48:44&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/tags/sense-of-agency/</loc><lastmod>2022-06-16T08:48:44&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/tags/single-case-analysis/</loc><lastmod>2022-06-16T08:48:44&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/tags/tractography/</loc><lastmod>2022-06-16T08:48:44&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/tags/bayesian-parameter-estimation/</loc><lastmod>2021-04-30T15:24:38&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/tags/bayesian-predictive-models/</loc><lastmod>2021-04-30T15:24:38&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/post/guida-bayesiana-per-autostoppisti/</loc><lastmod>2021-04-30T15:24:38&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/presentations/20210430guidabayesianaautostop/guida-bayesiana-per-autostoppisti/</loc><lastmod>2021-04-30T15:24:38&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/tags/model-selection/</loc><lastmod>2021-04-30T15:24:38&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/presentations/</loc><lastmod>2021-04-30T15:24:38&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/categories/statistics/</loc><lastmod>2021-04-30T15:24:38&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/tags/talk/</loc><lastmod>2021-04-30T15:24:38&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/tags/anosognosia/</loc><lastmod>2021-03-30T11:50:32&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/blog/2022-anosognosia-for-apraxia/anosognosia-for-limb-and-bucco-facial-apraxia-as-inferred-from-the-recognition-of-gestural-errors/</loc><lastmod>2021-03-30T11:50:32&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/post/anosognosia-for-limb-and-bucco-facial-apraxia-as-inferred-from-the-recognition-of-gestural-errors/</loc><lastmod>2021-03-30T11:50:32&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/tags/apraxia/</loc><lastmod>2022-06-16T11:22:31&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/tags/generalized-linear-models/</loc><lastmod>2021-04-30T15:24:38&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/tags/generalized-linear-moldes/</loc><lastmod>2021-03-26T22:41:12&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/blog/2021-03-26-bmscstan-article/a-new-article-is-out-bayesian-multilevel-single-case-models-using-stan-a-new-tool-to-study-single-cases-in-neuropsychology/</loc><lastmod>2021-03-26T22:41:12&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/post/a-new-article-is-out-bayesian-multilevel-single-case-models-using-stan-a-new-tool-to-study-single-cases-in-neuropsychology/</loc><lastmod>2021-03-26T22:41:12&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/categories/r-package/</loc><lastmod>2021-03-26T22:41:12&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/tags/stan/</loc><lastmod>2021-03-26T22:41:12&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/tags/validation/</loc><lastmod>2021-03-26T22:41:12&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/blog/2021-03-21-marucci/a-new-article-is-out-the-impact-of-multisensory-integration-and-perceptual-load-in-virtual-reality-settings-on-performance-workload-and-presence/</loc><lastmod>2021-03-21T17:00:47&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/post/a-new-article-is-out-the-impact-of-multisensory-integration-and-perceptual-load-in-virtual-reality-settings-on-performance-workload-and-presence/</loc><lastmod>2021-03-21T17:00:47&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>/tags/anarchic-hand-syndrome/</loc><lastmod>2021-03-21T17:00:47&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/tags/cognitive-load/</loc><lastmod>2021-03-21T17:00:47&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>/tags/dti/</loc><lastmod>2021-03-21T17:00:47&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/tags/eeg/</loc><lastmod>2021-03-21T17:00:47&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/tags/galvanic-skin-response/</loc><lastmod>2021-03-21T17:00:47&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>/tags/lesion-mapping/</loc><lastmod>2021-03-21T17:00:47&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/blog/2021-03-21-preprint-anarchic-hand/new-preprint-the-role-of-white-matter-disconnection-in-the-symptoms-relating-to-the-anarchic-hand-syndrome-a-single-case-study/</loc><lastmod>2021-03-21T17:00:47&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/post/new-preprint-the-role-of-white-matter-disconnection-in-the-symptoms-relating-to-the-anarchic-hand-syndrome-a-single-case-study/</loc><lastmod>2021-03-21T17:00:47&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>/tags/posterior-lesions/</loc><lastmod>2021-03-21T17:00:47&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/categories/preprint/</loc><lastmod>2021-03-21T17:00:47&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>/tags/sense-of-agency/</loc><lastmod>2021-03-21T17:00:47&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>/tags/tractography/</loc><lastmod>2021-03-21T17:00:47&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/tags/virtual-reality/</loc><lastmod>2021-03-21T17:00:47&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>/tags/white-matter-disconnection/</loc><lastmod>2021-03-21T17:00:47&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/blog/2021-03-gestures-article/a-new-article-is-out-gesture-errors-in-left-and-right-hemisphere-damaged-patients-a-behavioural-and-anatomical-study/</loc><lastmod>2022-06-16T11:22:31&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/post/a-new-article-is-out-gesture-errors-in-left-and-right-hemisphere-damaged-patients-a-behavioural-and-anatomical-study/</loc><lastmod>2022-06-16T11:22:31&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>/blog/2021-02-16-muna/muna/</loc><lastmod>2021-02-16T16:12:28&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/post/muna/</loc><lastmod>2021-02-16T16:12:28&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>/tags/anosognosia/</loc><lastmod>2021-02-16T16:12:28&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/tags/anosognosia-for-hemiplegia/</loc><lastmod>2021-02-16T16:12:28&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/tags/conflict-adaptation/</loc><lastmod>2021-02-16T16:12:28&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/tags/motor-awareness/</loc><lastmod>2021-02-16T16:12:28&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
@@ -68,28 +118,22 @@
             <loc>/blog/2020-11-02-neuropsychologia-tom-awareness-deficit/a-new-article-is-out-anosognosia-for-theory-of-mind-deficits-a-single-case-study-and-a-review-of-the-literature/</loc><lastmod>2020-11-02T12:51:54&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/post/a-new-article-is-out-anosognosia-for-theory-of-mind-deficits-a-single-case-study-and-a-review-of-the-literature/</loc><lastmod>2020-11-02T12:51:54&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/tags/theory-of-mind/</loc><lastmod>2020-11-02T12:51:54&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>/tags/generalized-linear-models/</loc><lastmod>2021-02-07T13:07:07&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/blog/2020-09-09-bmscstan-cran/the-bmscstan-package-is-on-cran/</loc><lastmod>2020-09-09T13:00:44&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/post/the-bmscstan-package-is-on-cran/</loc><lastmod>2020-09-09T13:00:44&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/post/biased-estimators-ridge-and-lasso-regressions/</loc><lastmod>2020-08-28T10:44:26&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/presentations/20200903biasedestimators/biased-estimators-ridge-and-lasso-regressions/</loc><lastmod>2020-09-09T13:00:44&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/post/linear-regression/</loc><lastmod>2020-08-19T19:04:25&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/presentations/20200819linearregression/unbiased-linear-regression/</loc><lastmod>2020-09-03T08:28:20&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>/tags/apraxia/</loc><lastmod>2020-08-14T10:44:01&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/blog/2020-08-14-preprint-gestures/gesture_errors/</loc><lastmod>2020-08-14T10:44:01&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/post/new-r-package-on-github-bmscstan-bayesian-multilevel-single-case-models/</loc><lastmod>2020-08-06T09:23:41&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/blog/2020-08-06-bmscstan/new-r-package-on-github-bmscstan-bayesian-multilevel-single-case-models/</loc><lastmod>2020-08-06T09:23:41&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/blog/2020-08-03-preprint-bmscstan/new-preprint-bayesian-multilevel-single-case-models-using-stan-a-new-tool-to-study-single-cases-in-neuropsychology/</loc><lastmod>2020-08-06T08:40:05&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/post/new-preprint-bayesian-multilevel-single-case-models-using-stan-a-new-tool-to-study-single-cases-in-neuropsychology/</loc><lastmod>2020-08-03T19:32:32&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>/tags/books/</loc><lastmod>2021-03-27T10:43:19&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
-            <loc>/tags/network-analysis/</loc><lastmod>2021-02-07T13:07:07&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>/tags/posters/</loc><lastmod>2021-03-27T10:43:19&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
-            <loc>/posts/</loc><lastmod>2021-03-27T10:43:19&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>/tags/network-analysis/</loc><lastmod>2021-04-30T15:24:38&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/post/publications/</loc><lastmod>2020-08-02T11:58:44&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/post/statistics-notes/</loc><lastmod>2020-08-02T11:58:44&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/blog/2020-07-29-preprint-pps/new-preprint-peripersonal-space-from-a-multisensory-perspective/</loc><lastmod>2020-08-06T08:40:05&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/post/new-preprint-peripersonal-space-from-a-multisensory-perspective/</loc><lastmod>2020-08-03T19:32:32&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>/tags/peripersonal-space/</loc><lastmod>2020-08-06T08:40:05&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/about/</loc><lastmod>2020-08-02T11:58:44&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/tags/content/_index.fr/</loc><lastmod>2020-08-02T11:58:44&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/categories/documentation/</loc><lastmod>2020-08-02T11:58:44&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>

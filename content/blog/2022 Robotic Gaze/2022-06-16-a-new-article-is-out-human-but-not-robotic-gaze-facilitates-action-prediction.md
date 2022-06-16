@@ -1,0 +1,39 @@
+---
+title: 'A new article is out: Human but not robotic gaze facilitates action prediction.'
+author: Michele Scandola
+date: '2022-06-17'
+slug: a-new-article-is-out-human-but-not-robotic-gaze-facilitates-action-prediction
+categories:
+- publications
+tags:
+- article(s)
+- Action prediction
+- Human gaze
+- Robot gaze
+subtitle: ''
+lastmod: '2022-06-17T16:56:09+02:00'
+authorLink: 'michelescandola.netlify.app'
+description: ''
+hiddenFromHomePage: no
+hiddenFromSearch: no
+featuredImage: ''
+featuredImagePreview: ''
+toc:
+  enable: yes
+math:
+  enable: no
+lightgallery: no
+license: ''
+---
+
+A new article, leaded by Emmanuele Tidoni, is out!
+
+> Tidoni, E., Holle, H., Scandola, M., Schindler, I., Hill, L., & Cross, E. S. (2022). Human but not robotic gaze facilitates action prediction. IScience, 25(6), 104462. https://doi.org/10.1016/j.isci.2022.104462
+
+<!--more-->
+
+### Abstract:
+
+> 16 Interpreting the behaviour of autonomous machines will be a daily activity for future generations. Yet, 17 surprisingly little is currently known about how people ascribe intentions to human-like and non-human-18 like agents or objects. In a series of six experiments, we compared people's ability to extract non-mentalistic 19 (i.e., where an agent is looking) and mentalistic (i.e., what an agent is looking at; what an agent is going to 20 do) information from identical gaze and head movements performed by humans, human-like robots, and a 21 non-human-like object. Results showed that people are faster to infer the mental content of human agents 22 compared to robotic agents. Furthermore, the form of the non-human entity may differently engage 23 mentalizing processes depending on how human-like its appearance is. These results are not easily 24 explained by non-mentalizing strategies (e.g., spatial accounts), as we observed no clear differences in 25 control conditions across the three different agents. Overall, results suggest that human-like robotic actions 26 may be processed differently from both humans' and objects' behaviour. We discuss the extent to which 27 these findings inform our understanding of the relevance of an agents' or objects' physical features in 28 triggering mentalizing abilities and its relevance for human-robot interaction. 29 30
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Happy to share our new work on <a href="https://twitter.com/hashtag/IntentionReading?src=hash&amp;ref_src=twsrc%5Etfw">#IntentionReading</a> from <a href="https://twitter.com/hashtag/GazeObservation?src=hash&amp;ref_src=twsrc%5Etfw">#GazeObservation</a> <a href="https://twitter.com/iScience_CP?ref_src=twsrc%5Etfw">@iScience_CP</a> <br>Thanks to <a href="https://twitter.com/Scandle?ref_src=twsrc%5Etfw">@Scandle</a> <a href="https://twitter.com/brain_on_dance?ref_src=twsrc%5Etfw">@brain_on_dance</a> <a href="https://twitter.com/HolleHenning?ref_src=twsrc%5Etfw">@HolleHenning</a> <a href="https://twitter.com/Loron_H177?ref_src=twsrc%5Etfw">@Loron_H177</a> <a href="https://twitter.com/hashtag/IgorSchindler?src=hash&amp;ref_src=twsrc%5Etfw">#IgorSchindler</a>, and <a href="https://twitter.com/HULLPSY?ref_src=twsrc%5Etfw">@HULLPSY</a> <a href="https://twitter.com/UniOfHull?ref_src=twsrc%5Etfw">@UniOfHull</a> for supporting this new research line<a href="https://t.co/49qb0Ldqyk">https://t.co/49qb0Ldqyk</a></p>&mdash; Emmanuele Tidoni (@letstido) <a href="https://twitter.com/letstido/status/1534079000305455105?ref_src=twsrc%5Etfw">June 7, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 

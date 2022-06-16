@@ -10,6 +10,7 @@ tags:
 - article(s)
 - Bayesian Statistics
 - Apraxia
+- Neurospychologia
 subtitle: 'a behavioural and anatomical study'
 lastmod: '2020-08-14T10:30:12+02:00'
 authorLink: 'michelescandola.netlify.app'
