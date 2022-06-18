@@ -6,6 +6,8 @@
     <description>Recent content in Presentations on Michele Scandola&#39;s personal webpage</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
+    <managingEditor>michele.scandola@univr.it (Michele Scandola)</managingEditor>
+    <webMaster>michele.scandola@univr.it (Michele Scandola)</webMaster>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
     <lastBuildDate>Fri, 30 Apr 2021 00:00:00 +0000</lastBuildDate>
     
@@ -16,7 +18,7 @@
       <title>Guida Bayesiana per Autostoppisti</title>
       <link>/presentations/20210430guidabayesianaautostop/guida-bayesiana-per-autostoppisti/</link>
       <pubDate>Fri, 30 Apr 2021 00:00:00 +0000</pubDate>
-      
+      <author>michele.scandola@univr.it (Michele Scandola)</author>
       <guid>/presentations/20210430guidabayesianaautostop/guida-bayesiana-per-autostoppisti/</guid>
       <description>&lt;p&gt;Happy to share my invited webinar
 from the Italian Society of Psychophysiology and Cognitive Neuroscience (SIPF)
@@ -30,7 +32,7 @@ Shiny presentation ;)&lt;/p&gt;
       <title>Multiple correlations in Stan</title>
       <link>/presentations/20210205bayesianmultiplecorrelation/multiple-correlations-in-stan/</link>
       <pubDate>Sun, 07 Feb 2021 00:00:00 +0000</pubDate>
-      
+      <author>michele.scandola@univr.it (Michele Scandola)</author>
       <guid>/presentations/20210205bayesianmultiplecorrelation/multiple-correlations-in-stan/</guid>
       <description>
 
@@ -52,7 +54,7 @@ correlation.&lt;/p&gt;
       <title>Biased Estimators - Ridge and Lasso regressions</title>
       <link>/presentations/20200903biasedestimators/biased-estimators-ridge-and-lasso-regressions/</link>
       <pubDate>Sat, 22 Aug 2020 00:00:00 +0000</pubDate>
-      
+      <author>michele.scandola@univr.it (Michele Scandola)</author>
       <guid>/presentations/20200903biasedestimators/biased-estimators-ridge-and-lasso-regressions/</guid>
       <description>true  library(knitr) library(captioner) fig_nums &amp;lt;- captioner() cod_nums &amp;lt;- captioner( prefix = &amp;quot;Code&amp;quot; ) Some days ago I wrote some notes concerning unbiased estimators, that are the estimators that we commonly use with linear models, and statistical analyses such as ANOVA, linear regression, etc…
 Unbiased estimators try to estimate the best unknown but not casual, \(\beta\) coefficients of the independent variables (i.v.) to explain the observed dependent variable \(y\) (d.</description>
@@ -62,7 +64,7 @@ Unbiased estimators try to estimate the best unknown but not casual, \(\beta\) c
       <title>The estimation of the unknown coefficients of a linear model by means of unbiased estimators</title>
       <link>/presentations/20200819linearregression/unbiased-linear-regression/</link>
       <pubDate>Sun, 16 Aug 2020 00:00:00 +0000</pubDate>
-      
+      <author>michele.scandola@univr.it (Michele Scandola)</author>
       <guid>/presentations/20200819linearregression/unbiased-linear-regression/</guid>
       <description>true  Linear regression is not tricky, basically, we are trying to estimate a line that efficiently interpolates our data.
 The focus of this page is to understand how the coefficients of a linear model are estimated by means of unbiased estimators.

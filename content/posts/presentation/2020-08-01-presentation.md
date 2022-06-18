@@ -1,8 +1,8 @@
 ---
 title: ''
 author: Michele Scandola
-date: '2020-08-01'
-lastmod: '2020-08-03T20:22:05+02:00'
+date: '2022-06-18'
+lastmod: '2022-06-18T20:22:05+02:00'
 authorLink: 'https://michelescandola.netlify.app'
 hiddenFromHomePage: no
 hiddenFromSearch: no
@@ -31,6 +31,8 @@ Social and Affective Neuroscience at the University “La Sapienza” or Rome
 supervision of [prof. Valentina Moro][3].
 
 ![][myself]
+
+![][hgraph]
 
 ## Research groups
 
@@ -139,6 +141,7 @@ programs.
 [labdisability]: https://www.dsu.univr.it/?ent=oi&aa=2020%2F2021&codiceCs=W23&codins=4S000871&cs=360&discr=&discrCd=
 [psydisability]: https://www.dsu.univr.it/?ent=oi&aa=2020%2F2021&codiceCs=W23&codins=4S000871&cs=360&discr=&discrCd=
 [myself]: ../assets/images/myself_real_work.jpg "This may actually be me, working at home, during the COVID-19 Italian lockdown"
+[hgraph]: ../assets/images/hgraph.png "Publications, citations and reviews graph"
 
 [^1]: Moro, V. (2013). The interaction between implicit and explicit awareness in anosognosia: Emergent awareness. Cognitive Neuroscience, 4(3–4), 199–200. https://doi.org/10.1080/17588928.2013.853656
 [^2]: Canzano, L., Scandola, M., Pernigo, S., Aglioti, S. M., & Moro, V. (2014). Anosognosia for apraxia: Experimental evidence for defective awareness of one’s own bucco-facial gestures. Cortex, 61(0), 148–157. https://doi.org/10.1016/j.cortex.2014.05.015
