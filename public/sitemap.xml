@@ -2,12 +2,12 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>/2020-08-01-presentation/</loc><lastmod>2021-03-27T10:37:25&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/2020-08-01-presentation/</loc><lastmod>2022-06-18T15:33:30&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>/post/2020-08-01-presentation/</loc><lastmod>2020-08-02T11:58:44&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/2020-08-01-publications/</loc><lastmod>2022-06-16T17:29:40&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>/2020-08-01-statistics-notes/</loc><lastmod>2021-04-30T15:24:38&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>/</loc><lastmod>2022-06-16T17:29:40&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/posts/</loc><lastmod>2022-06-16T17:29:40&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/</loc><lastmod>2022-06-18T15:33:30&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/posts/</loc><lastmod>2022-06-18T15:33:30&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>/blog/2022-robotic-gaze/a-new-article-is-out-human-but-not-robotic-gaze-facilitates-action-prediction/</loc><lastmod>2022-06-16T17:29:40&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>/post/a-new-article-is-out-human-but-not-robotic-gaze-facilitates-action-prediction/</loc><lastmod>2022-06-16T17:29:40&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>/tags/action-prediction/</loc><lastmod>2022-06-16T17:29:40&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>

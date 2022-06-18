@@ -64,7 +64,7 @@ with a double aim:
 
 - designing new cognitive exercises that may be helpful in rehabilitative
   trainings [^7] [^8] [^9]
-- in-depth study of body representations [^10] [^11]
+- in-depth study of body representations [^10] [^11] [^14] [^15]
 
 <hr>
 
@@ -97,7 +97,7 @@ the laboratory [“Body and disability”][labdisability] and
 
 Both courses are based on the notion of neuroplasticity from different perspectives.
 
-**Office hours**: all mondays, from 9 to 11 am on [Zoom](https://univr.zoom.us/j/489282176)
+**Office hours**: all Fridays, from 9 to 10:30 am on [Zoom](https://univr.zoom.us/j/489282176)
 
 I am both teacher and director of the [BayesHSC][BayesHSC] Summer School, and occasionally
 I give lectures concerning Multilevel Models and Bayesian Statistics in PhD
@@ -127,7 +127,7 @@ programs.
 [labdisability]: https://www.dsu.univr.it/?ent=oi&aa=2020%2F2021&codiceCs=W23&codins=4S000871&cs=360&discr=&discrCd=
 [psydisability]: https://www.dsu.univr.it/?ent=oi&aa=2020%2F2021&codiceCs=W23&codins=4S000871&cs=360&discr=&discrCd=
 [myself]: ../assets/images/myself_real_work.jpg "This may actually be me, working at home, during the COVID-19 Italian lockdown"
-[hgraph]: ../assets/images/hgraph.png "Publications, citations and reviews graph"
+[hgraph]: ../assets/images/hgraph.png "Publications, citations and reviews graph. <a href=https://github.com/michelescandola/citations_publications_reviews_graph>Github code</a> "
 
 [^1]: Moro, V. (2013). The interaction between implicit and explicit awareness in anosognosia: Emergent awareness. Cognitive Neuroscience, 4(3–4), 199–200. https://doi.org/10.1080/17588928.2013.853656
 [^2]: Canzano, L., Scandola, M., Pernigo, S., Aglioti, S. M., & Moro, V. (2014). Anosognosia for apraxia: Experimental evidence for defective awareness of one’s own bucco-facial gestures. Cortex, 61(0), 148–157. https://doi.org/10.1016/j.cortex.2014.05.015
@@ -142,3 +142,5 @@ programs.
 [^11]: Scandola, M., Aglioti, S. M., Avesani, R., Bertagnoni, G., Marangoni, A., & Moro, V. (2017). Corporeal Illusions in Chronic Spinal Cord Injuries. Consciousness and Cognition, 49, 278–290. https://doi.org/10.1016/j.concog.2017.01.010
 [^12]: Scandola, M., Tidoni, E. (2021, February 8). The development of a standard procedure for the optimal reliability-feasibility trade-off in Multilevel Linear Models analyses in Psychology and Neuroscience. https://doi.org/10.31234/osf.io/kfhgv 
 [^13]: Scandola, M., & Romano, D. (2021). Bayesian Multilevel Single Case Models using 'Stan'. A new tool to study single cases in Neuropsychology. Neuropsychologia. https://doi.org/10.1016/j.neuropsychologia.2021.107834 pre-print: https://doi.org/10.31234/osf.io/sajdq
+[^14]: Moro, V., Scandola, M., & Aglioti, S. M. (2022). What the study of spinal cord injured patients can tell us about the significance of the body in cognition. Psychonomic Bulletin & Review. https://doi.org/10.3758/s13423-022-02129-6
+[^15]: Scandola, M. (2022). Body, action, and space representations in people affected by spinal cord injuries. In R. Rajendram, V. Preedy, & C. Martin (Eds.), Diagnosis and Treatment of Spinal Cord Injury (1st ed., pp. 27–39). Elsevier. https://doi.org/10.1016/B978-0-12-822498-4.00003-8

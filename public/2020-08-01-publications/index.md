@@ -35,7 +35,7 @@ Tidoni, E., Holle, H., *Scandola, M.*, Schindler, I., Hill, L., & Cross, E. S. (
 
 Beccherle, M., Facchetti, S., Villani, F., Zanini, M., & *Scandola, M.* (2022). Peripersonal Space from a multisensory perspective: the distinct effect of the visual and tactile components of Visuo-Tactile stimuli. Experimental Brain Research, 240(4), 1205–1217. https://doi.org/10.1007/s00221-022-06324-8 pre-print: https://doi.org/10.31234/osf.io/358xc
 
-*Scandola, M.* (2022). (*in Italian*) Body, action, and space representations in people affected by spinal cord injuries. In R. Rajendram, V. Preedy, & C. Martin (Eds.), Diagnosis and Treatment of Spinal Cord Injury (1st ed., pp. 27–39). Elsevier. https://doi.org/10.1016/B978-0-12-822498-4.00003-8
+*Scandola, M.* (2022). Body, action, and space representations in people affected by spinal cord injuries. In R. Rajendram, V. Preedy, & C. Martin (Eds.), Diagnosis and Treatment of Spinal Cord Injury (1st ed., pp. 27–39). Elsevier. https://doi.org/10.1016/B978-0-12-822498-4.00003-8
 
 *Scandola, M.*, Pietroni, G., Landuzzi, G., Polati, E., Schweiger, V., & Moro, V. (2022). Bodily Illusions and Motor Imagery in Fibromyalgia. Frontiers in Human Neuroscience, 15(January), 1–13. https://doi.org/10.3389/fnhum.2021.798912
 

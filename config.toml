@@ -669,7 +669,7 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 [author]
   name = "Michele Scandola"
   email = "michele.scandola@univr.it"
-  link = "michelescandola.netlify.app"
+  link = ""
 
 # Sitemap config
 # 网站地图配置
