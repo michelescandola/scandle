@@ -48,6 +48,12 @@ Beccherle, M., Facchetti, S., Villani, F., Zanini, M., & *Scandola, M.* (2020, J
 
 ## 2022
 
+Monni, A., *Scandola, M.*, Hélie, S., & Scalas, L. F. (2022). Cognitive flexibility assessment with a new Reversal learning task paradigm compared with the Wisconsin card sorting test exploring the moderating effect of gender and stress. Psychological Research, (0123456789). https://doi.org/10.1007/s00426-022-01763-y
+
+Cocchini, G., *Scandola, M.*, Gobbetto, V., Cioffi, M. C., Bartolo, A., Moore, J., & Moro, V. (2022). The ‘healthy side’ of anosognosia for hemiplegia: Increased sense of agency for the unimpaired limb or motor compensation? Neuropsychologia, 177, 108421. https://doi.org/10.1016/j.neuropsychologia.2022.108421
+
+Pyasik, M., *Scandola, M.*, & Moro, V. (2022). Electrophysiological correlates of action monitoring in brain-damaged patients: A systematic review. Neuropsychologia, 174(July), 108333. https://doi.org/10.1016/j.neuropsychologia.2022.108333
+
 Moro, V., *Scandola, M.*, & Aglioti, S. M. (2022). What the study of spinal cord injured patients can tell us about the significance of the body in cognition. Psychonomic Bulletin & Review. https://doi.org/10.3758/s13423-022-02129-6
 
 Moro, V., Pacella, V., *Scandola, M.*, Besharati, S., Rossato, E., Jenkinson, P. M., & Fotopoulou, A. (2022). A fronto-insular-parietal network for the sense of body ownership. Cerebral Cortex, 1–11. https://doi.org/10.1093/cercor/bhac081 pre-print: https://doi.org/10.21203/rs.3.rs-428666/v1
